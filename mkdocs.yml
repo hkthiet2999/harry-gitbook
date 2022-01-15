@@ -1,0 +1,12 @@
+site_name: Harry Gitbook
+
+theme:
+  name: gitbook
+
+plugins: []
+
+extra:
+  nav:
+    sort_order: reverse
+
+repo_url: https://github.com/smoothkt4951/harry-gitbook
