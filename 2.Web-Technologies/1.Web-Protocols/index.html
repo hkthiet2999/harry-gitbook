@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Web Protocols - Harry Gitbook</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.2.3, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="../.." target="_blank" class="custom-link">Harry Gitbook</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="../..">Home</a>
+<li class="header">1.Linux</li>
+
+<li>
+<a href="../../1.Linux/commands/" class="">Linux Commands</a>
+</li>
+
+<li class="header">2.Web Technologies</li>
+
+<li>
+<a href="./" class="active">Web Protocols</a>
+</li>
+
+<li>
+<a href="../2.HTTP-Protocol/" class="">HTTP Protocol</a>
+</li>
+
+<li>
+<a href="../3.Web-server-and-proxy/" class="">Web server and proxy</a>
+</li>
+
+<li>
+<a href="../4.Programming/" class="">Programming</a>
+</li>
+
+<li>
+<a href="../5.Supervisor%20and%20workers%20management/" class="">Supervisor and workers management</a>
+</li>
+
+<li>
+<a href="../6.RESTful/" class="">RESTful</a>
+</li>
+
+<li>
+<a href="../7.Authentication/" class="">Authentication - Authorization</a>
+</li>
+
+<li class="header">3.Source Version Control</li>
+
+<li>
+<a href="../../3.Source-Version-Control/Source-Version-Control/" class="">Source Version Control (Git)</a>
+</li>
+
+<li class="header">4. Package Management</li>
+
+<li>
+<a href="../../4.%20Package-Management/composer/" class="">Composer</a>
+</li>
+
+<li>
+<a href="../../4.%20Package-Management/npm/" class="">NPM</a>
+</li>
+
+<li class="header">5.Docker</li>
+
+<li>
+<a href="../../5.Docker/Docker-Architecture/" class="">Docker architecture</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Docker-Objects/" class="">Docker Objects</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Volumes-PersistentData/" class="">Volumes, Persistent Data</a>
+</li>
+
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="web-protocols">Web Protocols</h1>
+<ul>
+<li>TCP</li>
+<li>HTTP</li>
+<li>TLS/SSL</li>
+<li>SSH</li>
+<li>Websocket</li>
+</ul>
+<p><code>Web Protocols</code> là một hệ thống các quy tắc về định dạng dữ liệu và cách thức dữ liệu được trao đổi giữa các máy tính, các thiết bị, các ứng dụng với nhau thông qua Internet.</p>
+<p><code>Open Systems Interconnection</code> (OSI) được coi là mô hình kiến trúc chính cho việc truyền dữ liệu trên Internet, phần lớn các giao thức mạng được sử dụng ngày nay có cấu trúc dựa trên mô hình OSI.</p>
+<p><img alt="" src="../images/network-protocols-osi.jpg" /></p>
+<pre><code>Mô hình OSI chia quá trình giao tiếp giữa hai thiết bị mạng thành 7 lớp. Các nhiệm vụ được định nghĩa cho mỗi lớp trong số 7 lớp này. Tất cả các lớp đều độc lập và các tác vụ của mỗi lớp đều có thể được thực thi một cách độc lập.
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Layers</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Layer 7: Application</td>
+<td>Giao tiếp trực tiếp với các process của ứng dụng và thực thi các service của các process đó. Gửi các request của service tới Presentation Layer.</td>
+</tr>
+<tr>
+<td>Layer 6: Presentation</td>
+<td>Bỏ đi sự khác biệt về định dạng dữ liệu giữa các hệ thống với nhau bằng cách mã hóa và giải mã dữ liệu, cũng như nén và giải nén dữ liệu.</td>
+</tr>
+<tr>
+<td>Layer 5: Session</td>
+<td>Cung cấp một cơ chế để quản lý phiên giao tiếp giữa các tiến trình ứng dụng</td>
+</tr>
+<tr>
+<td>Layer 4: Transport</td>
+<td>Quản lý việc gửi tin nhắn từ đầu đến cuối trong networks. Renders, delivery các gói tin tuần tự, bảo mật thông qua cơ chế error recovery và flow control</td>
+</tr>
+<tr>
+<td>Layer 3: Network</td>
+<td>Định tuyến các gói tin theo địa chỉ thiết bị mạng (unique ) và quản lý renders flow tránh tình trạng tắc nghẽn, cạn kiệt tài nguyên mạng</td>
+</tr>
+<tr>
+<td>Layer 2:  Data link</td>
+<td>Đóng gói các gói tin. Phát hiện và sửa lỗi truyền gói tin.</td>
+</tr>
+<tr>
+<td>Layer 1: Physical</td>
+<td>Xác định các đặc tính vật lý của thiết bị và là Interface giữa phương tiện mạng với thiết bị.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="tcp">TCP</h1>
+<p><code>TCP Protocol</code> - Transmission Control Protocol</p>
+<ul>
+<li>
+<p>TCP là một giao thức mạng quan trọng cho phép hai Server (hosts) kết nối và trao đổi các dữ liệu, gói tin thông qua data streams.</p>
+</li>
+<li>
+<p>TCP đảm bảo việc phân phối dữ liệu và gói tin theo thứ tự như khi chúng được gửi đi.</p>
+</li>
+<li>
+<p>Vai trò của TCP: Đảm bảo các gói tin được phân phối một cách đáng tin cậy, không có lỗi. </p>
+</li>
+<li>
+<p>Cơ chế hoạt đông - 3 way handshake:</p>
+</li>
+</ul>
+<p><img alt="" src="../images/3wayshandshake.png" /></p>
+<pre><code>+ Client gửi cho Server một gói SYN — một yêu cầu kết nối từ port nguồn của nó đến port đích đến của Server.
++ Server phản hồi bằng gói SYN/ACK, xác nhận việc nhận được yêu cầu kết nối.
++ Client nhận gói SYN/ACK và trả lời bằng gói ACK của chính nó.
+</code></pre>
+<h2 id="http">HTTP</h2>
+<p><code>HTTP Protocol</code> - Hypertext Transfer Protocol</p>
+<ul>
+<li>HTTP là một giao thức để fetching HTML resources. </li>
+<li>Là nền tảng của bất kỳ trao đổi dữ liệu nào trên Web.</li>
+<li>Là một giao thức giữa client-server, các request được khởi tạo bởi client, thường là Browser, để gửi các data: video, image, text v.v tới server và tương tự server response data lại cho client.</li>
+</ul>
+<h2 id="tlsssl">TLS/SSL</h2>
+<p><code>TLS/SSL Protocol</code></p>
+<ul>
+<li>SSL Protocol - Secure Sockets Layer</li>
+<li>
+<p>Là tiêu chuẩn để giữ kết nối internet an toàn và bảo vệ mọi dữ liệu được gửi giữa hai hệ thống với nhau, xác thực giữa hai hệ thống và ngăn tội phạm đọc và sửa đổi bất kỳ thông tin nào được truyền đi.</p>
+</li>
+<li>
+<p>TLS Protocol - Transport Layer Security</p>
+</li>
+<li>
+<p>Là một updated, more secure version của SSL</p>
+</li>
+</ul>
+<h2 id="ssh">SSH</h2>
+<p><code>SSH Protocol</code> - Secure Shell</p>
+<ul>
+<li>Là một phương pháp để đăng nhập từ xa an toàn từ máy tính này sang máy tính khác. </li>
+<li>Cung cấp một số optional để xác thực và nó bảo vệ tính toàn vẹn và bảo mật thông tin liên lạc bằng việc mã hóa. </li>
+<li>Là một giải pháp thay thế an toàn cho các giao thức đăng nhập không được bảo vệ (chẳng hạn như telnet, rlogin) và các phương thức truyền tệp không an toàn (chẳng hạn như FTP).</li>
+<li>Example: <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">Connecting to GitHub with SSH</a></li>
+</ul>
+<h2 id="websocket">Websocket</h2>
+<p><code>Websocket protocol</code></p>
+<ul>
+<li>Hỗ trợ giao tiếp hai chiều giữa client và server để tạo một kết nối trao đổi dữ liệu. </li>
+<li>Giao thức này không sử dụng HTTP mà thực hiện nó qua TCP. </li>
+<li>Mặc dù được thiết kế để chuyên sử dụng cho các ứng dụng web, lập trình viên vẫn có thể đưa chúng vào bất kì loại ứng dụng nào.</li>
+<li>Có độ trễ thấp và dễ xử lý lỗi. Websocket thường được sử dụng cho những trường hợp yêu cầu real time như chat, hiển thị biểu đồ hay thông tin chứng khoán.</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ol>
+<li>
+<p><a href="https://developer.mozilla.org/">MDN Web Docs</a></p>
+</li>
+<li>
+<p><a href="https://www.manageengine.com/network-monitoring/network-protocols.html">Network Protocols</a></p>
+</li>
+<li>
+<p><a href="https://www.ssh.com/academy/ssh/protocol">SSH protocol</a></p>
+</li>
+<li>
+<p><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">Connecting to GitHub with SSH</a></p>
+</li>
+<li>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc6455">Websocket Protocols</a></p>
+</li>
+<li>
+<p><a href="https://www.guru99.com/tcp-3-way-handshake.html">tcp-3-way-handshake</a></p>
+</li>
+</ol>
+
+
+</section>
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../../js/main.js"></script>
+<script src="../../js/gitbook.min.js"></script>
+<script src="../../js/theme.min.js"></script>
+</body>
+</html>

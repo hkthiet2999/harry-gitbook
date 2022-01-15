@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Web server and proxy - Harry Gitbook</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.2.3, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="../.." target="_blank" class="custom-link">Harry Gitbook</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="../..">Home</a>
+<li class="header">1.Linux</li>
+
+<li>
+<a href="../../1.Linux/commands/" class="">Linux Commands</a>
+</li>
+
+<li class="header">2.Web Technologies</li>
+
+<li>
+<a href="../1.Web-Protocols/" class="">Web Protocols</a>
+</li>
+
+<li>
+<a href="../2.HTTP-Protocol/" class="">HTTP Protocol</a>
+</li>
+
+<li>
+<a href="./" class="active">Web server and proxy</a>
+</li>
+
+<li>
+<a href="../4.Programming/" class="">Programming</a>
+</li>
+
+<li>
+<a href="../5.Supervisor%20and%20workers%20management/" class="">Supervisor and workers management</a>
+</li>
+
+<li>
+<a href="../6.RESTful/" class="">RESTful</a>
+</li>
+
+<li>
+<a href="../7.Authentication/" class="">Authentication - Authorization</a>
+</li>
+
+<li class="header">3.Source Version Control</li>
+
+<li>
+<a href="../../3.Source-Version-Control/Source-Version-Control/" class="">Source Version Control (Git)</a>
+</li>
+
+<li class="header">4. Package Management</li>
+
+<li>
+<a href="../../4.%20Package-Management/composer/" class="">Composer</a>
+</li>
+
+<li>
+<a href="../../4.%20Package-Management/npm/" class="">NPM</a>
+</li>
+
+<li class="header">5.Docker</li>
+
+<li>
+<a href="../../5.Docker/Docker-Architecture/" class="">Docker architecture</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Docker-Objects/" class="">Docker Objects</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Volumes-PersistentData/" class="">Volumes, Persistent Data</a>
+</li>
+
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="web-server-and-proxy">Web server and proxy</h1>
+<ul>
+<li>Nginx</li>
+<li>Reverse proxy / Forward Proxy</li>
+<li>PHP-FPM / Node</li>
+<li>Log</li>
+</ul>
+<h2 id="nginx">Nginx</h2>
+<h3 id="1-concepts">1. Concepts</h3>
+<p>Trích dẫn định nghĩa về NGINX trên <a href="https://www.nginx.com/resources/glossary/nginx/">nginx.com</a></p>
+<pre><code>NGINX is open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more. It started out as a web server designed for maximum performance and stability. In addition to its HTTP server capabilities, NGINX can also function as a proxy server for email (IMAP, POP3, and SMTP) and a reverse proxy and load balancer for HTTP, TCP, and UDP servers.
+</code></pre>
+<ul>
+<li>
+<p>NGINX là một web server mã nguồn mở:</p>
+<ul>
+<li>
+<p><code>Reverse proxying</code>: Reverse proxy là một loại proxy server trung gian giữa một máy chủ và các client gửi tới các request. Nó kiểm soát request của các client, nếu hợp lệ, sẽ luân chuyển đến các server tương ứng.</p>
+</li>
+<li>
+<p><code>Caching</code>: Caching proxy là một server lưu các files tĩnh để phục vụ cho việc gửi trả lại các response cho các request phổ biến. Nó sẽ tiếp nhận các request thông thường và nhanh chóng gửi response. Caching proxy sẽ giúp máy chủ chính của bạn không phải xử lý các request này, do đó giảm gánh nặng cho phía server.</p>
+</li>
+<li>
+<p><code>Load balancing</code>: Phân phối lưu lượng truy cập của nhiều users đến một nhóm backend servers, hay còn được gọi là server farm hoặc server pool.</p>
+</li>
+<li>
+<p><code>Media streaming</code> : Streaming server là máy chủ được dùng trong truyền phát Audio và Video. Một số máy chủ Streaming chỉ có thể làm việc với các định dạng cụ thể và số khác có khả năng xử lý nhiều kiểu File khác nhau.</p>
+</li>
+</ul>
+<p><em>and more...</em></p>
+</li>
+</ul>
+<h3 id="2-features">2. Features</h3>
+<p><strong>Basic HTTP server features</strong></p>
+<ul>
+<li>
+<p>Serving cho các static files, tự động lập index</p>
+</li>
+<li>
+<p>Tăng tốc reverse proxy bằng bộ nhớ đệm (cache), cân bằng tải đơn giản và khả năng chịu lỗi.</p>
+</li>
+<li>
+<p>Hỗ trợ tăng tốc với bộ nhớ đệm của FastCGI, uwsgi, SCGI, và các máy chủ memcached.</p>
+</li>
+<li>
+<p>Kiến trúc modular, tăng tốc độ nạp trang bằng nén gzip tự động.</p>
+</li>
+<li>
+<p>Hỗ trợ mã hoá SSL và TLS.</p>
+</li>
+<li>
+<p>Cấu hình linh hoạt; lưu lại nhật ký truy vấn (logging)</p>
+</li>
+<li>
+<p>Giới hạn số kết nối đồng thời hoặc truy vấn từ 1 địa chỉ</p>
+</li>
+</ul>
+<p><strong>Other HTTP server features</strong></p>
+<ul>
+<li>
+<p>Máy chủ ảo dựa trên tên và dựa trên IP</p>
+</li>
+<li>
+<p>Chuyển hướng mã lỗi 3XX-5XX</p>
+</li>
+<li>
+<p>Truy cập tới các định dạng ghi log, buffered log , fast log và system log.</p>
+</li>
+<li>
+<p>Rewrite URL (URL rewriting) dùng regular expressions</p>
+</li>
+<li>
+<p>Hạn chế tỷ lệ đáp ứng truy vấn</p>
+</li>
+<li>
+<p>Khả năng nhúng mã PERL</p>
+</li>
+<li>
+<p>Hỗ trợ và tương thích với IPv6</p>
+</li>
+<li>
+<p>Hỗ trợ WebSockets</p>
+</li>
+<li>
+<p>Hỗ trợ truyền tải file FLV và MP4</p>
+</li>
+</ul>
+<p><strong>Mail proxy server features</strong></p>
+<ul>
+<li>
+<p>Chuyển hướng người dùng đến máy chủ IMAP hoặc POP3 bằng máy chủ external HTTP authentication;</p>
+</li>
+<li>
+<p>Xác thực người dùng bằng máy chủ external HTTP authentication và chuyển hướng kết nối đến máy chủ SMTP nội bộ;</p>
+</li>
+<li>
+<p>Hỗ trợ các phương pháp xác thực người dùng:</p>
+<ul>
+<li>POP3: USER/PASS, APOP, AUTH LOGIN/PLAIN/CRAM-MD5;</li>
+<li>IMAP: LOGIN, AUTH LOGIN/PLAIN/CRAM-MD5;</li>
+<li>SMTP: AUTH LOGIN/PLAIN/CRAM-MD5;</li>
+</ul>
+</li>
+<li>
+<p>Hỗ trợ SSL, STARTTLS và STLS</p>
+</li>
+</ul>
+<p><strong>TCP/UDP proxy server features</strong></p>
+<ul>
+<li>
+<p>Dùng chung Generic proxying cho cả TCP và UDP</p>
+</li>
+<li>
+<p>Hỗ trợ SSL và TLS SNI cho TCP</p>
+</li>
+<li>
+<p>Cân bằng tải và khả năng chịu lỗi</p>
+</li>
+<li>
+<p>Định vị địa lý dựa trên IP</p>
+</li>
+<li>
+<p>Kiểm soát truy cập dựa trên client address; Thực thi các chức năng khác nhau tùy thuộc vào client address</p>
+</li>
+<li>
+<p>Giới hạn số lượng kết nối đồng thời đến từ một địa chỉ (client address)</p>
+</li>
+<li>
+<p>Truy cập tới các định dạng ghi log, buffered log , fast log và system log.</p>
+</li>
+</ul>
+<h2 id="reverse-proxy-forward-proxy">Reverse proxy / Forward Proxy</h2>
+<h3 id="1-reverse-proxy">1. Reverse proxy</h3>
+<p><img alt="" src="../images/reverse_proxy.png" /></p>
+<h4 id="a-concepts">a. Concepts</h4>
+<ul>
+<li>
+<p><code>Reverse Proxy</code> đóng vai trò làm cầu nối giữa client và server. Nó nhận request của client và chuyển lên server và nhận response từ server để chuyển tới client, cho nên response từ nó giống như là một máy chủ.</p>
+</li>
+<li>
+<p>Client và server liên tục trao đổi thông tin. Thông thường, reverse proxies được dùng như là một web server. Reverse proxy hay gateway được client coi như là một máy chủ web, không cần cấu hình gì đặc biệt. Client sẽ gửi các lệnh truy vấn resource và reverse proxy sẽ quyết định nơi chuyển thông tin đến server và nơi response thông tin về cho client.</p>
+</li>
+</ul>
+<h4 id="b-fetures">b. Fetures</h4>
+<ul>
+<li>
+<p>Đơn giản để triển khai, tạo tính bảo mật cao giúp ngăn chặn tấn công web server như DDoS và DoS</p>
+</li>
+<li>
+<p>Nginx Reverse proxy giúp tạo cân bằng tải giữa nhiều server hạ tầng và là giải pháp caching cho những server chậm.</p>
+</li>
+<li>
+<p>Nginx không đòi hỏi thiết lập mới cho từng request từ client. Nó mặc định dùng một process trên mỗi CPU.</p>
+</li>
+<li>
+<p>Reverse proxy hỗ trợ nhiều giao thức đa dạng: HTTP, HTTPS, TCP, UDP, SMTP, IMAP, và POP3</p>
+</li>
+<li>
+<p>Có thể xử lý hơn 10000 kết nối nhưng chiếm ít dung lượng bộ nhớ. Giúp cho Nginx server có thể vận hành nhiều web server khác nhau chỉ từ 1 IP và vẫn có thể response đúng kết quả tới đúng server trong mạng LAN.</p>
+</li>
+<li>
+<p>Reverse Proxy Nginx Server là một trong các web server tốt nhất cải thiện tốc độ load cho nội dung tĩnh. Hơn nữa, nó cũng hữu dụng khi đóng vai trò cache nội dung để thực hiện mã hóa SSL để giảm tải cho web server chính</p>
+</li>
+<li>
+<p>Nó cũng hữu dụng để tối ưu nội dung và nén chúng để giảm thời gian tải.</p>
+</li>
+</ul>
+<h3 id="2-forward-proxy">2. Forward proxy</h3>
+<p><img alt="" src="../images/forward_proxy.png" /></p>
+<h4 id="a-concepts_1">a. Concepts</h4>
+<ul>
+<li>
+<p><code>Forward Proxy</code> là loại proxy server được dùng phía client (thay vì ở server như <code>Reverse Proxy</code>), nó có thể được đặt ở trong mạng nội bộ hoặc trên internet.</p>
+</li>
+<li>
+<p>Khi sử dụng forward proxy, các requests phía client sẽ tới  forward proxy server và forward proxy server này sẽ chuyển tiếp các requests này tới Internet</p>
+</li>
+</ul>
+<h4 id="b-fetures_1">b. Fetures</h4>
+<ul>
+<li>
+<p>Ẩn địa chỉ IP của client khi truy cập tới các website trên internet do phía các website chỉ có thể biết được địa chỉ của forward proxy server.</p>
+</li>
+<li>
+<p>Dùng trong công ty, tổ chức để chặn các website không mong muốn, quản lý truy cập và chặn các content độc hại.</p>
+</li>
+<li>
+<p>Có thể được dùng để Bypass firewall restriction để truy cập các website bị chặn bởi công ty, chính phủ, v. v...</p>
+</li>
+<li>
+<p>Sử dụng làm caching server để tăng tốc độ.</p>
+</li>
+</ul>
+<h2 id="php-fpm-node">PHP-FPM / Node</h2>
+<h3 id="1-php-fpm">1. PHP-FPM</h3>
+<h4 id="a-concepts_2">a. Concepts</h4>
+<ul>
+<li>
+<p><code>PHP-FPM</code> viết tắt của <code>PHP - FastCGI Process Manager</code> là chương trình có chức năng phiên dịch PHP khi chạy trang web cho web server. PHP-FPM được hình thành dựa trên sự mở rộng của <code>CGI</code> và có cộng đồng sử dụng, support lớn.</p>
+</li>
+<li>
+<p><code>CGI - Common Gateway Interface</code> là một phần mềm lập trình có chức năng kết nối giữa máy chủ và chương trình, dựa trên các định dạng đặc tả thông tin.</p>
+</li>
+<li>
+<p><code>CGI</code> là một phần mềm lập trình, có nhiệm vụ xây dựng chương trình từ các trang web. Sau khi nhận dữ liệu từ các trang web dưới định dạng HTML, phần mềm này sẽ truyền dữ liệu đó qua cổng thông tin Internet đến máy tính của người dùng.</p>
+</li>
+<li>
+<p><code>FastCGI</code>: là một giao thức phát triển mở rộng từ CGI. Mục đích chính của FastCGI là để web server tối ưu trong việc xử lý. Đồng thời giúp máy chủ có thể xử lí nhiều request từ trang web trong cùng một lúc.</p>
+</li>
+</ul>
+<h4 id="b-features">b. Features</h4>
+<ul>
+<li>
+<p>Về cơ bản, PHP-FPM có chức năng tối ưu quá trình xử lý thông tin của các máy chủ web, hỗ trợ việc xử lý thông tin từ nhiều trang web trong cùng một khoảng thời gian một cách nhanh nhất.</p>
+</li>
+<li>
+<p>Với tốc độ xử lý PHP script nhanh cùng tính năng tối ưu hoá cho những trang web có kích thước lớn, giúp tăng lượng truy cập, PHP-FPM trở nên phổ biến và có cộng đồng người dùng lớn.</p>
+</li>
+<li>
+<p>Upside:</p>
+<ul>
+<li>
+<p>Tính năng vượt trội nhất của PHP-FPM là hiệu suất cao, </p>
+</li>
+<li>
+<p>Sự ổn định và tính bảo mật cao hơn nhiều so với CGI. </p>
+</li>
+<li>
+<p>Phần mềm này có thể chạy PHP Script dưới quyền sở hữu PHP Scripts đó.</p>
+</li>
+<li>
+<p>Khai thác rất ít tài nguyên CPU khi chạy chương trình &rarr; Giúp tốc độ tải trang nhanh hơn, việc truy cập của người dùng trở nên dễ dàng &rarr; Lưu lượng truy cập trang web sẽ tăng cao hơn.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Downside:</p>
+<ul>
+<li>Tiêu tốn dung lượng RAM. </li>
+</ul>
+</li>
+</ul>
+<h3 id="2-node">2. Node</h3>
+<h4 id="a-concepts_3">a. Concepts</h4>
+<ul>
+<li>
+<p><code>NodeJS</code> là một mã nguồn mở, đa nền tảng, chạy trên môi trường JavaSript, được xây dựng trên V8 JavaScript engine của Chrome - V8 thực thi mã JavaScript bên ngoài trình duyệt. </p>
+</li>
+<li>
+<p><code>Asynchronous programming</code>: Về bản chất, nó thực hiện các request đồng thời, ngay cả khi chúng ở các chức năng khác nhau. Một single thread sẽ được handle multiple-requests trong <code>event-loop</code>. Vì vậy, việc một request bị reject sẽ không ảnh hưởng đến request khác.NodeJS cho phép thực hiện lập trình bất đồng bộ. Khi bất đồng bộ thực thi tất cả dòng code cùng một lúc.</p>
+</li>
+<li>
+<p><code>Synchronous programming</code>: Tải tài nguyên một cách đơn lẻ và tuần tự, như vậy khi tài nguyên trong hệ thống có phân cấp không tải được, thì những tài nguyên bên dưới nó sẽ không tải được luôn. Với NodeJS, ở chế độ đồng bộ thực thi từng dòng và tiến hành thực thi dòng tiếp theo khi dòng hiện tại đã thực thi xong.</p>
+</li>
+<li>
+<p>NodeJS sử dụng I/O Model lập trình theo event, non-blocking &rarr; NodeJS khá gọn nhẹ và hiệu quả &rarr; Công cụ hoàn hảo cho các ứng dụng chuyên sâu về dữ liệu realtime chạy trên các Distributed control system.</p>
+</li>
+<li>
+<p>NodeJS là môi trường runtime mã nguồn mở đa nền tảng  &rarr; Sử dụng để phát triển các ứng dụng mạng và ứng dụng server-side  &rarr; có thể chạy trên OS X, Microsoft Windows và Linux.</p>
+</li>
+</ul>
+<h4 id="b-features_1">b. Features</h4>
+<ul>
+<li>
+<p><code>Asynchronous and Event Driven</code>: Lập trình bất đồng bộ hướng sự kiện. Toàn bộ API trong thư viện NodeJS đều bất đồng bộ, hay non-blocking. Có nghĩa là một server sử dụng NodeJS sẽ không phải chờ một API response về data. Server có thể chuyển sang API khác sau khi gọi API trước đó và cơ chế thông báo của Events trong NodeJS giúp server nhận được response từ lần gọi API trước.</p>
+</li>
+<li>
+<p><code>Very Fast</code>: Được xây dựng trên Công cụ JavaScript V8 của Google Chrome, thư viện NodeJS có khả năng xử lý mã vô cùng nhanh.</p>
+</li>
+<li>
+<p><code>Single Threaded but Highly Scalable</code>: NodeJS sử dụng single threaded model với event looping. Cơ chế event cho phép máy chủ response non-blocking và cũng cho phép khả năng mở rộng cao hơn so với các server truyền thống hỗ trợ giới hạn các thread để xử lý các request. </p>
+</li>
+<li>
+<p><code>No Buffering</code>: Các ứng dụng NodeJS không có vùng nhớ tạm thời (buffer) cho bất kỳ dữ liệu nào. Các ứng dụng này chỉ đơn giản xuất dữ liệu theo dạng block.</p>
+</li>
+<li>
+<p><code>License</code>: NodeJS được phát hành theo giấy phép MIT.</p>
+</li>
+</ul>
+<h2 id="web-server-logs">Web Server Logs</h2>
+<h3 id="1-concepts_1">1. Concepts</h3>
+<ul>
+<li><code>Web Server Logs</code> là các tệp ghi lại nhật ký của một web server, được web server tự động tạo và đọc, ghi lại <code>list of activities</code> mà web server đã thực hiện. </li>
+<li><code>W3C</code> công bố một định dạng chuẩn cho việc ghi logs của web server <a href="https://www.w3.org/Daemon/User/Config/Logging.html">The Common Log Format</a> và <a href="https://www.w3.org/TR/WD-logfile.html">Extended Log File Format</a></li>
+</ul>
+<pre><code>#Version: 1.0
+#Date: 12-Jan-1996 00:00:00
+#Fields: time cs-method cs-uri
+00:34:23 GET /foo/bar.html
+12:21:16 GET /foo/bar.html
+12:45:52 GET /foo/bar.html
+12:57:34 GET /foo/bar.html
+</code></pre>
+<ul>
+<li>
+<p>Nội dung của 1 file log thường gồm index nằm ở cuối tệp, thông tin về request, bao gồm địa chỉ IP máy client, ngày/giờ của request, URL của trang được request,  HTTP code, bytes served, user agent và các referrer. Ngoài ra, các dữ liệu này có thể tách thành các log riêng biệt như <code>AccessLog</code>, <code>ErorLog</code> hoặc <code>ReferrerLog</code>.</p>
+</li>
+<li>
+<p>User thông thường không thể truy cập được những log files, chỉ admin được phân quyền mới truy cập được. Và thường admin sẽ xem phân tích, thống kê của server log để kiểm tra các lưu lượng access theo thời gian, xem các referrer hoặc user agent, error. Các phân tích này sẽ hỗ trợ cho việc quản trị trang web hiệu quả, tài nguyên lưu trữ đầy đủ và điều chỉnh các lỗi hệ thống.</p>
+</li>
+</ul>
+<h3 id="2-common-values-usually-found-in-a-web-server-log">2. Common values usually found in a Web Server Log</h3>
+<ul>
+<li>Apache server log file:</li>
+</ul>
+<pre><code>192.168.198.92 - - [22/Dec/2002:23:08:37 -0400] &quot;GET 
+   / HTTP/1.1&quot; 200 6394 www.yahoo.com 
+   &quot;-&quot; &quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1...)&quot; &quot;-&quot;
+192.168.198.92 - - [22/Dec/2002:23:08:38 -0400] &quot;GET 
+   /images/logo.gif HTTP/1.1&quot; 200 807 www.yahoo.com 
+   &quot;http://www.some.com/&quot; &quot;Mozilla/4.0 (compatible; MSIE 6...)&quot; &quot;-&quot;
+192.168.72.177 - - [22/Dec/2002:23:32:14 -0400] &quot;GET 
+   /news/sports.html HTTP/1.1&quot; 200 3500 www.yahoo.com 
+   &quot;http://www.some.com/&quot; &quot;Mozilla/4.0 (compatible; MSIE ...)&quot; &quot;-&quot;
+192.168.72.177 - - [22/Dec/2002:23:32:14 -0400] &quot;GET 
+   /favicon.ico HTTP/1.1&quot; 404 1997 www.yahoo.com 
+   &quot;-&quot; &quot;Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3)...&quot; &quot;-&quot;
+192.168.72.177 - - [22/Dec/2002:23:32:15 -0400] &quot;GET 
+   /style.css HTTP/1.1&quot; 200 4138 www.yahoo.com 
+   &quot;http://www.yahoo.com/index.html&quot; &quot;Mozilla/5.0 (Windows...&quot; &quot;-&quot;
+192.168.72.177 - - [22/Dec/2002:23:32:16 -0400] &quot;GET 
+   /js/ads.js HTTP/1.1&quot; 200 10229 www.yahoo.com 
+   &quot;http://www.search.com/index.html&quot; &quot;Mozilla/5.0 (Windows...&quot; &quot;-&quot;
+192.168.72.177 - - [22/Dec/2002:23:32:19 -0400] &quot;GET 
+   /search.php HTTP/1.1&quot; 400 1997 www.yahoo.com 
+   &quot;-&quot; &quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; ...)&quot; &quot;-&quot;
+</code></pre>
+<ul>
+<li>IIS (Internet Information Service) server log file:</li>
+</ul>
+<pre><code>02:49:12 127.0.0.1 GET / 200
+02:49:35 127.0.0.1 GET /index.html 200
+03:01:06 127.0.0.1 GET /images/sponsered.gif 304
+03:52:36 127.0.0.1 GET /search.php 200
+04:17:03 127.0.0.1 GET /admin/style.css 200
+05:04:54 127.0.0.1 GET /favicon.ico 404
+05:38:07 127.0.0.1 GET /js/ads.js 200
+</code></pre>
+<p>Từ những log files này, có thể thống kê được các values:</p>
+<ul>
+<li>Số lượt truy cập và số lượng client truy cập</li>
+<li>Thời lượng truy cập và lượt truy cập cuối cùng</li>
+<li>User được xác thực và lượt truy cập được xác thực gần đây nhất</li>
+<li>Domains/countries - IP Address của client</li>
+<li>Danh sách các host</li>
+<li>Số lượt page views</li>
+<li>Các page được access nhiều và ít nhất</li>
+<li>Các loại tập tin</li>
+<li>Hệ điều hành được sử dụng của các user</li>
+<li>Các trình duyệt đã sử dụng</li>
+<li>Search engines: key phrases và keywords được sử dụng nhiều</li>
+<li>Xem các HTTP status code, cụ thể là HTTP errors code</li>
+</ul>
+<h3 id="3-types-of-web-server-log-files">3. Types of Web Server log files</h3>
+<p><img alt="" src="../images/Format-Types-of-Web-server-log-files.png" /></p>
+<p><a href="https://www.researchgate.net/figure/Format-Types-of-Web-server-log-files_tbl1_308114719">Source</a></p>
+<h3 id="4-nginx-access-logs-and-error-logs">4. NGINX Access Logs and Error Logs</h3>
+<h4 id="a-logs-in-nginx">a. Logs in NGINX</h4>
+<p>Theo mặc định, NGINX ghi các events của nó trong hai loại logs là <code>Access Logs</code> và <code>Error Logs</code>. Trong hầu hết các distro của Linux phổ biến như Ubuntu, CentOS hoặc Debian, cả bản ghi Access Logs và Error Logs đều có thể được tìm thấy trong <code>/var/log/nginx</code>.</p>
+<h4 id="b-nginx-access-log">b. NGINX Access log</h4>
+<ul>
+<li>
+<p>NGINX ghi lại các activities của tất cả những user truy cập vào trang web trong <code>Access Logs</code>. Từ file <code>Access Logs</code> này, ta có thể tìm thấy <code>tệp nào được truy cập</code>, cách <code>NGINX phản hồi request</code>, <code>browser của client</code> đang sử dụng, <code>địa chỉ IP</code> của ứng dụng khách và hơn thế nữa. </p>
+</li>
+<li>
+<p>Có thể sử dụng thông tin từ <code>Access Logs</code> để phân tích lưu lượng truy cập, có thể phát hiện ra các trường hợp người dùng gửi một số request bất thường, từ đó ngăn chặn sớm các hành vi tấn công mạng.</p>
+</li>
+<li>
+<p>Enable NGINX access log trong http context:</p>
+</li>
+</ul>
+<pre><code class="language-nginx">
+http {
+      ...
+      ...
+      access_log  /var/log/nginx/access.log;
+
+         server {
+                  listen 80; 
+                  server_name domain1.com
+                  access_log  /var/log/nginx/domain1.access.log;
+                  ...
+                  ...
+                }
+}
+
+</code></pre>
+<pre><code class="language-nginx"># tail -f /var/log/nginx/domain1.access.log
+47.29.201.179 - - [28/Feb/2019:13:17:10 +0000] &quot;GET /?p=1 HTTP/2.0&quot; 200 5316 &quot;https://domain1.com/?p=1&quot; &quot;Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36&quot; &quot;2.75&quot;
+</code></pre>
+<h4 id="c-nginx-error-log">c. NGINX Error log</h4>
+<ul>
+<li>Mặt khác, nếu NGINX gặp bất kỳ trục trặc nào thì nó sẽ ghi lại event đó vào <code>Error Logs</code>. </li>
+<li>Nếu có một số lỗi trong tệp configuration dẫn tới NGINX không thể khởi động hoặc stopped running thì ta nên check <code>Error Logs</code> để tìm nguyên nhân và xử lý nó.</li>
+<li>
+<p>Ngoài ra ta cũng có thể tìm thấy một vài warning trong nhật <code>Error Logs</code> từ đó tránh được các sự cố có thể xảy ra.</p>
+</li>
+<li>
+<p>Enable NGINX error log trong http context:</p>
+</li>
+</ul>
+<pre><code class="language-nginx">
+http {
+       ...
+       ...
+       error_log  /var/log/nginx/error_log;
+       server {
+                listen 80;
+                server_name domain1.com;
+                    error_log  /var/log/nginx/domain1.error_log  warn;
+                        ...
+       }
+       server {
+                listen 80;
+                server_name domain2.com;
+                    error_log  /var/log/nginx/domain2.error_log  debug;
+                        ...
+       }
+}
+</code></pre>
+<ul>
+<li>
+<p>Các mức độ nghiêm trọng của Nginx Error Log:</p>
+<ul>
+<li><code>emerg</code>: Thông báo khẩn cấp khi hệ thống có thể không ổn định.</li>
+<li><code>alert</code>: Alert messages về các vấn đề nghiêm trọng.</li>
+<li><code>crit</code>: Critical issues quan trọng cần được quan tâm ngay lập tức.</li>
+<li><code>error</code>: Đã xảy ra lỗi, xảy ra sự cố khi xử lý một request.</li>
+<li><code>warn</code>: Warning messages mà ta nên xem xét.</li>
+<li><code>notice</code>: Notice đơn giản, có thể ignore.</li>
+<li><code>info</code>: Chỉ là 1 information messages mà ta có thể muốn biết.</li>
+<li><code>debug</code>: Thông tin về Debugging được sử dụng để xác định vị trí của error.</li>
+</ul>
+</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ol>
+<li><a href="https://nginx.org/en/">NGINX/About</a></li>
+<li><a href="https://www.nginx.com/resources/glossary/reverse-proxy-server/">What Is a Reverse Proxy Server?</a></li>
+<li><a href="https://www.imperva.com/learn/performance/reverse-proxy/">Reverse Proxy vs Forward Proxy</a></li>
+<li><a href="https://www.php.net/manual/en/install.fpm.php">FastCGI Process Manager (FPM)</a></li>
+<li><a href="https://www.makeuseof.com/synchronous-asynchronous-programming-different/">Synchronous vs. Asynchronous Programming</a></li>
+<li><a href="https://www.tutorialspoint.com/nodejs/nodejs_introduction.htm">Nodejs Features</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Logging_(software)#Server_log">Server log</a></li>
+<li><a href="https://thirdeyedata.io/web-server-logs/">Web Server logs</a></li>
+<li><a href="https://www.researchgate.net/figure/Format-Types-of-Web-server-log-files_tbl1_308114719"> Types of Web Server log files</a></li>
+<li></li>
+</ol>
+
+
+</section>
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../../js/main.js"></script>
+<script src="../../js/gitbook.min.js"></script>
+<script src="../../js/theme.min.js"></script>
+</body>
+</html>

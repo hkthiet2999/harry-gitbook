@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Authentication - Authorization - Harry Gitbook</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.2.3, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="../.." target="_blank" class="custom-link">Harry Gitbook</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="../..">Home</a>
+<li class="header">1.Linux</li>
+
+<li>
+<a href="../../1.Linux/commands/" class="">Linux Commands</a>
+</li>
+
+<li class="header">2.Web Technologies</li>
+
+<li>
+<a href="../1.Web-Protocols/" class="">Web Protocols</a>
+</li>
+
+<li>
+<a href="../2.HTTP-Protocol/" class="">HTTP Protocol</a>
+</li>
+
+<li>
+<a href="../3.Web-server-and-proxy/" class="">Web server and proxy</a>
+</li>
+
+<li>
+<a href="../4.Programming/" class="">Programming</a>
+</li>
+
+<li>
+<a href="../5.Supervisor%20and%20workers%20management/" class="">Supervisor and workers management</a>
+</li>
+
+<li>
+<a href="../6.RESTful/" class="">RESTful</a>
+</li>
+
+<li>
+<a href="./" class="active">Authentication - Authorization</a>
+</li>
+
+<li class="header">3.Source Version Control</li>
+
+<li>
+<a href="../../3.Source-Version-Control/Source-Version-Control/" class="">Source Version Control (Git)</a>
+</li>
+
+<li class="header">4. Package Management</li>
+
+<li>
+<a href="../../4.%20Package-Management/composer/" class="">Composer</a>
+</li>
+
+<li>
+<a href="../../4.%20Package-Management/npm/" class="">NPM</a>
+</li>
+
+<li class="header">5.Docker</li>
+
+<li>
+<a href="../../5.Docker/Docker-Architecture/" class="">Docker architecture</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Docker-Objects/" class="">Docker Objects</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Volumes-PersistentData/" class="">Volumes, Persistent Data</a>
+</li>
+
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="authentication-authorization">Authentication - Authorization</h1>
+<ul>
+<li>Authentication - Authorization</li>
+<li>Oauth2</li>
+<li>JWT</li>
+</ul>
+<h2 id="authentication-authorization_1">Authentication - Authorization</h2>
+<h3 id="concepts">Concepts</h3>
+<ul>
+<li>
+<p><code>Authentication</code> - <code>Xác thực</code>: là một quá trình kiểm tra danh tính của một tài khoản đang vào trong hệ thống hiện tại thông qua một hệ thống xác thực. Đây được xem là bước ban đầu của mọi hệ thống có yếu tố người dùng. Bản chất của Authentication chính là thực hiện xác nhận <code>HTTP request</code> được gửi đến từ client. </p>
+</li>
+<li>
+<p><code>Authorization</code> - <code>Ủy quyền</code>: là quá trình để xác định xem người dùng đã được xác thực có quyền truy cập vào các tài nguyên nào của hệ thống. Thườn là bước tiếp theo sau khi bước xác thực user thành công.</p>
+</li>
+</ul>
+<p><img alt="" src="../images/authn-authz.png" /></p>
+<ul>
+<li><code>Classification of Authentication</code>:<ul>
+<li><code>HTTP Basic Authentication</code>: Client sẽ gửi info được mã hóa dưới dạng Base64 trong header của request. 
+    <code>Authorization: Basic bG9sOnNlY3VyZQ==</code></li>
+<li><code>Multi - factor Authentication (MFA)</code>: Xác thực đa nhân tố, tăng tính xác thưc + bảo mật: <code>Security token</code>, <code>Biometric verification</code>.</li>
+<li><code>Password - based Authentication</code>: xác thực dựa trên mật khẩu: strong password, hashed password, OTP, PIN</li>
+</ul>
+</li>
+</ul>
+<h3 id="authentication-vs-authorization">Authentication vs. Authorization</h3>
+<table>
+<thead>
+<tr>
+<th>Authentication</th>
+<th>Authorization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bạn là ai? &rarr; Xác nhận danh tính, cấp quyền truy cập vào hệ thống</td>
+<td>Bạn có những quyền gì? &rarr; Xác định xem bạn có được phép truy cập tài nguyên không</td>
+</tr>
+<tr>
+<td>Bước đầu tiên</td>
+<td>Diễn ra sau khi authentication thành công</td>
+</tr>
+<tr>
+<td>Trả về lỗi <code>401</code></td>
+<td>Trả về lỗi <code>403</code></td>
+</tr>
+<tr>
+<td>Dùng password, OTP, PIN, 2FA/MFA, ...</td>
+<td>Dùng tùy thuộc vào mức độ bảo mật, để xác định permissions, thường là <code>JWT</code></td>
+</tr>
+<tr>
+<td>Transmits info thông qua <code>ID Token</code></td>
+<td>Transmits info thông qua <code>Access Token</code></td>
+</tr>
+<tr>
+<td>Thường được quản trị bởi giao thức <code>OpenID Connect (OIDC)</code></td>
+<td>Thường được quản trị bởi <code>OAuth 2.0 framework</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-most-used-rest-api-authentication-methods">4 Most Used REST API Authentication Methods</h2>
+<ol>
+<li><code>HTTP Authentication Schemes (Basic &amp; Bearer)</code> </li>
+</ol>
+<p>Giao thức HTTP cung cấp các <code>Authentication Schemes</code> như: <code>Basic</code>, <code>Bearer</code>, <code>Digest</code>, <code>OAuth</code> v. v...</p>
+<ul>
+<li>
+<p><code>Basic Authentication</code>: Client sẽ gửi username, password được mã hóa dưới dạng Base64 trong header của request. 
+    <code>Authorization: Basic bG9sOnNlY3VyZQ==</code></p>
+</li>
+<li>
+<p><code>Baear Authentication</code>:  "Cấp quyền truy cập cho user mang (bearer) token này". <code>Bearer token</code> sẽ cho phép truy cập đến một số tài nguyên hoặc url nhất định và thường là một chuỗi string được mã hóa, sinh ra bởi server trong lần response cái request login.
+    <code>Authorization: Bearer &lt;token&gt;</code></p>
+</li>
+<li>
+<p><code>Api Keys</code></p>
+</li>
+<li>
+<p><code>API Keys</code> bổ sung các vấn đề xác thực của <code>HTTP Authentication</code>. Trong phương pháp này, một key: <code>api-key</code> duy nhất được tạo ra và assigned cho mỗi user trong lần đầu tiên access tới API. Giá trị <code>api-key</code> thường được tạo từ sự kết hợp phần cứng và dữ liệu user-agent, IP của user.</p>
+<p><img alt="" src="../images/api-key.png" /></p>
+</li>
+<li>
+<p><code>OAuth (2.0)</code></p>
+</li>
+<li>
+<p><code>OAuth2</code> kết hợp <code>Authentication</code> và <code>Authorization</code> để cho phép kiểm soát danh tính, phạm vi truy cập của người dùng hợp lệ phức tạp hơn.</p>
+</li>
+<li>
+<p>Có các phiên bản OAuth 1.0 và 1.0a, phức tạp hơn so với OAuth 2.0. Thay đổi lớn trong phiên bản 2.0 là không còn bắt buộc cái <code>hashed-key</code> trong mỗi lần request nữa, thay vào đó dùng:</p>
+<ul>
+<li>
+<p><code>access token</code>: Được gửi giống như <code>api-key</code>, cho phép ứng dụng truy cập vào dữ liệu của người dùng, <code>có thể hết hạn</code>.</p>
+</li>
+<li>
+<p><code>refresh token</code>: Để lấy một token mới, nếu <code>access token</code> hết hạn.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>OpenID Connect</code></p>
+</li>
+<li>
+<p><code>OpenID Connect</code> là một tiêu chuẩn mở và là một giao thức Authentication phân cấp, Cho phép user có thể được authen bởi  nhiều website sử dụng service của bên thứ 3 &rarr; Giảm được việc phải thiết lập riêng logic sign-up/login cho mỗi website, cho phép các user có thể login tới nhiều webstie ko hề liên quan tới nhau mà ko cần phải có những định danh và password riêng cho mỗi site.</p>
+</li>
+<li>
+<p>Cơ chế OpenID, dùng duy nhất <code>identity provider</code> từ bên thứ 3, hoặc server chuyên auth để quản lý password, và <code>provider</code> này sẽ <code>confirm identity</code> của user tới các website, ko có một website nào có thể biết được password của <code>user</code> &rarr; yếu tố bảo mật rất cao.</p>
+</li>
+<li>
+<p>Trong cơ chế <code>OpenID Connect</code>, khi provider thứ 3 hoặc authentication server xác thực user thành công, nó sẽ trả về cho client một cái <code>token</code> để client dùng cái <code>token</code> này gửi kèm với các request trong header tới server, server sẽ giải mã <code>token</code> này và biết được user đó có những permission gì, từ đó serve chuẩn. &rarr; dùng <code>JWT</code></p>
+</li>
+</ul>
+<h2 id="oauth2">Oauth2</h2>
+<ul>
+<li>OAuth là viết tắt của Open với Authentication hoặc Authorization, là sự kết hợp giữa kết hợp <code>Authentication</code> và <code>Authorization</code>.</li>
+<li>OAuth 2.0  - là một giao thức cho phép người dùng có thể cấp quyền truy cập ứng dụng hoặc trang web của bên thứ ba vào các tài nguyên được bảo vệ của của họ mà không nhất thiết phải tiết lộ thông tin đăng nhập hoặc thậm chí danh tính của họ.</li>
+</ul>
+<h3 id="1-roles">1. Roles</h3>
+<p>Trong <code>OAuth2</code> định nghĩa 4 vai trò:</p>
+<ul>
+<li>
+<p><code>Resource owner</code> (or the End User): Là những user có khả năng cấp quyền truy cập, chủ sở hữu của tài nguyên mà ứng dụng muốn lấy.</p>
+</li>
+<li>
+<p><code>Resource server</code> (or API Gateway): Nơi lưu trữ các tài nguyên, có khả năng xử lý các request truy cập đến các tài nguyên được bảo vệ.</p>
+</li>
+<li>
+<p><code>Client Application</code> (or the Client): Là những ứng dụng bên thứ 3 muốn truy cập vào phần tài nguyên được chia sẻ với tư cách của người sở hữu (resource owner) và trước khi truy cập ứng dụng cần được <code>sự ủy quyền của user</code>.</p>
+</li>
+<li>
+<p><code>Authorization server</code>: Làm nhiệm vụ xác thực, kiểm tra thông tin mà user gửi đến từ đó cấp quyền truy cập cho ứng dụng bằng việc sinh ra các <code>access token</code>. Đôi khi <code>authorization server</code> cũng chính là <code>resource server</code>.</p>
+</li>
+</ul>
+<h3 id="2-authorization-grant-types">2. Authorization Grant Types</h3>
+<ul>
+<li>
+<p>Khi <code>Client Application</code> yêu cầu ủy quyền để truy cập vào <code>Resource Server</code> thông qua <code>Resource owner</code>. Nếu <code>Resource owner</code> ủy quyền cho yêu cầu trên, Application sẽ nhận được <code>giấy ủy quyền</code> - <code>Authorization Grant</code> từ phía <code>Resource owner</code>.
+Có 4 loại <code>Authorization Grant</code>:</p>
+<ul>
+<li>
+<p><code>Authorization Code</code>: Đây là loại <code>giấy ủy quyền</code> được sử dụng như là một <code>access tokens</code> (và optional là <code>refresh token</code>). Thường được sử dụng với các server-side Application.  Tối ưu hóa cho <code>confidential clients</code>.</p>
+</li>
+<li>
+<p><code>Implicit</code>: Được sử dụng với các Mobile App (ứng dụng chạy trên thiết bị của User) hoặc Web App (có thể hiểu là Browser App, vd Chrome Extension). Tối ưu hóa cho <code>public clients</code>.</p>
+</li>
+<li>
+<p><code>Client Credentials:</code> Sử dụng với các ứng dụng truy cập thông qua API. Tối ưu hóa cho <code>client-only authentication</code></p>
+</li>
+<li>
+<p><code>Resource Owner Password Credentials</code>: Sử dụng với các Trusted Application, kiểu như những ứng dụng về Security. Khi đó <code>Resource Owner</code> có mối quan hệ tin cậy với <code>Client Application</code> và <code>Client Application</code> có khả năng lấy thông tin đăng nhập của <code>Resource Owner</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-api-gateway">3. API Gateway</h3>
+<ul>
+<li>
+<p><code>API Gateway</code> có thể coi là một cổng trung gian, cổng vào duy nhất tới hệ thống <code>microservices</code>, khi đó <code>API Gateway</code> sẽ nhận các requests từ phía client, <code>xác thực</code> và <code>điều hướng</code> chúng đến các API cụ thể trên các behavior services.</p>
+</li>
+<li>
+<p><code>API Gateway</code> có thể được sử dụng như một <code>Authorization server</code> và một <code>Resource server</code>.</p>
+</li>
+</ul>
+<h4 id="a-api-gateway-as-a-resource-server">a. API Gateway as a Resource Server</h4>
+<ul>
+<li>Khi <code>API Gateway</code> đóng vai trò là một <code>Resource server</code>, nó lưu trữ các <code>protected resources</code>, đồng thời tiếp nhận và phản hồi các yêu cầu của <code>Client Application</code> trong đó bao gồm mã <code>access token</code>. <code>Client Application</code> sẽ gửi <code>access token</code> trong Header của Request với cái field là <code>Authorization</code> sử dụng <code>Bearer authentication scheme</code>. Sau đó <code>Resource server</code> tiến hành xác thực <code>access token</code>, nếu <code>access token</code> hợp lệ thì <code>Client Application</code> có quyền truy cập <code>protected resources</code>, nếu không hợp lệ, cái request sẽ bị rejects.</li>
+</ul>
+<h4 id="b-api-gateway-as-an-authorization-server">b. API Gateway as an Authorization Server</h4>
+<ul>
+<li>Khi <code>API Gateway</code> hoạt động như một <code>Authorization Server</code>, nó sẽ nhận các yêu cầu ủy quyền từ <code>Client Application</code> và xử lý các tương tác giữa <code>Client Application</code>, <code>Resource server</code> và <code>Resource owner</code> để approve cho cái request ủy quyền đó.</li>
+<li>
+<p>Cụ thể: <code>API Gateway</code> sẽ cấp 1 <code>access token</code> cho các <code>Client Application</code> thay mặt cho <code>Resource owner</code> để sử dụng trong việc xác thực các lệnh gọi API tới <code>Resource server</code>. <code>Resource server</code> tiếp nhận <code>access token</code> từ phía <code>Client Application</code> và xét:</p>
+<ul>
+<li>
+<p>Nếu <code>Client Application</code> được phép truy cập <code>protected resources</code>, <code>Resource server</code> sẽ thực thi cái request này. Và <code>Authorization Server</code>, khi này đang là <code>API Gateway</code> sẽ giữ lại thông tin về các <code>access token</code> mà nó phát hành, bao gồm cả thông tin người dùng (<code>Resource owner</code>). Khi <code>Resource owner</code> xuất trình <code>access token</code> cho <code>Resource server</code>, <code>Resource server</code> sẽ gửi <code>access token</code> đến <code>Authorization Server</code> để đảm bảo rằng <code>access token</code> hợp lệ và cái khả năng service cho cái request này nằm trong  <code>scope</code> của <code>access token</code>. <code>Scope</code> là định nghĩa của các tài nguyên mà <code>Client Application</code> có thể truy cập thay mặt cho <code>Resource owner</code>.</p>
+</li>
+<li>
+<p>Nếu <code>Client Application</code> không có quyền truy cập tài nguyên, <code>Resource server</code> sẽ từ chối yêu cầu.</p>
+</li>
+</ul>
+<h3 id="4-oauth-20-workflow">4. OAuth 2.0 Workflow</h3>
+<p>Workflow của OAuth 2.0 thông qua 4 bước, được mô tả như sau:</p>
+</li>
+</ul>
+<p><img alt="" src="../images/oauth2-workflow.png" /></p>
+<ol>
+<li>End-user đăng nhập,<code>Client Application</code> gửi yêu cầu xác thực ( kèm <code>id token</code>) đến máy chủ ủy quyền để lấy <code>access token</code>.</li>
+<li><code>Authorization Server</code> xác thực yêu cầu và tạo <code>access token</code> cho <code>Client Application</code></li>
+<li><code>Client Application</code> sử dụng <code>access token</code> này để gửi các yêu cầu HTTP đến <code>API Gateway</code>.</li>
+<li><code>API Gateway</code> sau đó thực hiện như sau:
+    a. Xác định danh tính của <code>Client Application</code> bằng <code>clientId</code>.
+    b. Tiến hành verify cái <code>access token</code> (locally hoặc remotely)
+    c. Kiểm tra xem tài nguyên được yêu cầu trong cái request thuộc <code>scope</code> của <code>access token</code> hay không.
+    d.Kiểm tra các đối tượng đi kèm trong request.</li>
+</ol>
+<p>Nếu tất cả những điều trên được xác thực, API Gateway sẽ cung cấp quyền truy cập vào <code>protected resources</code>. Trong trường hợp <code>access token</code> hết hạn, <code>Authorization Server</code> sẽ trả về phản hồi lỗi cụ thể. Sau đó, ứng dụng khách có thể sử dụng <code>refresh token</code> để yêu cầu một <code>access token</code> mới. <code>Authorization Server</code> sẽ trả về <code>access token</code> mới để tiếp tục dùng cho việc truy cập <code>protected resources</code>.</p>
+<h2 id="jwt">JWT</h2>
+<h3 id="1-concepts">1. Concepts</h3>
+<pre><code>
+JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way
+for securely transmitting information between parties as a JSON object. This information can be verified
+and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm)
+or a public/private key pair using RSA or ECDSA.
+
+</code></pre>
+<p><a href="https://jwt.io/introduction/">Source</a></p>
+<ul>
+<li>
+<p><code>JWT</code> - <code>JSON Web Token</code> là một tiêu chuẩn mở dựa trên <code>JSON (RFC 7519)</code>, phương tiện đại diện cho một <code>tập hợp thông tin</code> được truyền một cách <code>an toàn</code> giữa client-server dưới dạng  <code>JSON object</code>. </p>
+</li>
+<li>
+<p>Tập hợp thông tin này được đại diện bởi JWT và nó <code>được xác minh</code>, <code>bảo mật</code> và <code>đáng tin cậy</code> vì nó được <code>digitally signed</code>. </p>
+</li>
+<li>
+<p><code>digitally signed</code> bằng cách sử dụng một <code>secret-key</code> (đối với thuật toán HMAC) hoặc <code>public/private key pair</code> dùng chuẩn RSA hoặc ECDSA.</p>
+</li>
+</ul>
+<p><em>Tóm lại là:</em></p>
+<ul>
+<li>
+<p>Dùng để truyền thông tin một cách an toàn.</p>
+</li>
+<li>
+<p>Có phần chữ ký nên đảm bảo dữ liệu không bị thay đổi, chỉnh sửa trên đường đi.</p>
+</li>
+</ul>
+<h3 id="2-jwt-structure">2. JWT Structure</h3>
+<p>Một JWT sẽ có cấu trúc kiểu:</p>
+<pre><code>asdfasdfasdf.aDádaSDasd.FdfSDFsdfSDF
+</code></pre>
+<ul>
+<li>
+<p><code>Header</code>: Gồm có 2 phần là: loại mã token, và thuật toán được sử dụng để sinh ra phần <code>Signature</code>. 2 phần này được define như là 1 json object và sau đó, JSON này được mã hóa Base64Url để tạo thành phần đầu tiên của JWT.</p>
+</li>
+<li>
+<p><code>Payload</code>: Chứa các <code>claims</code>. <code>Claims</code> thường chứa các thuộc tính như <code>typically</code>, <code>thông tin user</code> và các dữ liệu bổ sung. Có 3 loại claims: <code>registered</code>, <code>public</code>, và <code>private</code> claims. Danh sách đầy đủ các <code>Claims</code> xem tại <a href="https://www.iana.org/assignments/jwt/jwt.xhtml">JSON Web Token Claims</a>. Phần này cũng được định nghĩa và mã hóa tương tự <code>Header</code>.</p>
+</li>
+<li>
+<p><code>Signature</code>: Một chuỗi được mã hóa bởi <code>header</code>, <code>payload</code> cùng với thuật toán mã hóa được chỉ định trong header. <code>Signature</code> được sử dụng để xác minh data trong <code>payload</code> không bị thay đổi trong quá trình đi từ client-server và trong trường hợp token được <code>sign</code> bằng <code>private key</code>, nó cũng có thể xác minh được danh tính của người gửi <code>JWT</code>.</p>
+</li>
+</ul>
+<p><img alt="" src="../images/jwt-io.png" /></p>
+<p><a href="https://jwt.io/">Demo</a></p>
+<h3 id="api-gateway-jwt-usecase">API Gateway &amp; JWT Usecase</h3>
+<ul>
+<li>
+<p><code>API Gateway</code> sử dụng JWT dựa trên <code>RSA</code> để cung cấp khả năng bảo vệ mạnh mẽ hơn cho <code>JWT</code> khi <code>API Gateway</code> là nhà phát hành <code>token</code>. </p>
+</li>
+<li>
+<p>JWT chứa 1 hoặc nhiều <code>claims</code> nằm trong <code>Payload</code> của JWT.</p>
+</li>
+<li>
+<p><code>API Gateway</code> trích xuất các yêu cầu từ <code>JWT</code>, định danh cho application và sau đó cho phép application truy cập vào <code>protected resources</code>.</p>
+</li>
+</ul>
+<h4 id="jwt-authorization-workflow"><em>JWT Authorization Workflow</em></h4>
+<p>Workflow giữa <code>requests</code> và <code>responses</code> được ủy quyền, giữa <code>end-user</code>, <code>client-app</code>, nơi phát hành <code>JWT</code> và <code>resource server</code> như được mô tả trong hình sau:</p>
+<p><img alt="" src="../images/jwt-workflow.png" /></p>
+<ol>
+<li>
+<p><code>End-user</code> đăng nhập, <code>Client app</code> gửi yêu cầu xác thực đến API Gateway hoặc đến bất kỳ bên thứ ba nào để lấy mã <code>JWT</code>.</p>
+</li>
+<li>
+<p>Nếu thông tin đăng nhập của <code>End-user</code> được gửi từ  <code>Client app</code> hợp lệ, API Gateway sẽ tạo mã <code>JWT</code> bằng các logic, thuật toán sẽ tìm hiểu bên dưới và gửi <code>JWT</code> đã tạo đến <code>Client app</code>. Nếu thông tin xác thực của người dùng không hợp lệ, <code>API Gateway</code> trả về một phản hồi lỗi cụ thể.</p>
+</li>
+<li>
+<p><code>Client app</code> gửi <code>JWT</code> đã tạo chứa trong <code>Header</code> của <code>request</code> header dưới dạng <code>HTTP Bearer Authorization token</code> để truy cập tới <code>protected resources</code> được bảo vệ trong API Gateway.</p>
+</li>
+<li>
+<p><code>API Gateway</code> sẽ xác thực <code>client-app</code> trước, dựa trên thông tin lấy từ JWT, sau đó xác thực JWT bằng các thuật toán, logic và cung cấp quyền truy cập vào các <code>protected resources</code>. Nếu xác thực không thành công, API Gateway trả về phản hồi lỗi cụ thể.</p>
+</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<ol>
+<li><a href="https://dev.to/caffiendkitten/authentication-vs-authorization-25lc">AUTHeNtication VS AUTHoriZation - dev.to</a></li>
+<li><a href="http://www.differencebetween.net/technology/difference-between-authentication-and-authorization/">Difference between Authentication and Authorization</a></li>
+<li><a href="https://auth0.com/docs/get-started/identity-fundamentals/authentication-and-authorization">Authentication vs. Authorization - auth0.com</a></li>
+<li><a href="https://blog.restcase.com/4-most-used-rest-api-authentication-methods/">4 Most Used Authentication Methods</a></li>
+<li><a href="https://documentation.softwareag.com/webmethods/api_gateway/yai10-5/10-5_API_Gateway_webhelp/index.html#page/api-gateway-integrated-webhelp%2Fco-oauth_usecase_workflow.html%23wwconnect_header">OAuth2 Authentication Use case and Workflow</a></li>
+<li><a href="https://documentation.softwareag.com/webmethods/api_gateway/yai10-5/10-5_API_Gateway_webhelp/index.html#page/api-gateway-integrated-webhelp/co-jwt_usecase_workflow.html">JWT Authentication Use case and Workflow</a></li>
+<li><a href="https://developer.okta.com/blog/2020/12/21/beginners-guide-to-jwt">JWT Structure</a></li>
+</ol>
+
+
+</section>
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../../js/main.js"></script>
+<script src="../../js/gitbook.min.js"></script>
+<script src="../../js/theme.min.js"></script>
+</body>
+</html>

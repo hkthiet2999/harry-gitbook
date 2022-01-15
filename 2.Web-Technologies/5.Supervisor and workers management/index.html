@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Supervisor and workers management - Harry Gitbook</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.2.3, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="../.." target="_blank" class="custom-link">Harry Gitbook</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="../..">Home</a>
+<li class="header">1.Linux</li>
+
+<li>
+<a href="../../1.Linux/commands/" class="">Linux Commands</a>
+</li>
+
+<li class="header">2.Web Technologies</li>
+
+<li>
+<a href="../1.Web-Protocols/" class="">Web Protocols</a>
+</li>
+
+<li>
+<a href="../2.HTTP-Protocol/" class="">HTTP Protocol</a>
+</li>
+
+<li>
+<a href="../3.Web-server-and-proxy/" class="">Web server and proxy</a>
+</li>
+
+<li>
+<a href="../4.Programming/" class="">Programming</a>
+</li>
+
+<li>
+<a href="./" class="active">Supervisor and workers management</a>
+</li>
+
+<li>
+<a href="../6.RESTful/" class="">RESTful</a>
+</li>
+
+<li>
+<a href="../7.Authentication/" class="">Authentication - Authorization</a>
+</li>
+
+<li class="header">3.Source Version Control</li>
+
+<li>
+<a href="../../3.Source-Version-Control/Source-Version-Control/" class="">Source Version Control (Git)</a>
+</li>
+
+<li class="header">4. Package Management</li>
+
+<li>
+<a href="../../4.%20Package-Management/composer/" class="">Composer</a>
+</li>
+
+<li>
+<a href="../../4.%20Package-Management/npm/" class="">NPM</a>
+</li>
+
+<li class="header">5.Docker</li>
+
+<li>
+<a href="../../5.Docker/Docker-Architecture/" class="">Docker architecture</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Docker-Objects/" class="">Docker Objects</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Volumes-PersistentData/" class="">Volumes, Persistent Data</a>
+</li>
+
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="supervisor-and-workers-management">Supervisor and workers management</h1>
+<h2 id="overview">Overview</h2>
+<pre><code>Supervisor is a client/server system that allows its users to control a number of processes on UNIX-like operating systems.
+</code></pre>
+<ul>
+<li>
+<p><code>Supervisor</code> là một hệ thống <code>client/server</code> giúp quản lý các tiến trình chạy trên Linux (hoặc UNIX-like).</p>
+</li>
+<li>
+<p>Một số ưu điểm mà Supervisor như:</p>
+<ul>
+<li>
+<p><code>Convenience</code>: Tính tiện dụng ở đây là Supervisor bắt đầu <code>processes</code> khi <code>subprocesses</code> của nó và có thể được định cấu hình để tự động khởi động lại chúng khi gặp sự cố. Nó cũng có thể tự động được cấu hình để bắt đầu các <code>processes</code> trên lệnh gọi của chính nó luôn.</p>
+</li>
+<li>
+<p><code>Accuracy</code>: Supervisord luôn kiểm soát được trạng thái up/down thực sự của các <code>subprocesses</code> và có thể được truy vấn chính xác status này bất cứ lsuc nào.</p>
+</li>
+<li>
+<p><code>Delegation</code>: Đảm bảo một tiến trình nào đó luôn luôn chạy không ngừng nghỉ. Nếu vì lý do gì mà nó bị tắt, Supervisor sẽ khởi động <code>process</code> đó lại.</p>
+</li>
+<li>
+<p><code>Process Groups</code>: Quản lý nhiều tiến trình dưới dạng một group các tiến trình, từ đó có thể được bật/tắt cùng lúc.</p>
+</li>
+<li>
+<p>Trong trường hợp tiến trình mà supervisor thực thi phát sinh lỗi, có thể cấu hình để Supervisor retry lại một số lần nhất định trước khi chính thức báo fail.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="features">Features</h2>
+<p>Supervisor có các tiện ích sau:</p>
+<ul>
+<li>
+<p><code>Simple</code>- Đơn giản:  được cấu hình thông qua tệp cấu hình kiểu INI-style, đơn giản dễ học. Nó cung cấp nhiều tùy chọn cho mỗi process như khởi động lại các process bị lỗi và tự động hóa việc ghi log.</p>
+</li>
+<li>
+<p><code>Centralized</code> - Tập trung: Supervisor cung cấp cơ chế để start, stop, và monitor các process theo kiểu riêng lẻ từng process hoặc nhóm các process.</p>
+</li>
+<li>
+<p><code>Efficient</code> - Hiệu quả: Supervisor start các <code>subprocesses</code> của nó thông qua cơ chế <code>fork/execute</code> và các <code>subprocesses</code> không <code>daemonize</code>, tăng hiệu năng.</p>
+</li>
+<li>
+<p><code>Extensible</code> - Có thể mở rộng: Supervisor có một giao thức <code>event notification protocol</code> dùng để thông báo sự kiện,  các chương trình được viết bằng bất kỳ ngôn ngữ nào có thể sử dụng để theo dõi các <code>event</code> và dùng <code>XML-RPC interface</code> để quản lý.</p>
+</li>
+<li>
+<p><code>Compatible</code> - Tương thích: Supervisor hoạt động trên mọi thứ ngoại trừ Windows. Nó hỗ trợ trên Linux, Mac OS X, Solaris và FreeBSD. Nó được viết hoàn toàn bằng Python, vì vậy việc cài đặt không yêu cầu <code>C-compiler</code>.</p>
+</li>
+<li>
+<p><code>Proven</code>: Supervisor đã xuất hiện trong nhiều năm và đã được sử dụng trên nhiều máy chủ.</p>
+</li>
+</ul>
+<h2 id="supervisor-components">Supervisor Components</h2>
+<p><code>Supervisor</code> có 2 phần là <code>supervisord</code> (server) và <code>supervisorctl</code> (client). Thiết kế như vậy để ta có thể dựng nhiều server và dùng client kết nối tới nhiều server để quản lý.</p>
+<ul>
+<li>
+<p><code>Supervisord</code> (vai trò server) : Hay còn gọi là <code>supervisor daemon</code> đóng vai trò như server, chịu trách nhiệm start các programs, trả lời các lệnh từ client, restart các subprocess bị crash hoặc tắt, ghi log stdout &amp; stderr từ các subprocess và xử lý các events tương ứng trong vòng đời của 1 subproces. Server này sẽ xử lý dựa trên file config dạng "Windows-INI". Mặc định là <code>/etc/supervisord.conf</code>.</p>
+</li>
+<li>
+<p><code>Supervisorctl</code> (vai trò client) : cung cấp giao diện dòng lệnh để ta thao tác, ra lệnh cho remote server (supervisord. Từ <code>supervisorctl</code>, ta có thể connect tới supervisord, stop, start, lấy status của các subprocesses. client sẽ nói chuyện với server qua UNIX domain socket hay TCP socket.</p>
+</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ol>
+<li><a href="http://supervisord.org/introduction.html">Supervisord introduction</a></li>
+</ol>
+
+
+</section>
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../../js/main.js"></script>
+<script src="../../js/gitbook.min.js"></script>
+<script src="../../js/theme.min.js"></script>
+</body>
+</html>

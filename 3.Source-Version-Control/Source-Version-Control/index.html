@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Source Version Control (Git) - Harry Gitbook</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.2.3, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="../.." target="_blank" class="custom-link">Harry Gitbook</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="../..">Home</a>
+<li class="header">1.Linux</li>
+
+<li>
+<a href="../../1.Linux/commands/" class="">Linux Commands</a>
+</li>
+
+<li class="header">2.Web Technologies</li>
+
+<li>
+<a href="../../2.Web-Technologies/1.Web-Protocols/" class="">Web Protocols</a>
+</li>
+
+<li>
+<a href="../../2.Web-Technologies/2.HTTP-Protocol/" class="">HTTP Protocol</a>
+</li>
+
+<li>
+<a href="../../2.Web-Technologies/3.Web-server-and-proxy/" class="">Web server and proxy</a>
+</li>
+
+<li>
+<a href="../../2.Web-Technologies/4.Programming/" class="">Programming</a>
+</li>
+
+<li>
+<a href="../../2.Web-Technologies/5.Supervisor%20and%20workers%20management/" class="">Supervisor and workers management</a>
+</li>
+
+<li>
+<a href="../../2.Web-Technologies/6.RESTful/" class="">RESTful</a>
+</li>
+
+<li>
+<a href="../../2.Web-Technologies/7.Authentication/" class="">Authentication - Authorization</a>
+</li>
+
+<li class="header">3.Source Version Control</li>
+
+<li>
+<a href="./" class="active">Source Version Control (Git)</a>
+</li>
+
+<li class="header">4. Package Management</li>
+
+<li>
+<a href="../../4.%20Package-Management/composer/" class="">Composer</a>
+</li>
+
+<li>
+<a href="../../4.%20Package-Management/npm/" class="">NPM</a>
+</li>
+
+<li class="header">5.Docker</li>
+
+<li>
+<a href="../../5.Docker/Docker-Architecture/" class="">Docker architecture</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Docker-Objects/" class="">Docker Objects</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Volumes-PersistentData/" class="">Volumes, Persistent Data</a>
+</li>
+
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="source-version-control-git">Source Version Control (Git)</h1>
+<ul>
+<li>Concepts: repository, registry, ssh</li>
+<li>File states, workflow, .gitignore and .gitkeep</li>
+<li>Basic commands: clone, checkout, add, commit, push, pull, merge, revert, reset, log… Using git features on PHPStorm</li>
+<li>Git flow</li>
+</ul>
+<h2 id="concepts">Concepts</h2>
+<h3 id="repository">Repository</h3>
+<p><code>Repository</code> là nơi chứa và ghi lại <code>states</code> của thư mục và file. <code>states</code> lưu lại các thông tin, lịch sử thay đổi của thư mục và file.</p>
+<ul>
+<li>
+<p><code>GIT Repository</code> được phân thành 2 loại là <code>remote repository</code> và <code>local repository</code>.</p>
+<ul>
+<li><code>Remote repository</code>: Là repository để chia sẻ giữa nhiều người và git đặt trên server chuyên dụng của nó.</li>
+<li><code>Local repository</code>: Là repository trên máy local.</li>
+</ul>
+</li>
+</ul>
+<h3 id="registry">Registry</h3>
+<ul>
+<li>
+<p><code>Registry</code> hoạt động như một kho chứa chung, public hoặc private, cho nhiều <code>repository</code>. Thường dùng chung cho 1 tổ chức, có thể publish và share packages, có thể dễ dàng sử dụng như một phần <code>dependency</code> trong các dự án.</p>
+</li>
+<li>
+<p>GitHub Packages</p>
+<p><img alt="" src="../images/gh-packages.png" /></p>
+</li>
+<li>
+<p>GitLab Container Registry</p>
+<p><img alt="" src="../images/gl-c-r.png" /></p>
+</li>
+</ul>
+<h3 id="ssh">SSH</h3>
+<ul>
+<li>
+<p><code>SSH</code> là một giao thức tương tác giữa client-server có sử dụng cơ chế mã hoá mạnh mẽ nhằm  bảo vệ tính toàn vẹn và bảo mật thông tin liên lạc, ngăn chặn các hiện tượng đánh cắp thông tin trên đường truyền. Thường dùng như một phương pháp để đăng nhập từ xa an toàn từ máy tính này sang máy tính khác.</p>
+</li>
+<li>
+<p><code>GIT SSH</code>: Bảo mật các kết nối của local với server và không phải nhập mật khẩu github hoặc gitlab mỗi lần pull hoặc push code. </p>
+</li>
+<li>
+<p>Cơ chế xác thực của GIT SSH : Dùng Public/Private key cryptography</p>
+<ul>
+<li><code>Public Key</code> - là một file text - nó lại lưu ở phía <code>Git Server SSH</code>, nó dùng để khi <code>Client</code> gửi <code>Private Key</code> (file lưu ở Client) lên để xác thực thì tiến hành verify giữa <code>Private Key</code> và <code>Public Key</code> này. Nếu cặp key này đúng ( key pair được gen từ <code>ssh-keygen</code>) thì kết nối giữa client - git server là an toàn.</li>
+<li><code>Private Key</code> - là một file text - dùng để xác thực sự phù hợp của <code>Private Key</code> và <code>Public Key</code>. Client muốn kết nối với <code>Git Server</code>, thay vì nhập mật khẩu thì client gửi <code>Private Key</code> qua SSH.</li>
+</ul>
+</li>
+<li>
+<p>Tạo GIT SSH Key dùng <code>ssh-keygen</code> của <code>OpenSSH</code></p>
+</li>
+<li>
+<p>Mở terminate (trên Linux, macOS hoặc cmd trên Windows) rồi gõ</p>
+</li>
+</ul>
+<pre><code>$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+</code></pre>
+<p>Đầu tiên nó hỏi nhập thư mục sẽ lưu key sinh ra, hãy nhập <code>thư mục</code> - <code>tên file</code> muốn lưu hoặc <code>nhấn Enter</code> để sử dụng đường dẫn nó gợi ý (~/.ssh/id_rsa). </p>
+<p>Sau đó nó yêu cầu nhập <code>passphase</code>, có thể nhấn Enter để rỗng. Cuối cùng nó sinh ra hai file key có tên <code>id_rsa</code> và <code>id_rsa.pub</code> ở thư mục đã nhập trên.</p>
+<p><img alt="" src="../images/git-ssh.png" /></p>
+<ol>
+<li>Start <code>ssh-agent</code></li>
+</ol>
+<p>Win &rarr; Services &rarr; OpenSSH Authentication Agent &rarr; Automatic (Delayed Start). Xong gõ </p>
+<pre><code>$ start-ssh-agent
+</code></pre>
+<p><img alt="" src="../images/start-ssh-agent.png" /></p>
+<p><a href="https://stackoverflow.com/questions/18683092/how-to-run-ssh-add-on-windows/40720527#40720527">refer</a></p>
+<ol>
+<li>Adding new SSH key to GitHub account:</li>
+</ol>
+<p><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">refer</a></p>
+<ol>
+<li>Testing SSH connection</li>
+</ol>
+<pre><code>ssh -T git@github.com
+</code></pre>
+<p><img alt="" src="../images/git-ssh-check.png" /></p>
+<p><a href="https://github.com/settings/keys">Hoặc</a></p>
+<p><img alt="" src="../images/ssh.png" /></p>
+<h2 id="file-states-workflow-gitignore-and-gitkeep">File states, workflow, .gitignore and .gitkeep</h2>
+<ul>
+<li>
+<p>File states: File có 2 states là <code>tracked</code> và <code>untracked</code>. Dưới đây là File status lifecycle</p>
+<p><img alt="" src="../images/file-status-life-circle.png" /></p>
+<ul>
+<li>
+<p><code>Untracked state</code>: Files đang ở local directory, chưa được thêm vào <code>github repository index</code>. File khi này ở <code>untracked state</code></p>
+</li>
+<li>
+<p><code>Unmodified state</code>: Files đã được thêm <code>github repository index</code> bằng lệnh <code>$git add file-name</code>. File khi này ở <code>tracked state</code></p>
+</li>
+<li>
+<p><code>Modified state</code> : Khi Files được <code>tracked</code> trước đó có các thay đổi, chỉnh sửa nhưng không thực hiện việc <code>commit the changes.</code></p>
+</li>
+<li>
+<p><code>Staged state</code> : Khi Files được <code>commit</code> và sẵn sàng <code>push</code> vào <code>git repository</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Workflow</p>
+</li>
+</ul>
+<p>Một basic git workflow:</p>
+<ol>
+<li><code>git clone...</code> hoặc <code>git pull ...</code></li>
+<li><code>git add...</code></li>
+<li><code>git commit -m ...</code></li>
+<li><code>git push...</code></li>
+</ol>
+<p><img alt="" src="../images/git-basic-workflow.png" /></p>
+<ul>
+<li>
+<p><code>.gitignore</code>: Liệt kê những file mà mình không mong muốn push lên git. Sử dụng các patterns:</p>
+<ul>
+<li>
+<p>Sử dụng <code>#</code>để comment và có thể để cách dòng cho dễ đọc.</p>
+</li>
+<li>
+<p>Tên file cần ignore: <code>example.exe</code></p>
+</li>
+<li>
+<p>Cả thư mục: <code>example_folder/</code></p>
+</li>
+<li>
+<p>Sử dụng dấu <code>*</code>để ignore các file có cùng định dạng. Ví dụ như bạn muốn ignore tất cả các file .xml trong project: <code>*.xml</code>. </p>
+</li>
+<li>
+<p>Còn nếu dùng <code>config/*.xml</code> thì nó chỉ ignore cho các file <code>config/abc.xml</code> mà không ignore cho các file<code>config/sub/abc.xml</code></p>
+</li>
+<li>
+<p>Sử dụng <code>**</code> để ignore cho các thư mục không cần định rõ tên. Ví dụ: <code>**/foo</code> nó sẽ ignore cho tất cả file hoặc thư mục có tên là foo ở mọi nơi trong project.</p>
+</li>
+<li>
+<p>Sử dụng kiểu <code>folder/**</code> để ignore cho tất cả các file bên trong thư mục.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>.gitkeep</code>: </p>
+<ul>
+<li>
+<p>Git không cho push các thư mục trống. Nếu ta cố gắng push một thư mục không có gì trong đó, mặc dù nó sẽ tồn tại trên máy local nhưng lại không được push lên git repo.</p>
+</li>
+<li>
+<p>Một phương pháp phổ biến, được tiêu chuẩn hóa (ko phải tính năng của Git) để giải quyết vấn đề này là tạo một file <code>.gitkeep</code> (hoặc tên gì cũng đc) vào các thư mục trống sau đó push bình thường. </p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="basic-commands">Basic commands</h2>
+<h3 id="cau-hinh-va-khoi-tao-repo">Cấu hình và khởi tạo Repo</h3>
+<ul>
+<li>Đổi tên/email người dùng</li>
+</ul>
+<pre><code>git config --global user.name newname
+</code></pre>
+<pre><code>git config --global user.email newmail@domain.com
+</code></pre>
+<ul>
+<li>Khởi tạo một Local Repository mới</li>
+</ul>
+<pre><code>git init
+</code></pre>
+<ul>
+<li>Khởi tạo một Remote Repository mới ở Git Server</li>
+</ul>
+<pre><code>git init --bare
+</code></pre>
+<h3 id="lam-viec-voi-local-repo">Làm việc với Local Repo</h3>
+<p><em>git status</em>
+- <code>git status</code> xem trạng thái của Repo
+- <code>git status -s</code> xem trạng thái của Repo ngắn gọn
+- <code>git clone path</code> clone một Repository có địa chỉ là path</p>
+<p><em>git add</em>
+- <code>git add</code> cập nhật <code>file state</code> vào staged
+- <code>git add filename</code> thêm file vào staged
+- <code>git add *.c</code> thêm file có phần mở rộng .c
+- <code>git add -A</code> thêm mọi thứ có sự thay đổi (thêm file mới, xóa file, thay đổi nội dung ...)
+- <code>git add .</code> thêm mọi thứ trừ xóa file
+- <code>git add -</code> thêm mọi thứ trừ file mới</p>
+<p><em>git commit</em></p>
+<ul>
+<li><code>git commit -m "commit msg ..."</code> commit mới</li>
+<li><code>git commit --amend -m "commit msg ..."</code> commit + cập nhật vào commit cuối</li>
+</ul>
+<p><em>git log</em></p>
+<ul>
+<li><code>git log</code> xem lịch sử commit</li>
+<li><code>git log -4</code> xem lịch sử 4 commit</li>
+<li><code>git log -4 -p</code> xem lịch sử 4 commit + chi tiết thay đổi</li>
+<li><code>git log --oneline</code> hay <code>git log --pretty=oneline</code> hiển thị log trực quan trên 1 dòng</li>
+</ul>
+<p><em>git diff</em></p>
+<ul>
+<li><code>git diff</code> Xem sự khác biệt giữa thư mục làm việc và staged</li>
+<li><code>git diff --staged</code> Xem sự khác biệt giữa staged và commit cuối</li>
+</ul>
+<p><em>git rm, git reset, git clean</em>
+- <code>git rm filename</code> xóa file
+- <code>git reset HEAD filename</code> hủy thay đổi của file
+- <code>git clean -d -fx .</code> Xóa các file không được tracked, dùng khi muốn xóa bỏ nhanh các file không được tracked</p>
+<p><em>git checkout</em></p>
+<ul>
+<li><code>git checkout &lt;branchname&gt;</code> chuyển sang branchname để code</li>
+<li><code>git checkout -b &lt;branchname&gt;</code> tạo mới branchname và chuyển sang branchname để code</li>
+</ul>
+<h3 id="lam-viec-voi-remote-repo">Làm việc với Remote Repo</h3>
+<p><em>git remote</em></p>
+<ul>
+<li><code>git remote</code> xem list các Remote</li>
+<li><code>git remote add name_remote addr_remote</code> thêm một Remote vào Local</li>
+<li><code>git remote show name_remote</code> xem thông tin về Remote</li>
+<li><code>git remote rename abc xyz</code> đổi tên Remote</li>
+</ul>
+<p><em>git pull, git fetch</em></p>
+<ul>
+<li>
+<p><code>git pull &lt;remote&gt; &lt;branch&gt;</code> tải xuống nội dung từ Remote repository mà không làm thay đổi trạng thái của Local repository</p>
+</li>
+<li>
+<p><code>git fetch &lt;remote&gt; &lt;branch&gt;</code>: tải xuống nội dung và cố gắng thay đổi trạng thái của Local repository cho phù hợp với nội dung đó</p>
+</li>
+</ul>
+<h3 id="lam-viec-voi-tag">Làm việc với Tag</h3>
+<ul>
+<li><code>git tag</code> xem danh sách tag</li>
+<li><code>git tag -a tagname -m "tag msg"</code> tạo tag cho commit hiện tại</li>
+<li><code>git tag -a tagname -m "tag msg" hash</code> tạo tag cho commit cũ</li>
+<li><code>git show tagname</code> xem thông tin về commit có tagname</li>
+<li><code>git push origin tagname</code> cập nhật lên remote tất cả tagname</li>
+<li><code>git push origin --tags</code> cập nhận lên remote tất cả tag</li>
+<li><code>git checkout tagname</code> xem về phiên bản commit có tagname</li>
+<li><code>git checkout -b newbranchname tagname</code> tạo nhánh mới từ phiên bản tagname</li>
+<li><code>git push --delete origin tagname</code> xóa tag ở remote</li>
+<li><code>git tag -d tagname</code> xóa tag ở local</li>
+</ul>
+<h3 id="lam-viec-voi-branch">Làm việc với branch</h3>
+<ul>
+<li>
+<p><code>git branch</code> liệt kê các branch</p>
+</li>
+<li>
+<p><code>git branch -v</code> liệt kê các branch + commit cuối</p>
+</li>
+<li><code>git branch --merged</code> các branch gộp vào branch đang checkin</li>
+<li><code>git branch --no-merged</code> các branch không gộp vào branch đang checkin</li>
+<li><code>git branch branchname</code> tạo branch mới</li>
+<li><code>git checkout -b branchname</code> tạo branch mới, khi đang đứng ở một snapshot cũ</li>
+<li><code>git checkout branchname</code> chuyển branch</li>
+<li><code>git merge branchname</code> gộp branch với branch hiện tại</li>
+<li><code>git base branchname</code> gộp branch với branch hiện tại</li>
+<li><code>git mergetool</code> công cụ trực quan xử lý xung đột merge</li>
+<li><code>git branch -d branchname</code> xóa branch</li>
+</ul>
+<h2 id="git-flow">Git flow</h2>
+<p><code>Git Flow</code> là tên gọi của 1 tool (command) hỗ trợ branch model gọi là <code>A successful Git branching model</code> do ông Vincent Driessen đề xuất ra. Người ta thường gọi đó là model hay tool, và trong <code>git-flow</code> có 5 kiểu <code>branch</code> với mỗi vai trò khác nhau:</p>
+<ul>
+<li>
+<p><code>master</code>: là branch tồn tại xuyên suốt quá vòng đời của phần mềm được tạo mặc định trong Git khi ta tạo repository.</p>
+</li>
+<li>
+<p><code>develop</code>: là nơi các develop phát triển chính branch luôn tồn tại song song với master</p>
+</li>
+<li>
+<p><code>feature</code>: là nhánh được tách từ develop nhằm mục đích xây dựng các tính năng riêng mà không phụ thuộc vào nhau</p>
+</li>
+<li>
+<p><code>release</code>: là nhánh tách từ develop để kiểm tra và fix bug chuẩn bị cho việc ra mắt sản phẩm</p>
+</li>
+<li>
+<p><code>hotfix</code>: là nhánh tách từ master để fix gấp những bug còn tồn đọng mà trên release chưa xử lý hết </p>
+</li>
+</ul>
+<p><img alt="" src="../images/git-flow.png" /></p>
+<h3 id="git-flow-extensions">Git-flow extensions</h3>
+<p><img alt="" src="../images/gitflow-syntax.png" /></p>
+<p><strong>Develop</strong></p>
+<ol>
+<li>Initialize</li>
+</ol>
+<pre><code>git flow init
+</code></pre>
+<p><strong>Features</strong></p>
+<ol>
+<li>Start a new feature</li>
+</ol>
+<pre><code>git flow feature start MYFEATURE
+</code></pre>
+<p><img alt="" src="../images/new-features.png" /></p>
+<ol>
+<li>Finish up a feature</li>
+</ol>
+<pre><code>git flow feature finish MYFEATURE
+</code></pre>
+<p><img alt="" src="../images/finish-features.png" /></p>
+<ol>
+<li>Publish a feature</li>
+</ol>
+<pre><code>git flow feature publish MYFEATURE
+</code></pre>
+<ol>
+<li>Getting a published feature</li>
+</ol>
+<pre><code>git flow feature pull origin MYFEATURE
+</code></pre>
+<p><strong>Release</strong></p>
+<ol>
+<li>Start a release</li>
+</ol>
+<pre><code>git flow release start RELEASE
+</code></pre>
+<p><img alt="" src="../images/start-release.png" /></p>
+<ol>
+<li>Publish a release</li>
+</ol>
+<pre><code>git flow release publish RELEASE
+</code></pre>
+<ol>
+<li>Finish up a release</li>
+</ol>
+<pre><code>git flow release finish RELEASE
+</code></pre>
+<p><img alt="" src="../images/finish-release.png" /></p>
+<p><strong>Hotfixes</strong></p>
+<ol>
+<li>Start a Hotfix</li>
+</ol>
+<pre><code>git flow hotfix start VERSION [BASENAME]
+</code></pre>
+<p><img alt="" src="../images/start-hotfix.png" /></p>
+<ol>
+<li>Finish up a Hotfix</li>
+</ol>
+<pre><code>git flow hotfix finish VERSION
+</code></pre>
+<p><img alt="" src="../images/finish-hotfix.png" /></p>
+<h2 id="reference">Reference</h2>
+<ol>
+<li><a href="https://www.atlassian.com/git/tutorials/git-ssh">git-ssh</a></li>
+<li><a href="https://codetej.in/4-gits-file-status-lifecycle/">4 GIT’S FILE STATUS LIFECYCLE</a></li>
+<li>
+<p><a href="https://shitalmule04.github.io/file-status-lifecycle-in-git.html">File Status Lifecycle in Git</a></p>
+</li>
+<li>
+<p><a href="https://www.atlassian.com/git/glossary">Git commands</a></p>
+</li>
+<li>
+<p><a href="https://www.loginradius.com/blog/async/git-commands/">35+ Git Commands List Every Programmer Should Know</a></p>
+</li>
+<li>
+<p><a href="https://danielkummer.github.io/git-flow-cheatsheet/">git-flow cheatsheet</a></p>
+</li>
+</ol>
+
+
+</section>
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../../js/main.js"></script>
+<script src="../../js/gitbook.min.js"></script>
+<script src="../../js/theme.min.js"></script>
+</body>
+</html>

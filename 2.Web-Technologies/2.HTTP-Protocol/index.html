@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>HTTP Protocol - Harry Gitbook</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.2.3, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="../.." target="_blank" class="custom-link">Harry Gitbook</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="../..">Home</a>
+<li class="header">1.Linux</li>
+
+<li>
+<a href="../../1.Linux/commands/" class="">Linux Commands</a>
+</li>
+
+<li class="header">2.Web Technologies</li>
+
+<li>
+<a href="../1.Web-Protocols/" class="">Web Protocols</a>
+</li>
+
+<li>
+<a href="./" class="active">HTTP Protocol</a>
+</li>
+
+<li>
+<a href="../3.Web-server-and-proxy/" class="">Web server and proxy</a>
+</li>
+
+<li>
+<a href="../4.Programming/" class="">Programming</a>
+</li>
+
+<li>
+<a href="../5.Supervisor%20and%20workers%20management/" class="">Supervisor and workers management</a>
+</li>
+
+<li>
+<a href="../6.RESTful/" class="">RESTful</a>
+</li>
+
+<li>
+<a href="../7.Authentication/" class="">Authentication - Authorization</a>
+</li>
+
+<li class="header">3.Source Version Control</li>
+
+<li>
+<a href="../../3.Source-Version-Control/Source-Version-Control/" class="">Source Version Control (Git)</a>
+</li>
+
+<li class="header">4. Package Management</li>
+
+<li>
+<a href="../../4.%20Package-Management/composer/" class="">Composer</a>
+</li>
+
+<li>
+<a href="../../4.%20Package-Management/npm/" class="">NPM</a>
+</li>
+
+<li class="header">5.Docker</li>
+
+<li>
+<a href="../../5.Docker/Docker-Architecture/" class="">Docker architecture</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Docker-Objects/" class="">Docker Objects</a>
+</li>
+
+<li>
+<a href="../../5.Docker/Volumes-PersistentData/" class="">Volumes, Persistent Data</a>
+</li>
+
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="http-protocol">HTTP Protocol</h1>
+<ul>
+<li>Request headers and methods</li>
+<li>Response headers and status</li>
+<li>CORS</li>
+<li>Authentication</li>
+<li>Cookie, Cache</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<ul>
+<li>
+<p><code>Hypertext Transfer Protocol</code> (HTTP) là một giao thức thuộc tầng Application dùng để truyền các hypermedia documents, chẳng hạn như HTML. </p>
+</li>
+<li>
+<p>HTTP tuân theo mô hình client-server, với client mở kết nối để thực hiện request, sau đó đợi cho đến khi nhận được respone từ server.</p>
+</li>
+<li>
+<p><code>HTTP Headers</code>: Được sử dụng để mô tả tài nguyên hoặc hành vi của client/server. </p>
+</li>
+<li>
+<p>Một số Header fields phổ biến:</p>
+<ul>
+<li>
+<p>Request headers: <code>authority</code>, <code>method</code>, <code>path</code>, <code>scheme</code>, <code>accept</code>, <code>accept-encoding</code>, <code>accept-language</code>, <code>cookie</code>, <code>user-agent</code> ...</p>
+</li>
+<li>
+<p>Response headers: <code>access-control-allow-origin</code>, <code>content-length</code>, <code>content-type</code>, <code>date</code>, <code>server</code>, <code>set-cookie</code> ...</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Header fields được mô tả trong <a href="https://www.iana.org/assignments/message-headers/message-headers.xhtml#perm-headers">IANA registry</a>
+hoặc <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">HTTP Headers - MDN Web Docs</a></p>
+<h2 id="request-headers-and-methods">Request headers and methods</h2>
+<h3 id="concepts">Concepts</h3>
+<ul>
+<li>
+<p><code>Request headers</code> là một HTTP Headers, dùng trong 1 HTTP Request để cung cấp thông tin về request context, để server tiếp nhận, xử lý và gửi các Response về cho clinet. </p>
+</li>
+<li>
+<p>Không phải tất cả các headers xuất hiện trong một request đều được là Request headers. Ví dụ: Content-Type header được gọi là <a href="https://developer.mozilla.org/en-US/docs/Glossary/Representation_header">representation header</a>.</p>
+</li>
+</ul>
+<h3 id="example">Example</h3>
+<p>HTTP message dưới đây minh họa cho một Request headers sau khi gửi một GET mothod request:</p>
+<pre><code>GET /home.html HTTP/1.1
+Host: developer.mozilla.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://developer.mozilla.org/testpage.html
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Mon, 18 Jul 2016 02:36:04 GMT
+If-None-Match: &quot;c561c68d0ba92bbeb8b0fff2a9199f722e3a621a&quot;
+Cache-Control: max-age=0
+
+</code></pre>
+<h3 id="methods">Methods</h3>
+<p>Một trong những mục tiêu chính của phương pháp RESTful API là sử dụng HTTP như một giao thức ứng dụng để tránh định hình một API tự chế.
+Do đó, chúng ta nên sử dụng các động từ HTTP một cách có hệ thống để mô tả những hành động nào được thực hiện trên các tài nguyên và thuận lợi cho việc phát triển khi xử lý các hoạt động CRUD lặp lại.</p>
+<p><a href="https://jsonplaceholder.typicode.com/guide/"><em>Demo</em></a></p>
+<p><strong>1. GET</strong></p>
+<ul>
+<li>Phương thức GET được sử dụng để truy xuất thông tin từ server thông qua một URI nhất định. Các request sử dụng GET method chỉ nên truy xuất dữ liệu và không có tác dụng, ảnh hưởng nào khác đối với dữ liệu.</li>
+<li>Syntax: <code>GET /index.html</code></li>
+</ul>
+<p><strong>2. POST</strong>
+- Phương thức POST được sử dụng để gửi dữ liệu đến máy chủ, ví dụ: thông tin khách hàng, tải lên tệp, v.v. bằng cách sử dụng các HTML forms và dẫn đến thay đổi trên server. </p>
+<ul>
+<li>
+<p>Type of the body của POST methods request được mô tả trong Content-Type header:</p>
+<ul>
+<li>
+<p><code>application/x-www-form-urlencoded</code>: các key và value trong key-value pair được mã hóa, phân tách bằng <code>&amp;</code>, với dấu <code>=</code> giữa key và value. Ngoài ra ký tự không phải chữ và số đều được mã hóa theo <code>%</code>.</p>
+</li>
+<li>
+<p><code>multiart/form-data</code>: mỗi values được gửi dưới dạng một block of data. Còn các key được kèm trong Content-Disposition header. =&gt; Dùng cho tải tệp.</p>
+</li>
+<li>
+<p><code>text/plain</code>: Là một kiểu trong HTML 5, dữ liệu gửi lên mà ko có mã hóa.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Syntax: <code>POST /test</code></p>
+</li>
+<li>
+<p>Example: </p>
+<ul>
+<li>Form sử dụng <code>application/x-www-form-urlencoded</code> content type:</li>
+</ul>
+<p>```
+POST /test HTTP/1.1
+Host: foo.example
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 27</p>
+<p>field1=value1&amp;field2=value2
+```</p>
+<ul>
+<li>Form sử dụng <code>multipart/form-data</code> content type:</li>
+</ul>
+<p>```
+POST /test HTTP/1.1
+Host: foo.example
+Content-Type: multipart/form-data;boundary="boundary"</p>
+<p>--boundary
+Content-Disposition: form-data; name="field1"</p>
+<p>value1
+--boundary
+Content-Disposition: form-data; name="field2"; filename="example.txt"</p>
+<p>value2
+--boundary--
+```</p>
+</li>
+</ul>
+<p><strong>3. PUT</strong></p>
+<ul>
+<li>
+<p>Tạo mới hoặc thay thế giá trị hiện tại của tài nguyên dựa trên các nội dung được gửi.</p>
+</li>
+<li>
+<p>Sự khác biệt giữa <code>PUT</code> và <code>POST</code>:</p>
+<ul>
+<li>
+<p>POST method được dùng để gửi các request kèm theo một entity đến server request tạo một tài nguyên mới dựa trên entity được cung cấp.</p>
+</li>
+<li>
+<p>PUT method thường kèm theo một định danh (thường là ID) cùng với một entity. Nếu một tài nguyên được tìm thấy bởi mã định danh kèm theo thì tài nguyên này sẽ được thay thế bởi các giá trị trong entity kèm theo. Ngược lại, PUT method sẽ tạo một tài nguyên dựa trên entity đã cung cấp.</p>
+</li>
+<li>
+<p>Nếu gọi PUT method nhiều lần thì sẽ nó tạo hoặc cập nhật cùng một tài nguyên (dựa vào mã định danh). Còn với POST thì việc chúng ta thực thi nhiều lần với cùng một enity thì nó sẽ tạo ra nhiều tài nguyên ở phía server có giá trị tương tự nhau.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Syntax: PUT /new.html HTTP/1.1</p>
+</li>
+<li>
+<p>Example: Gửi một PUT method request:
+    ```
+    PUT /new.html HTTP/1.1
+    Host: example.com
+    Content-type: text/html
+    Content-length: 16</p>
+<p><p>New File</p>
+<code>Response sẽ có 2TH:
++ Target resource không có thì tạo mới:</code>
+HTTP/1.1 201 Created
+Content-Location: /new.html
+<code>+ target resource có thì cập nhật:</code>
+HTTP/1.1 204 No Content
+Content-Location: /existing.html
+```</p>
+</li>
+</ul>
+<p><strong>4. PATCH</strong>
+- Được sử dụng để thực hiện các cập nhật nhỏ đối với các tài nguyên và nó không bắt buộc phải là tài nguyên
+- So sánh <code>PATCH</code> với <code>PUT</code>:
+    + Khi sử dụng <code>PUT</code> để update, ta phải gửi 1 record đầy đủ các field để request cập nhật. Nếu chỉ gửi 1 số field nhất định thì những field còn lại sẽ bị null.
+    + <code>PATCH</code> giống <code>PUT</code> về ý nghĩa là để update resource nhưng khác nhau về cách làm việc, nó chỉ thay đổi những field được request thay vì thay đổi toàn bộ record.</p>
+<ul>
+<li>
+<p>Syntax: <code>PATCH /file.txt HTTP/1.1</code></p>
+</li>
+<li>
+<p>Example: Gửi request:
+    ```
+    PATCH /file.txt HTTP/1.1
+    Host: www.example.com
+    Content-Type: application/example
+    If-Match: "e0023aa4e"
+    Content-Length: 100</p>
+<p>[description of changes]
+```</p>
+</li>
+</ul>
+<p><strong>5. DELETE</strong>
+- Loại bỏ tất cả các tài nguyên được chỉ định ( trên URI).</p>
+<ul>
+<li>
+<p>Syntax: <code>DELETE /file.html HTTP/1.1</code></p>
+</li>
+<li>
+<p>Example: Gửi request:</p>
+<p><code>DELETE /file.html HTTP/1.1
+Host: example.com</code>
+Nếu DELETE được áp dụng thành công, có thể có một số response status codes sau:</p>
+<ul>
+<li><code>202</code> (<code>Accepted</code>): Delete acctions có khả năng thành công nhưng chưa được thực thi.</li>
+<li><code>204</code> (<code>No content</code>): Delete acctions đã được thực hiện và không có thêm thông tin nào được cung cấp.</li>
+<li><code>200</code> (<code>OK</code>): Delete acction đã được thực hiện và thông báo phản hồi thành công.</li>
+</ul>
+</li>
+</ul>
+<p><strong>6. HEAD</strong></p>
+<ul>
+<li>
+<p>Phương thức HTTP <code>HEAD</code> gần giống với <code>GET</code>, tuy nhiên nó không có response body. Do không có response body nên thời gian phản hồi nhanh hơn so với phương thức Get</p>
+</li>
+<li>
+<p>Syntax: <code>HEAD /index.html</code></p>
+</li>
+<li>
+<p>Example: </p>
+<ul>
+<li>Dùng để kiểm tra API có hoạt động không. </li>
+<li>Sử dụng để kiếm tra trước khi download file do cứ gọi đến api dowload sẽ download file nên thêm phương thức head vào nó kiểm tra xem api có đang hoạt động tốt không tránh down nhiều.</li>
+</ul>
+</li>
+</ul>
+<p><strong>7. CONNECT</strong>
+- Phương thức HTTP <code>CONNECT</code> bắt đầu giao tiếp hai chiều với tài nguyên được request. Thường được sử dụng để mở một tunnel.</p>
+<ul>
+<li>
+<p>Syntax: <code>CONNECT www.example.com:443 HTTP/1.1</code></p>
+</li>
+<li>
+<p>Example: Connect tới proxy servers: 
+    <code>CONNECT server.example.com:80 HTTP/1.1
+    Host: server.example.com:80
+    Proxy-Authorization: basic aGVsbG86d29ybGQ=</code></p>
+</li>
+</ul>
+<p><strong>8. OPTIONS</strong></p>
+<ul>
+<li>
+<p>Mô tả các tùy chọn giao tiếp cho resource.</p>
+</li>
+<li>
+<p>Syntax: 
+    <code>OPTIONS /index.html HTTP/1.1
+    OPTIONS * HTTP/1.1</code></p>
+</li>
+<li>
+<p>Example: 
+    <code>curl -X OPTIONS https://example.org -i</code>
+    Sau đó response các phương thức có thể dùng để giao tiếp với resource:
+    <code>HTTP/1.1 204 No Content
+    Allow: OPTIONS, GET, HEAD, POST
+    Cache-Control: max-age=604800
+    Date: Thu, 13 Oct 2016 11:45:00 GMT
+    Server: EOS (lax004/2813)</code></p>
+</li>
+</ul>
+<p><strong>9. TRACE</strong></p>
+<ul>
+<li>
+<p>Thực hiện một bài test loop - back theo đường dẫn đến resource.</p>
+</li>
+<li>
+<p>Syntax: <code>TRACE /index.html</code></p>
+</li>
+</ul>
+<h2 id="response-headers-and-status">Response headers and status</h2>
+<p><strong>1. Concepts</strong></p>
+<ul>
+<li>Sau khi nhận và phân tích Request Header, Server sẽ gửi Response Header với cú pháp:</li>
+</ul>
+<pre><code>&lt;http-version&gt; &lt;status&gt; &lt;reason-pharse&gt;
+&lt;headers&gt;
+&lt;body&gt;
+</code></pre>
+<ul>
+<li><code>HTTP-version</code>: phiên bản HTTP cao nhất mà server hỗ trợ.</li>
+<li><code>Status-Code</code>: mã của kết quả trả về</li>
+<li><code>Reason-Phrase</code>: mô tả về Status-Code.</li>
+</ul>
+<p><strong>2.HTTP response status codes</strong></p>
+<p>HTTP response status codes cho biết trạng thái của một HTTP request cụ thể đã được hoàn tất thành công hay chưa. Các câu trả lời được nhóm thành năm lớp:</p>
+<ul>
+<li>1xx: <code>Thông tin</code>. Mã này nghĩa là request đã được nhận và tiến trình đang tiếp tục.</li>
+<li>2xx: <code>Thành công</code>. Mã này nghĩa là hoạt động đã được nhận, được hiểu, và được chấp nhận một cách thành công.</li>
+<li>3xx: <code>Điều hướng</code>. Mã này nghĩa là actions tiếp theo phải được thực hiện để hoàn thành request.</li>
+<li>4xx: <code>Lỗi Client</code>. Mã này nghĩa là request chứa cú pháp không chính xác hoặc không được thực hiện.</li>
+<li>5xx: <code>Lỗi Server</code>. Mã này nghĩa là Server gặp lỗi trong quá trình thực hiện, xử lý một request.</li>
+</ul>
+<p><strong>3.The mostly used status codes</strong>
+- <code>200 – OK</code>: Mọi thứ OK, ko có lỗi lầm gì
+- <code>201 – CREATED</code>: Một resource mới đã được tạo thành công
+- <code>204 – NO CONTENT</code>: Tài nguyên đã được xóa thành công, không có response body.
+- <code>304 – NOT MODIFIED</code>: Dữ liệu đã lưu trong bộ nhớ đệm (dữ liệu không thay đổi).
+- <code>400 – BAD REQUEST</code>: Request không hợp lệ hoặc không thể được phục vụ. 
+- <code>401 – UNATHORIZED</code>: Request cần xác thực người dùng.
+- <code>403 – FORBIDDEN</code>: Máy chủ đã hiểu request nhưng đang từ chối xử lý hoặc không được phép truy cập. 
+- <code>404 – NOT FOUND</code>: Không tìm thấy resource từ URI.
+- <code>500 – INTERNAL SERVER ERROR</code>: Lỗi từ phía Server.</p>
+<h2 id="cors">CORS</h2>
+<ul>
+<li>
+<p><code>Cross-Origin Resource Sharing</code> (CORS) là một cơ chế dựa trên HTTP Header cho phép máy chủ định nghĩa nhiều tài nguyên khác nhau (fonts, Javascript, v.v…) của một trang web có thể được truy vấn từ domain khác với domain của trang đó.</p>
+</li>
+<li>
+<p>CORS được sinh ra là vì same-origin policy, là một chính sách liên quan đến bảo mật được cài đặt vào toàn bộ các trình duyệt hiện nay. Chính sách này ngăn chặn việc truy cập tài nguyên của các domain khác một cách vô tội vạ. Khi đó, CORS sử dụng các HTTP header để “thông báo” cho trình duyệt rằng, một ứng dụng web chạy ở origin này (thường là domain này) có thể truy cập được các tài nguyên ở origin khác (domain khác).</p>
+</li>
+<li>
+<p>CORS giúp thúc đấy quá trình trao đổi dữ liệu giữa trình duyệt và máy chủ. CORS hoàn toàn không có liên quan gì đến việc trao đổi trực tiếp giữa ứng dụng web mà một máy chủ web khác, ví dụ backend của ứng dụng đó truy cập đến tài nguyên trên một origin khác, nó cũng không cần đến CORS.</p>
+</li>
+</ul>
+<p><strong>2. CORS in HTTP Headers</strong></p>
+<ol>
+<li>
+<p><code>Access-Control-Allow-Origin</code>: Cho biết liệu response có thể được chia sẻ hay không.</p>
+<p><code>Access-Control-Allow-Origin: *
+Access-Control-Allow-Origin: &lt;origin&gt;
+Access-Control-Allow-Origin: null</code></p>
+</li>
+<li>
+<p><code>Access-Control-Allow-Credentials</code>: Cho biết liệu response cho request có thể được hiển thị hay không khi credentials flag bằng true.</p>
+<p><code>Access-Control-Allow-Credentials: true</code>
+3. <code>Access-Control-Allow-Methods</code>: Chỉ định các phương thức được phép khi truy cập tài nguyên để đáp ứng request.</p>
+<p><code>Access-Control-Allow-Methods: &lt;method&gt;, &lt;method&gt;, ...
+Access-Control-Allow-Methods: *</code>
+4. <code>Access-Control-Expose-Headers</code>: Liệt kê tên các thành phần của header có thể được hiển thị như một phần của response.</p>
+<p><code>Access-Control-Expose-Headers: [&lt;header-name&gt;[, &lt;header-name&gt;]*]
+Access-Control-Expose-Headers: *</code>
+5. <code>Origin</code>: Cho biết nơi fetch origins (domain, hostname. schema, port).
+<code>Origin: null
+Origin: &lt;scheme&gt;://&lt;hostname&gt;
+Origin: &lt;scheme&gt;://&lt;hostname&gt;:&lt;port&gt;</code>
+6. <code>Timing-Allow-Origin</code>: Chỉ định thời gian cho phép truy cập tới origins
+<code>Timing-Allow-Origin: *
+Timing-Allow-Origin: &lt;origin&gt;[, &lt;origin&gt;]*</code></p>
+</li>
+</ol>
+<h2 id="authentication">Authentication</h2>
+<ul>
+<li>
+<p>Giao thức HTTP cung cấp một khuôn khổ chung để kiểm soát và xác thực quyền truy cập tài nguyên gọi là <code>HTTP Basic Authentication</code>.</p>
+</li>
+<li>
+<p>Example:</p>
+</li>
+</ul>
+<p><img alt="" src="../images/auth.png" /></p>
+<h2 id="cookie-cache">Cookie, Cache</h2>
+<p><strong>1. Cookie</strong></p>
+<ul>
+<li>Được dùng để lưu những thông tin tạm thời</li>
+<li>Cookie sẽ được truyền từ server tới browser và được lưu trữ tại đó. Mỗi khi người dùng access ứng dụng, browser sẽ gửi request kèm theo cookie, giúp hạn chế việc server response về nhiều lần cùng 1 resource.</li>
+<li>Tồn tại có thời hạn.</li>
+</ul>
+<p><em>a. Creating cookies</em></p>
+<p>Một HTTP response header gồm filed <code>Set-Cookie</code> sẽ gửi cookie từ server đến client theo cú pháp:</p>
+<pre><code>Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;
+</code></pre>
+<p>Ví dụ: Server response về browser kèm theo <code>Set-Cookie</code>:</p>
+<pre><code>HTTP/2.0 200 OK
+Content-Type: text/html
+Set-Cookie: yummy_cookie=choco
+Set-Cookie: tasty_cookie=strawberry
+
+[page content]
+</code></pre>
+<p>Sau đó, với mỗi request tiếp theo đến server, browser sẽ gửi tất cả các cookie đã lưu trữ trước đó trở lại server bằng cách sử dụng title <code>Cookie</code>:</p>
+<pre><code>GET /sample_page.html HTTP/2.0
+Host: www.example.org
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry
+</code></pre>
+<p><em>b. Define the lifetime of a cookie</em></p>
+<p>Ta có thể set thời gian tồn tại của cookie theo hai cách:</p>
+<ul>
+<li>
+<p><code>Session cookies</code> bị xóa khi session giữa client-server hiện tại kết thúc. </p>
+</li>
+<li>
+<p><code>Permanent cookies</code> sẽ bị xóa vào một ngày được chỉ định bởi thuộc tính <code>Expire</code>s hoặc sau một khoảng thời gian được chỉ định bởi thuộc tính <code>Max-Age</code>. Ví dụ:</p>
+</li>
+</ul>
+<pre><code>Set-Cookie: id=a3fWa; Expires=Thu, 31 Oct 2021 07:28:00 GMT;
+</code></pre>
+<p><strong>2. Cache</strong>
+- Cache là bộ nhớ đệm, vùng lưu trữ tạm thời trong máy tính. Nó khác với cookie ở chỗ thông tin lưu trữ ở đây là các tài liệu web, các hình ảnh, các video, HTML,</p>
+<ul>
+<li>
+<p>Cache bao gồm bản sao các bit của trang Web được lưu trữ trên ổ đĩa cứng. Browser sẽ tải các bit khi user truy cập một trang Web nào đó, tốc độ truy cập sẽ nhanh hơn và tiết kiệm được băng thông khi download. </p>
+</li>
+<li>
+<p>Bộ nhớ cache sẽ được lưu trữ cho đến khi user xóa nó đi.</p>
+</li>
+</ul>
+<p><em>a. Types of caches</em>
+- <code>Private browser caches</code>: Dành riêng cho một user. Lưu giữ tất cả các tài liệu mà người dùng tải xuống qua HTTP. Cache này được sử dụng để cung cấp các tài liệu mà người dùng đã truy cập để điều hướng mà không cần gửi request tới server. 
+- <code>Shared proxy caches</code>: Lưu trữ các response để nhiều người dùng sử dụng lại. Ví dụ: Nhà cung cấp dịch vụ Internet (ISP) hoặc công ty của bạn có thể đã thiết lập proxy web như một phần của cơ sở hạ tầng mạng cục bộ để phục vụ nhiều người dùng để các tài nguyên phổ biến được sử dụng lại một số lần, giảm lưu lượng mạng và độ trễ.</p>
+<p><em>b. Controlling caching</em></p>
+<p>HTTP Header có một field là <code>Cache-Control</code> được sử dụng để chỉ định cơ chế bộ nhớ đệm trong cả request và response.</p>
+<ul>
+<li>
+<p><code>No caching</code>: Không lưu trữ bất kỳ thứ gì về request của client hoặc response của server. </p>
+<p><code>Cache-Control: no-store</code>
+- <code>Cache but revalidate</code>: Cache sẽ gửi request đến máy chủ gốc để xác thực trước khi được lưu.</p>
+<p><code>Cache-Control: no-cache</code>
+- <code>Private and public caches</code>:
+-  Public caches: Response có thể được lưu vào bộ đệm ẩn bởi bất kỳ bộ đệm nào. 
+- Private caches: chỉ ra rằng response chỉ dành cho một người dùng duy nhất và không được lưu trữ bởi bộ nhớ đệm dùng chung.</p>
+<p><code>Cache-Control: private
+Cache-Control: public</code></p>
+</li>
+<li>
+<p><code>Expiration</code>: Thời hạn tồn tại của cahe nếu chưa được người dùng xóa.</p>
+<p><code>Cache-Control: max-age=31536000</code></p>
+</li>
+<li>
+<p><code>Validation</code>:  Cahe phải xác minh trạng thái của tài nguyên cũ trước khi sử dụng chúng. Tài nguyên đã hết hạn không nên được sử dụng.</p>
+<p><code>Cache-Control: must-revalidate</code></p>
+</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ol>
+<li><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html">HTTP Protocols</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">HTTP Headers</a></li>
+<li><a href="https://www.iana.org/assignments/message-headers/message-headers.xhtml#perm-headers">Message Headers</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Request_header">Request Header</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Response_header">Response Header</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">HTTP Headers - MDN Web Docs</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">CORS</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication">Authentication</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">Cookies</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching">Caching</a></li>
+</ol>
+
+
+</section>
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../../js/main.js"></script>
+<script src="../../js/gitbook.min.js"></script>
+<script src="../../js/theme.min.js"></script>
+</body>
+</html>
