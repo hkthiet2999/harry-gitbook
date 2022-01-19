@@ -13,10 +13,6 @@
         <li class="chapter{% if nav_item.active %} active{% endif %}" data-path="{{ nav_item.url }}">
             <a href="{{ nav_item.url | url }}">{{ nav_item.title }}</a> {%- endif %} {%- endfor %}
             <li class="divider"></li>
-            {%- endif %} {% if config.copyright %}
-            <li>{{ config.copyright }}</li>
-            {% endif %}
-
             <li><a href="https://github.com/smoothkt4951/harry-gitbook">Fork me on GitHub</a></li>
 
     </ul>
