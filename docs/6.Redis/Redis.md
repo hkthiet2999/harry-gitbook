@@ -1,10 +1,13 @@
 ---
 author: Harry Hoang
-date: 2022-01-17
+date: 2022-01-19
 ---
 
 # Redis
-
+- Overview
+- Redis data types
+- Redis Clusters
+- Redis Pub/Sub
 ## Overview
 
 - `Redis` - REmote DIctionary Server:  là một open-source được dùng để lưu trữ dữ liệu có cấu trúc và lưu dưới dạng `key-value`, có thể sử dụng như một `database`, bộ nhớ `cache` hay một `message broker`.
