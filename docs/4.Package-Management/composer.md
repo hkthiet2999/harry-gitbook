@@ -147,7 +147,7 @@ _xem thêm các [Command-line interface/Commands](https://getcomposer.org/doc/03
 | `~1.3` | `>=1.3.0.0-dev <2.0.0.0-dev` |
 | `1.4.*` | `>=1.4.0.0-dev <1.5.0.0-dev` |
 
-- ### Summary
+### Summary
 
 ```json
 "require": {
@@ -185,7 +185,7 @@ _xem thêm các [Command-line interface/Commands](https://getcomposer.org/doc/03
     + `PSR-7` -  HTTP Message Interface: Tiêu chuẩn về interface của một ứng dụng sử HTTP Message - request và respone
 ### PSR-4 Autoloader
 - Trước đây trong PHP việc nạp các file thư viện, mã dùng lại vào một file PHP khác thường dùng các lệnh include và require. Điều này gây mất thời gian, rắc rối, dài code.
-    ```php
+```php
     <?php
         include __DIR__ . '/classes/MyClass.php';
         include __DIR__ . '/classes/Foo.php';
@@ -197,21 +197,22 @@ _xem thêm các [Command-line interface/Commands](https://getcomposer.org/doc/03
         $bar = new Bar;
         // ...
     ?>
-    ```
+```
 
 - Tiếp theo từ PHP5 có các hàm trợ giúp tự động hóa việc gọi thư viện bằng các hàm như: `__autoload`, `spl_autoload_register`, `spl_autoload_functions`, `spl_autoload_extensions` ...
 
-    ```php
-    <?php
-        spl_autoload_register(function ($classname) {
-            include __DIR__ . </classes/< . $classname . <.php<;
-        });
 
-        $myClass = new MyClass;
-        $foo = new Foo;
-        $bar = new Bar;
-    ?>
-    ```
+```php
+<?php
+    spl_autoload_register(function ($classname) {
+        include __DIR__ . </classes/< . $classname . <.php<;
+    });
+
+    $myClass = new MyClass;
+    $foo = new Foo;
+    $bar = new Bar;
+?>
+```
 
 - Tuy nhiên để dễ dàng chia sẻ code, dùng lại code giữa các framework, giữa các dự án ..., cộng đồng PHP thống nhất một cách thức tự động nạp thư viện theo một chuẩn  là `PSR-4 Autoload`. Ngoài tiêu chuẩn tự động load PSR-4 còn có tiêu chuẩn tự động load theo PSR-0 (tuy nhiên đã lỗi thời, các dự án mới không nên theo PSR-0 nữa). 
 
