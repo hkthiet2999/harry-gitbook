@@ -3,16 +3,17 @@ author: Harry Hoang
 date: 2022-01-22
 ---
 
-# Database
+# Relationship, Keys, Cascade
+- Relationship: Concepts, Degrees of Relationship Types, Structural Constraints of Relationships in ER Model
+- Keys: Types of Keys - Primary/Foreign keys
+- Cascade
 
-## Concepts
 
-### Database
-- `Database` là một tập hợp của dữ liệu được tổ chức sao cho dễ dàng truy cập cũng như cập nhật, chỉnh sửa. Một `cơ sở dữ liệu` thường sẽ được tổ chức thành các bảng, các bảng lưu trữ thông tin theo cấu trúc riêng của nó.
+`Database` là một tập hợp của dữ liệu được tổ chức sao cho dễ dàng truy cập cũng như cập nhật, chỉnh sửa. Một `cơ sở dữ liệu` thường sẽ được tổ chức thành các bảng, các bảng lưu trữ thông tin theo cấu trúc riêng của nó.
 
 ![](./images/db-components.png)
 
-#### Relationship
+## Relationship
 
 ![](./images/ER-model.png)
 
@@ -20,7 +21,7 @@ date: 2022-01-22
 
 - Trong ER Model, người ta sử dụng hình thoi và bên trong ghi tên kiểu Relationship để ký hiệu kiểu Relationship.
 
-##### Degrees of Relationship Types
+### Degrees of Relationship Types
 - `Degrees of Relationship Types` Thể hiện số lượng các kiểu Entity có cùng Relationship. Có các mức độ sau:
 
     + `The Unary (recursive) relationship type` - bậc 1: Mối quan hệ giữa cùng 1 Entity.
@@ -39,7 +40,7 @@ date: 2022-01-22
 
         ![](./images/relationship-dn.jpg)
 
-##### Structural Constraints of Relationships in ER Model
+### Structural Constraints of Relationships in ER Model
 
 Relationships thường có một số ràng buộc (`Constraints`) nào đó về các Entity để thể hiện các Entity có thể kết hợp với nhau thông qua một số ràng buộc nhất định. Các ràng buộc này được xác định từ các tình huống thực tế của mối quan hệ giữa các Entity với nhau. 
 
@@ -53,11 +54,11 @@ Relationships thường có một số ràng buộc (`Constraints`) nào đó v�
 
 - `Many to many (N:N) relationships`: Một Entity A có liên kết với nhiều Entity B và ngược lại.
 
-### Keys
+## Keys
 
 `Keys` trong DBMS - hệ quản trị cơ sở dữ liệu, là một hay một tập hợp các thuộc tính giúp xác định một đơn vị dữ liệu (`row-col`/data records) trong một quan hệ (`table`/collections). Các Keys cho phép tìm kiếm mối quan hệ giữa hai `table`/collections với nhau và tìm kiếm dữ liệu dựa trên các mối quan hệ này.
 
-#### Types of Keys
+### Types of Keys
 - `Super key`
 - `Primary key`
 - `Candidate key`
@@ -83,6 +84,7 @@ Ví dụ: Trong bảng học sinh bên dưới, ID chính là khóa chính của
 Ví dụ: Trong bảng học sinh bên trên, `ID` là `Primary key`  và trong bảng 1 bên dưới, `Email` là `Primary key`. Xét bảng 2 bên dưới, `ID` là `Primary key` và `Email` là `Foreign key`, dùng để tham chiếu đến khóa chính của bảng 1.
 
 *Table 1*
+
 | Email | Số điện thoại| Tên
 |--- | --- | --- |
 | Anguyen@gmail.com	| 0123456789 | A |
@@ -91,6 +93,7 @@ Ví dụ: Trong bảng học sinh bên trên, `ID` là `Primary key`  và trong 
 | Dle@gmail.com	| 0321456790 | D |
 
 *Table 2*
+
 | ID | Email | Tên | Họ | Lớp |
 |--- | --- | --- | --- | --- |
 | 1 | Anguyen@gmail.com	| A | Nguyễn | 1 |
@@ -99,23 +102,27 @@ Ví dụ: Trong bảng học sinh bên trên, `ID` là `Primary key`  và trong 
 | 4	| Dle@gmail.com	| D | Lê | 4 |
 
 
-#### Cascading
+## Cascading
 
 - `Cascade`: Là một `optional` trong việc thiết lập các Primary/Foreign keys trong table. Nếu chọn option này, với ví dụ trên, khi ta `cập nhật` - `ON UPDATE` giá trị của cột Email của _Table 1_, thì giá trị đó bên bảng _Table 2_ sẽ tự động được cập nhật theo. Trường hợp khi ta `xóa` - `ON DELETE` 1 email bên _Table 1_ thì giá trị đó bên _Table 2_ sẽ bị xóa.
 
-- Trong SQL, có 5 option cho việc sử dụng  `ON DELETE`, `ON UPDATE` trong Cascade, được gọi là
-`referential actions`:
-    - `ON DELETE CASCADE:` if a row of the referenced table is deleted, then all matching rows in the referencing table are deleted.
-    - `ON DELETE SET NULL`: if a row of the referenced table is deleted, then all referencing columns in all matching rows of the referencing table to be set to null.
-    - `ON DELETE SET DEFAULT`: if a row of the referenced table is deleted, then all referencing columns in all matching rows of the referencing table to be set to the column’s default value.
-    - `ON DELETE RESTRICT`: it is prohibited to delete a row of the referenced table if that row has any matching rows in the referencing table.
-    - `ON DELETE NO ACTION` (the default): there is no referential delete action; the referential constraint only specifies a constraint check.
+- Trong SQL, có 5 option cho việc sử dụng  `ON DELETE`, `ON UPDATE` trong Cascade, được gọi là `referential actions`. Gọi A là table tham chiếu đến table B, khi đó A là `referenced/parent table` , B là `referencing/children table`,ta có:
+
+    - `ON DELETE CASCADE` | `ON UPDATE CASCADE`: Nếu 1 hàng trong A bị xóa hay cập nhật, thì tất cả các hàng ở bên B mà matching với cái hàng bị xóa đó sẽ bị xóa, cập nhật theo.
+
+    - `ON DELETE SET NULL` | `ON UPDATE SET NULL`: Tương tự như trên, xóa 1 hàng bên A đi, nhưng thay vì các hàng matching ở bên B bị xóa hay cập nhật theo bên A, thì ở đây sẽ set cho nó giá trị null
+
+    - `ON DELETE SET DEFAULT` | `ON UPDATE SET DEFAULT`: Dữ liệu bên B sẽ được set giá trị mặc định nếu dữ liệu bên A bị xóa, cập nhật.
+
+    - `ON DELETE RESTRICT` | `ON UPDATE RESTRICT`:  không được xóa, cập nhật dữ liệu bên B nếu dữ liệu đó matching tới bảng A.
+
+    - `ON DELETE NO ACTION` | `ON UPDATE NO ACTION`, (the default): không có action nào từ bên B nếu thay đổi dữ liệu ở bên A, thường dùng để constraint check.
 
 ## Reference
 
-1. [](https://www.guru99.com/introduction-to-database-sql.html)
+1. [Introduction to database](https://www.guru99.com/introduction-to-database-sql.html)
 
-2. [](https://opentextbc.ca/dbdesign01/chapter/chapter-8-entity-relationship-model/)
+2. [Chapter 8 - Entity Relationship Model - opentextbc](https://opentextbc.ca/dbdesign01/chapter/chapter-8-entity-relationship-model/)
 
 3. [What is the degree of relation in DBMS](https://afteracademy.com/blog/what-is-the-degree-of-relation-in-dbms)
 
