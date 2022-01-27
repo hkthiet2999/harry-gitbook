@@ -2,7 +2,6 @@
 author: Harry Hoang
 date: 2022-01-25
 ---
-
 # Locking / Isolation Level
 
 ![](./images/lock-iso-banner.jpg)

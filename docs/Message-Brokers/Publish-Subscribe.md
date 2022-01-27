@@ -21,13 +21,13 @@ Các bản tin log sẽ được gửi đến tất cả các `consumer`.
 
 ## Exchange
 Trong ví dụ này, ta dùng `fanout exchange`
-```python
+``` py
 channel.exchange_declare(exchange='logs', type='fanout')
 ```
 
 Với `fanout`, khi một `message` được gửi đi, nó sẽ đẩy đến tất cả các `queue` hiện có.
 
-```python
+``` py
 channel.basic_publish(exchange='logs', routing_key='', body=message)
 ```
 
@@ -39,7 +39,7 @@ Trong một số trường hợp , chúng ta muốn lắng nghe tất cả các 
 
 Đầu tiên, mỗi khi kết nối tới RabbitMQ, chúng ta cần phải làm mới các `queue` và tạo ra một `queue` với tên ngẫu nhiên. Để tạo ra một hàng đợi tạm thời (temporary queues), chúng ta sử dụng code như sau:
 
-```python
+``` py
 result = channel.queue_declare()
 ```
 
@@ -47,7 +47,7 @@ Khi thực thi, RabbitMQ sẽ tạo ra 1 `queue` có tên ngẫu nhiên giống 
 
 Sau đó, mỗi lần ngắt kết nối `queue` sẽ bị xóa với tùy chọn `exclusive`:
 
-```python
+``` py
 result = channel.queue_declare(exclusive=True)
 ```
 
@@ -58,7 +58,7 @@ result = channel.queue_declare(exclusive=True)
 
 Ở phần trên, chúng ta đã tạo ra một `exchange` kiểu `fanout` và một `queue`. Bây giờ, chúng ta cần phải "chỉ" cho `exchange` biết phải gửi `message` cho `queue` như thế nào bằng cách dùng `binding`.
 
-```python
+``` py
 channel.queue_bind(exchange='logs', queue=result.method.queue)
 ```
 Kết quả là implement mô hình `Publish-Subscriber` theo sơ đồ sau:
@@ -69,6 +69,7 @@ Chạy chương trình:
 ```
 python emit_log.py
 ```
+
 
 Kết quả ghi log:
 
