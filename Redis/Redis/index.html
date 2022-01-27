@@ -1,0 +1,2097 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Harry Hoang">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Redis - Harry Gitbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#redis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Harry Gitbook" class="md-header__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Harry Gitbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Redis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Architecture/Architecture/" class="md-tabs__link">
+        Architecture
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Database/Data-types/" class="md-tabs__link">
+        Database
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-tabs__link">
+        Docker
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Elasticsearch/Elasticsearch/" class="md-tabs__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Linux/commands/" class="md-tabs__link">
+        Linux
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-tabs__link">
+        Message Brokers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-tabs__link">
+        OOP
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ORM/Overview/" class="md-tabs__link">
+        ORM
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Package-Management/composer/" class="md-tabs__link">
+        Package Management
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Redis
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Source-Version-Control/Source-Version-Control/" class="md-tabs__link">
+        Source Version Control
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Testing/Tessting/" class="md-tabs__link">
+        Testing
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Web-Technologies/1.Web-Protocols/" class="md-tabs__link">
+        Web Technologies
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Harry Gitbook" class="md-nav__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Harry Gitbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Architecture" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Data-types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Deadlock/" class="md-nav__link">
+        Deadlock
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Index-Constraints-Unique/" class="md-nav__link">
+        Index, Constraints, Unique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Locking-Isolation/" class="md-nav__link">
+        Locking / Isolation Level
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Queries/" class="md-nav__link">
+        Queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-nav__link">
+        Relationship, Keys, Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Schema/" class="md-nav__link">
+        Database Schema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Time%20stamp/" class="md-nav__link">
+        Time stamp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Transactions-ACID/" class="md-nav__link">
+        Transactions, ACID
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-nav__link">
+        Docker Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Compose/" class="md-nav__link">
+        Docker Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Objects/" class="md-nav__link">
+        Docker Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Environments/" class="md-nav__link">
+        Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Network/" class="md-nav__link">
+        Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Practice/" class="md-nav__link">
+        Practice with docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Volumes-PersistentData/" class="md-nav__link">
+        Volumes, Persistent Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Elasticsearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Elasticsearch" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Elasticsearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/commands/" class="md-nav__link">
+        Linux Commands
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Message Brokers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Message Brokers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Message Brokers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-nav__link">
+        Message-Brokers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Publish-Subscribe/" class="md-nav__link">
+        Publish-Subscriber
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/RabbitMQ/" class="md-nav__link">
+        RabbitMQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/SNS-SQS/" class="md-nav__link">
+        SNS/SQS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Topics-Exchange-Channel/" class="md-nav__link">
+        Topics, Exchange, Channel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Work%20Queues/" class="md-nav__link">
+        Work Queues
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          OOP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OOP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          OOP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-nav__link">
+        Object Oriented Programing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          ORM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Package Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Package Management" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Package Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/composer/" class="md-nav__link">
+        Composer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/npm/" class="md-nav__link">
+        NPM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Redis
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis-data-types" class="md-nav__link">
+    Redis data types
+  </a>
+  
+    <nav class="md-nav" aria-label="Redis data types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    Strings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sets" class="md-nav__link">
+    Sets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashes" class="md-nav__link">
+    Hashes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorted-sets" class="md-nav__link">
+    Sorted Sets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitmaps-and-hyperloglogs" class="md-nav__link">
+    Bitmaps and HyperLogLogs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis-clusters" class="md-nav__link">
+    Redis Clusters
+  </a>
+  
+    <nav class="md-nav" aria-label="Redis Clusters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#master-slave-architecture" class="md-nav__link">
+    Master-Slave Architecture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis-cluster-vs-redis-sentinel" class="md-nav__link">
+    Redis Cluster vs. Redis Sentinel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concepts-and-redis-cluster-master-replica-model" class="md-nav__link">
+    Concepts and Redis Cluster master-replica model
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pubsub" class="md-nav__link">
+    Pub/Sub
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          Source Version Control
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Source Version Control" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Source Version Control
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Source-Version-Control/Source-Version-Control/" class="md-nav__link">
+        Source Version Control (Git)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Tessting/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          Web Technologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Web Technologies" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Web Technologies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/1.Web-Protocols/" class="md-nav__link">
+        Web Protocols
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/2.HTTP-Protocol/" class="md-nav__link">
+        HTTP Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/3.Web-server-and-proxy/" class="md-nav__link">
+        Web server and proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/4.Programming/" class="md-nav__link">
+        Programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/5.Supervisor%20and%20workers%20management/" class="md-nav__link">
+        Supervisor and workers management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/6.RESTful/" class="md-nav__link">
+        RESTful
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/7.Authentication/" class="md-nav__link">
+        Authentication - Authorization
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis-data-types" class="md-nav__link">
+    Redis data types
+  </a>
+  
+    <nav class="md-nav" aria-label="Redis data types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    Strings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sets" class="md-nav__link">
+    Sets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashes" class="md-nav__link">
+    Hashes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorted-sets" class="md-nav__link">
+    Sorted Sets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitmaps-and-hyperloglogs" class="md-nav__link">
+    Bitmaps and HyperLogLogs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis-clusters" class="md-nav__link">
+    Redis Clusters
+  </a>
+  
+    <nav class="md-nav" aria-label="Redis Clusters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#master-slave-architecture" class="md-nav__link">
+    Master-Slave Architecture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis-cluster-vs-redis-sentinel" class="md-nav__link">
+    Redis Cluster vs. Redis Sentinel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concepts-and-redis-cluster-master-replica-model" class="md-nav__link">
+    Concepts and Redis Cluster master-replica model
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pubsub" class="md-nav__link">
+    Pub/Sub
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/smoothkt4951/harry-gitbook/edit/master/docs/Redis/Redis.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="redis">Redis</h1>
+<ul>
+<li>Overview</li>
+<li>Redis data types</li>
+<li>Redis Clusters</li>
+<li>Redis Pub/Sub</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<ul>
+<li>
+<p><code>Redis</code> - REmote DIctionary Server:  là một open-source được dùng để lưu trữ dữ liệu có cấu trúc và lưu dưới dạng <code>key-value</code>, có thể sử dụng như một <code>database</code>, bộ nhớ <code>cache</code> hay một <code>message broker</code>.</p>
+</li>
+<li>
+<p>Redis hiện cung cấp thời gian phản hồi <code>chưa đến một mili giây</code>, giúp thực hiện <code>hàng triệu</code> yêu cầu mỗi giây cho các ứng dụng realtime trong những ngành như trò chơi, công nghệ quảng cáo, dịch vụ tài chính, chăm sóc sức khỏe và IoT. </p>
+</li>
+<li>
+<p><code>Do hiệu suất nhanh</code>, Redis thường được chọn sử dụng cho bộ nhớ đệm, quản lý phiên, trò chơi, bảng xếp hạng, phân tích theo realtime, ứng dụng không gian địa lý, đặt xe, trò chuyện/nhắn tin, phát trực tiếp nội dung đa phương tiện cũng như các ứng dụng cơ chế pub/sub.</p>
+</li>
+<li>
+<p>Redis có hiệu suất nhanh như thế là nhờ nó là một hệ thống cơ sở dữ liệu NoSQL, lưu trữ dữ liệu với dạng KEY-VALUE trên bộ nhớ RAM của máy chủ. Ngoài ra, nó cũng có cơ chế sao lưu dữ liệu xuống ổ cứng, vẫn đảm bảo được dữ liệu không bị mất đi dù truy xuất nhanh. </p>
+</li>
+<li>
+<p>Redis mang lại những lợi ích sau:</p>
+<ul>
+<li>
+<p><code>Hiệu suất</code>: Redis lưu trữ dữ liệu trên RAM cộng với cơ chế Replication, từ đó Redis mang tính <code>high availability</code>, nâng cao performance rất nhiều so với cơ sở dữ liệu lưu phần lớn dữ liệu trên ổ đĩa hoặc ổ SSD.</p>
+</li>
+<li>
+<p><code>Cấu trúc dữ liệu linh hoạt</code>: Redis sở hữu rất nhiều cấu trúc dữ liệu để đáp ứng nhu cầu cho ứng dụng của bạn. </p>
+</li>
+<li>
+<p><code>Đơn giản và dễ sử dụng</code>: Redis đơn giản hóa mã bằng cách cho phép bạn viết ít dòng lệnh hơn để lưu trữ, truy cập và sử dụng dữ liệu trên ứng dụng của bạn</p>
+</li>
+<li>
+<p><code>Khả năng sao chép và độ bền</code>: Redis sử dụng kiến trúc <code>master-slave</code> và hỗ trợ sao chép không đồng bộ, trong đó có thể sao chép dữ liệu sang nhiều máy chủ khác. Về độ bền, Redis hỗ trợ <code>backup</code> dữ liệu tại một thời điểm nào đó (chép tập dữ liệu Redis sang ổ đĩa).</p>
+</li>
+<li>
+<p><code>Độ khả dụng cao và quy mô linh hoạt</code>: Redis tổ chức mô hình master-slave theo kiến trúc <code>Redis Cluster</code>, kiến trúc này cho phép xây dựng những giải pháp có độ khả dụng cao - khi cần thì Cluster có thể mở rộng hoặc thu gọn, đảm bảo hiệu suất ổn định và bảo mật.</p>
+</li>
+<li>
+<p><code>Mã nguồn mở</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Trường hợp sử dụng phổ biến của Redis:</p>
+<ul>
+<li>
+<p><code>Cache</code>: Redis là kho dữ liệu chứa các <code>key-value</code> có thể hoạt động như bộ nhớ đệm, tự động xóa bỏ dữ liệu cũ khi thêm một dữ liệu mới. Khi đó bộ nhớ đệm này có thể hoạt động theo thuật toán LRU (Least Recently Used) và cả LFU (Least Frequently Used) kể từ phiên bản 4.0. Cơ chế <code>Redis cached</code> sẽ hỗ trợ nhiều kiểu cấu trúc dữ liệu phổ biến (hash, list, set, sorted set, string) cùng với công nghệ đọc ghi dữ liệu được thiết kế và tối ưu hiệu suất tốt (hơn <code>Memcached</code>). Đồng thời, Redis còn có thể cho phép <code>scripting</code> bằng ngôn ngữ <code>Lua</code> - Lua scripting. Do đó, Redis thường được sử dụng làm hệ thống lưu trữ bộ nhớ đệm cho các ứng dụng cần truy xuất dữ liệu với tốc độ phản hồi nhanh.</p>
+</li>
+<li>
+<p><code>Database</code>: Bản chất Redis là một server cấu trúc dữ liệu. Người dùng có thể dùng Redis đơn lẻ như một server chứa dữ liệu bình thường. Hoặc kết hợp với một database khác như MySQL để tăng tốc độ xử lí của nó. Bên cạnh cơ chế lưu trữ backup trên ổ đĩa cứng như các hệ quản trị dữ liệu khác, độ bảo mật và sửa lỗi cao là điểm đặc biệt của cơ sở dữ liệu đặc biệt này.</p>
+</li>
+<li>
+<p><code>Message broker</code>: Redis hiện cung cấp thời gian phản hồi ở tốc độ chưa đến một mili giây. Chính vì thế, hàng triệu yêu cầu mỗi giây cho các ứng dụng thời gian thực trong lĩnh vực Trò chơi, Công nghệ quảng cáo, Dịch vụ tài chính, Chăm sóc sức khỏe và IoT được đáp ứng rất nhanh gọn.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Ngoài ra, Redis thường còn được sử dụng cho hoạt động <code>Session store</code>, <code>Gaming leaderboards</code>, <code>Rich media streaming</code>, <code>Geospatial</code>, <code>Machine Learning</code> và <code>Real-time analytics</code>.</p>
+<h2 id="redis-data-types">Redis data types</h2>
+<p>Khác với RDMS như MySQL, hay PostgreSQL, Redis không có table. Redis lưu trữ data dưới dạng <code>key-value</code>. Cobf so với memcached thì memcached cũng làm vậy, nhưng kiểu dữ liệu của memcached bị hạn chế, không đa dạng được như Redis, do đó không hỗ trợ được nhiều thao tác từ phía người dùng. Dưới đây là sơ lược về các kiểu dữ liệu Redis dùng để lưu value:</p>
+<h3 id="strings">Strings</h3>
+<ul>
+<li>
+<p><code>Strings</code> là kiểu dữ liệu cơ bản nhất của Redis. </p>
+</li>
+<li>
+<p><code>Redis string</code> được lưu dưới dạng nhị phân nên có thể chứa bất kì loại dữ liệu nào như ảnh dạng <code>JPEG</code> hay <code>Ruby object</code>. </p>
+</li>
+<li>
+<p>Độ dài giá trị của 1 string tối đa là 512MB.</p>
+</li>
+<li>
+<p>Danh sách các command trên Redis để thao tác với string type: <a href="https://redis.io/commands/#string">commands/#string</a></p>
+</li>
+<li>
+<p>Ví dụ bên dưới với việc sử dụng lệnh <code>SET</code> để set value cho key và lệnh <code>GET</code> để truy xuất value của key.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$ <span class="nb">set</span> username Harry
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>OK
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>$ get username
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s2">&quot;Harry&quot;</span>
+</code></pre></div>
+<h3 id="list">List</h3>
+<ul>
+<li><code>List</code> là danh sách các <code>string</code> được sắp xếp theo thứ tự chèn vào list. </li>
+<li>Ta có thể thêm các phần tử vào đầu hoặc cuối 1 list sử dụng <code>LPUSH</code> hoặc <code>RPUSH</code>. Một list được tạo ra khi chúng ta thực hiện thao tác <code>LPUSH</code> <code>hoặc</code> RPUSH với một key rỗng. Tương tự, key sẽ được xóa khỏi key space khi các thao tác trên biến danh sách trở về rỗng. Ví dụ:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>LPUSH mylist a   <span class="c1"># now the list is &quot;a&quot;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>LPUSH mylist b   <span class="c1"># now the list is &quot;b&quot;,&quot;a&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>RPUSH mylist c   <span class="c1"># now the list is &quot;b&quot;,&quot;a&quot;,&quot;c&quot; (RPUSH was used this time)</span>
+</code></pre></div>
+<p>Danh sách các command với lists tại <a href="https://redis.io/commands#list">commands#list</a></p>
+<h3 id="sets">Sets</h3>
+<ul>
+<li>
+<p><code>Sets</code> là tập hợp các <code>string</code> không được sắp xếp. </p>
+</li>
+<li>
+<p><code>Sets</code> hỗ trợ các thao tác <code>thêm</code> phần tử, <code>đọc</code>, <code>xóa</code> từng phần tử, <code>kiểm tra sự tồn tại</code> của phần tử trong <code>set</code> với thời gian mặc định là O(1) bất kể số lượng phần tử của <code>set</code> đó là bao nhiêu. Ngoài ra Redis còn hỗ trợ các phép toán giữa các <code>sets</code> với nhau, gồm <code>intersect</code>, <code>union</code>,<code>difference</code>. </p>
+</li>
+<li>
+<p>Số lượng phần tử tối đa trong 1 set là <code>2^32 - 1</code> (<code>4294967295</code>, nhiều hơn 4 tỉ phần tử trong mỗi set). </p>
+</li>
+<li>
+<p>Danh sách các command với sets tại <a href="https://redis.io/commands#set">commands#set</a></p>
+</li>
+</ul>
+<h3 id="hashes">Hashes</h3>
+<ul>
+<li>
+<p><code>Hashes</code> là kiểu dữ liệu lưu trữ <code>hash table</code> của các cặp <code>key-value</code>, trong đó, key được sắp xếp ngẫu nhiên, không theo thứ tự nào cả. </p>
+</li>
+<li>
+<p>Hash thường được sử dụng để lưu các object (user có các filed như name, age, address,...). Mỗi hash có thể lưu trữ <code>2^32 - 1</code> cặp key-value. </p>
+</li>
+<li>
+<p>Redis hỗ trợ các thao tác <code>thêm</code>, <code>đọc</code>, <code>xóa</code> từng phần tử, cũng như <code>đọc tất cả giá trị</code> trong hash.</p>
+</li>
+<li>
+<p>Danh sách các command với Hashes tại <a href="https://redis.io/commands#hash">commands#hash</a></p>
+</li>
+</ul>
+<h3 id="sorted-sets">Sorted Sets</h3>
+<ul>
+<li>
+<p><code>Sorted Sets</code> cơ bản là <code>Sets</code> các <code>string</code> được sắp xếp sao cho các <code>string</code> trong <code>set</code> đều là <code>duy nhất</code>.</p>
+</li>
+<li>
+<p>Mỗi phần tử của <code>Sorted Sets</code> là map của 1 <code>string</code> (member) và 1 <code>floating-point number</code> (score), Sorted Sets sẽ được sắp xếp theo <code>score</code> này, các phần tử là duy nhất nhưng các score có thể ngang bằng nhau. </p>
+</li>
+<li>
+<p>Redis hỗ trợ các thao tác tác <code>thêm</code>, <code>sửa</code>, <code>xóa</code> phần tử một cách rất nhanh (thời gian tỉ lệ với logarit của số phần tử).</p>
+</li>
+<li>
+<p>Danh sách các command với Hashes tại <a href="https://redis.io/commands#sorted-set">commands#sorted-set</a></p>
+</li>
+</ul>
+<h3 id="bitmaps-and-hyperloglogs">Bitmaps and HyperLogLogs</h3>
+<p><code>Redis</code> cũng hỗ trợ <code>Bitmap</code> và <code>HyperLogLogs</code> và đều dựa trên kiểu <code>strings</code> nhưng có <code>semantics</code> riêng của chúng:</p>
+<ul>
+<li>
+<p><code>Bitmap</code>-  kiểu dữ liệu tập hợp các bit và được Redis hỗ trợ thực hiện các tác vụ quy mô bit.</p>
+</li>
+<li>
+<p><code>HyperLogLogs</code>: <code>Redis HyperLogLog</code> là một thuật toán sử dụng phương pháp ngẫu nhiên để tạo ra một số lượng phần tử là duy nhất trong một tập hợp chỉ sử dụng một lượng bộ nhớ nhỏ và không đổi. HyperLogLog cung cấp một xấp xỉ rất tốt về tính chính xác của một tập hợp ngay cả khi sử dụng một lượng bộ nhớ rất nhỏ <code>khoảng 12 kbyte</code> mỗi key với sai số chuẩn là <code>0,81%</code>. Không có giới hạn về số lượng phần tử, trừ khi bạn cần một số lượng lớn hơn <code>264 phần tử</code>.</p>
+</li>
+</ul>
+<h2 id="redis-clusters">Redis Clusters</h2>
+<h3 id="master-slave-architecture">Master-Slave Architecture</h3>
+<p><img alt="" src="../images/redis-master-slave.png" /></p>
+<ul>
+<li>
+<p>Master Node: Process chính, chạy và xử lý các kết nối với client.</p>
+</li>
+<li>
+<p>Slave Node: process phụ, chạy cùng process chính và giám sát process chính. Process phụ cũng thực hiện việc ghi (dump) dữ liệu định kỳ vào ổ cứng để backup.</p>
+</li>
+</ul>
+<h3 id="redis-cluster-vs-redis-sentinel">Redis Cluster vs. Redis Sentinel</h3>
+<p>Redis cũng giống các cơ sở dữ liệu khác, Redis cần cấu hình để đảm bảo tính sẵn sằng và hoạt động của nó, với <code>Redis Cluster</code> và <code>Redis Sentinel</code>.</p>
+<ul>
+<li><code>Redis Sentinel</code>: là một hệ thống được thiết kế để giúp quản lý các <code>Redis instances</code>. Mục đích chính của việc sử dụng <code>sentinel</code> là cung cấp một hệ thống có tính <code>high availability</code> bằng cách <code>monitoring</code>, <code>notifying</code>, và <code>providing</code> và <code>Replication</code> - Replication theo mô hình master-slave (một vài Redis instances đóng vai trò slave là bản sao chính xác của một Redis instance giữ vai trò master). Khi một master không thể <code>serve</code>, Sentinel đảm nhiệm nhiệm vụ giám sát sẽ tự lựa chọn một master mới trong các slaves.</li>
+</ul>
+<p><img alt="" src="../images/redis-sential.png" /></p>
+<ul>
+<li><code>Redis Cluster</code>:Là một giải pháp cho <code>data sharding</code> với tính năng quản lý, và cũng có cơ chế replication. Redis Cluster giúp Redis hoạt động theo mô hình phân tán, chia một instance thành nhiều cluster, khác với Replication + Sentinel đó là các cluster đều được coi như master.</li>
+</ul>
+<p><img alt="" src="../images/redis-cluster.png" /></p>
+<p>&rarr; <code>Redis Cluster</code> cung cấp tính khả dụng cao, hoạt động tương tự như  <code>Redis Sentinel</code> nhưng cho phép chia sẻ nhiều dữ liệu hơn giữa các instances trong Cluster. Do đó, Redis Cluster cải thiện khả năng mở rộng ứng dụng của khi dữ liệu scale-up.</p>
+<h3 id="concepts-and-redis-cluster-master-replica-model">Concepts and Redis Cluster master-replica model</h3>
+<p><img alt="" src="../images/redis-cluster.jpg" /></p>
+<p><code>Redis Cluster provides a way to run a Redis installation where data is automatically sharded across multiple Redis nodes.</code></p>
+<p><code>Redis Cluster also provides some degree of availability during partitions, that is in practical terms the ability to continue the operations when some nodes fail or are not able to communicate.</code></p>
+<ul>
+<li>
+<p>Dữ liệu được tự động chia nhỏ trên nhiều <code>Redis Node</code> và có thể tự động chia sẻ dữ liệu với nhau trong Cluster.</p>
+</li>
+<li>
+<p>Duy trì khả năng hoạt động liên tục của Cluster, khi một Node con gặp sự cố hoặc không thể giao tiếp với phần còn lại của Cluster, Redis Cluster sẽ tiến hành thay thế Node đó bằng nhân bản của nó, đảm bảo nhân bản này hoạt động đúng như Node cũ dựa trên  chế Replication như trên. Cụ thể:</p>
+<ul>
+<li>
+<p>Khi process chính - <code>Master Node</code> bị treo hay thoát, một trong các process phụ - <code>Slave Node</code> trở thành <code>Master Node</code> và xử lý tất cả các yêu cầu trong khi chờ <code>Master Node</code> được khởi động lại. </p>
+</li>
+<li>
+<p>Khi <code>Master Process</code> hoạt động trở lại, nó sẽ lấy tệp kết xuất từ ​​Master tạm thời và sử dụng nó làm cơ sở. Quá trình chính được khởi tạo lại dưới dạng Master, trong khi Master Node tạm thời quay trở lại làm việc như một <code>Slave Node</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="pubsub">Pub/Sub</h2>
+<ul>
+<li>
+<p>Redis <code>Pub</code>/<code>Sub</code> được áp dụng trong các hệ thống cần <code>gửi</code>/<code>nhận</code> message từ sender - <code>publisher</code> gửi message đến receiver <code>subscriber</code>. Liên kết mà các message được chuyển được gọi là <code>Chanel</code>. Trong Redis, một client có thể subscribe nhiều chanel .</p>
+<p><img alt="" src="../images/pubsub-model.png" /></p>
+</li>
+<li>
+<p>Dưới đây là các Command cơ bản, xem full tại <a href="https://redis.io/commands/#pubsub">commands/#pubsub</a>:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PSUBSCRIBE pattern [pattern ...]</td>
+<td>Đăng ký (subscibe) channel</td>
+</tr>
+<tr>
+<td>PUBSUB subcommand [argument [argument ...]]</td>
+<td>Cho biết trạng thái của hệ thống Pub / Sub. Ví dụ, client nào đang hoạt động trên máy chủ.</td>
+</tr>
+<tr>
+<td>PUBLISH channel message</td>
+<td>Gửi message tới channel</td>
+</tr>
+<tr>
+<td>PUNSUBSCRIBE [pattern [pattern ...]]</td>
+<td>Dừng nhận message của channel theo pattern</td>
+</tr>
+<tr>
+<td>SUBSCRIBE channel [channel ...]</td>
+<td>Nhận message của channel</td>
+</tr>
+<tr>
+<td>UNSUBSCRIBE [channel [channel ...]]</td>
+<td>Dừng việc nhận message từ channel</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<ol>
+<li><a href="https://aws.amazon.com/redis/?nc1=h_ls">What is Redis - AWS</a></li>
+<li><a href="https://redis.io/topics/data-types">Redis Data types</a></li>
+<li><a href="https://cloudinfrastructureservices.co.uk/redis-sentinel-vs-cluster/">redis-sentinel-vs-cluster</a></li>
+<li><a href="https://redisson.org/glossary/redis-master-slave-replication.html#:~:text=the%20master%20database.-,Master%2Dslave%20replication%20in%20Redis,%2Drelational%20key%2Dvalue%20databases.&amp;text=By%20default%2C%20master%2Dslave%20replication,majority%20of%20Redis%20use%20cases.">Redis Master-Slave Replication</a></li>
+<li><a href="https://redis.io/topics/cluster-tutorial#:~:text=Redis%20Cluster%20provides%20a%20way,are%20not%20able%20to%20communicate.">Redis cluster tutorial</a></li>
+<li><a href="https://redis.io/topics/pubsub">Redis pubsub topic</a></li>
+<li><a href="https://dev.to/ronnymedina/publish-subscribe-pattern-example-redis-kafka-1gd9">Publish/Subscribe pattern example (Redis, Kafka)</a></li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../Package-Management/npm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NPM" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              NPM
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../Source-Version-Control/Source-Version-Control/" class="md-footer__link md-footer__link--next" aria-label="Next: Source Version Control (Git)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Source Version Control (Git)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Harry Hoang
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "navigation.top", "navigation.tabs", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+    
+  </body>
+</html>

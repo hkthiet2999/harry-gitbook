@@ -1,0 +1,2414 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Harry Hoang">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Object Oriented Programing - Harry Gitbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#object-oriented-programing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Harry Gitbook" class="md-header__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Harry Gitbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Object Oriented Programing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Architecture/Architecture/" class="md-tabs__link">
+        Architecture
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Database/Data-types/" class="md-tabs__link">
+        Database
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-tabs__link">
+        Docker
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Elasticsearch/Elasticsearch/" class="md-tabs__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Linux/commands/" class="md-tabs__link">
+        Linux
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-tabs__link">
+        Message Brokers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        OOP
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ORM/Overview/" class="md-tabs__link">
+        ORM
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Package-Management/composer/" class="md-tabs__link">
+        Package Management
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Redis/Redis/" class="md-tabs__link">
+        Redis
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Source-Version-Control/Source-Version-Control/" class="md-tabs__link">
+        Source Version Control
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Testing/Tessting/" class="md-tabs__link">
+        Testing
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Web-Technologies/1.Web-Protocols/" class="md-tabs__link">
+        Web Technologies
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Harry Gitbook" class="md-nav__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Harry Gitbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Architecture" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Data-types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Deadlock/" class="md-nav__link">
+        Deadlock
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Index-Constraints-Unique/" class="md-nav__link">
+        Index, Constraints, Unique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Locking-Isolation/" class="md-nav__link">
+        Locking / Isolation Level
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Queries/" class="md-nav__link">
+        Queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-nav__link">
+        Relationship, Keys, Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Schema/" class="md-nav__link">
+        Database Schema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Time%20stamp/" class="md-nav__link">
+        Time stamp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Transactions-ACID/" class="md-nav__link">
+        Transactions, ACID
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-nav__link">
+        Docker Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Compose/" class="md-nav__link">
+        Docker Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Objects/" class="md-nav__link">
+        Docker Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Environments/" class="md-nav__link">
+        Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Network/" class="md-nav__link">
+        Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Practice/" class="md-nav__link">
+        Practice with docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Volumes-PersistentData/" class="md-nav__link">
+        Volumes, Persistent Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Elasticsearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Elasticsearch" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Elasticsearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/commands/" class="md-nav__link">
+        Linux Commands
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Message Brokers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Message Brokers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Message Brokers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-nav__link">
+        Message-Brokers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Publish-Subscribe/" class="md-nav__link">
+        Publish-Subscriber
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/RabbitMQ/" class="md-nav__link">
+        RabbitMQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/SNS-SQS/" class="md-nav__link">
+        SNS/SQS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Topics-Exchange-Channel/" class="md-nav__link">
+        Topics, Exchange, Channel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Work%20Queues/" class="md-nav__link">
+        Work Queues
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          OOP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OOP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          OOP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Object Oriented Programing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Object Oriented Programing
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objects-and-classes-properties-and-methods" class="md-nav__link">
+    Objects and Classes, Properties and Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#four-principles" class="md-nav__link">
+    Four Principles
+  </a>
+  
+    <nav class="md-nav" aria-label="Four Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    Inheritance
+  </a>
+  
+    <nav class="md-nav" aria-label="Inheritance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-inheritance" class="md-nav__link">
+    Types of Inheritance:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulation" class="md-nav__link">
+    Encapsulation
+  </a>
+  
+    <nav class="md-nav" aria-label="Encapsulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts_1" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-modifier-in-encapsulation" class="md-nav__link">
+    Access modifier in Encapsulation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polymorphism" class="md-nav__link">
+    Polymorphism
+  </a>
+  
+    <nav class="md-nav" aria-label="Polymorphism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts_2" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_2" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overloading-vs-overriding" class="md-nav__link">
+    Overloading vs. Overriding
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstraction" class="md-nav__link">
+    Abstraction
+  </a>
+  
+    <nav class="md-nav" aria-label="Abstraction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts_3" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_3" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-abstraction" class="md-nav__link">
+    Types of Abstraction:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructor-destructor" class="md-nav__link">
+    Constructor / Destructor
+  </a>
+  
+    <nav class="md-nav" aria-label="Constructor / Destructor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor" class="md-nav__link">
+    Constructor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destructor" class="md-nav__link">
+    Destructor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solid-dry" class="md-nav__link">
+    SOLID / DRY
+  </a>
+  
+    <nav class="md-nav" aria-label="SOLID / DRY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solid" class="md-nav__link">
+    SOLID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dry" class="md-nav__link">
+    DRY
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          ORM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Package Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Package Management" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Package Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/composer/" class="md-nav__link">
+        Composer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/npm/" class="md-nav__link">
+        NPM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Redis/Redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          Source Version Control
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Source Version Control" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Source Version Control
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Source-Version-Control/Source-Version-Control/" class="md-nav__link">
+        Source Version Control (Git)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Tessting/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          Web Technologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Web Technologies" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Web Technologies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/1.Web-Protocols/" class="md-nav__link">
+        Web Protocols
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/2.HTTP-Protocol/" class="md-nav__link">
+        HTTP Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/3.Web-server-and-proxy/" class="md-nav__link">
+        Web server and proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/4.Programming/" class="md-nav__link">
+        Programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/5.Supervisor%20and%20workers%20management/" class="md-nav__link">
+        Supervisor and workers management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/6.RESTful/" class="md-nav__link">
+        RESTful
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/7.Authentication/" class="md-nav__link">
+        Authentication - Authorization
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objects-and-classes-properties-and-methods" class="md-nav__link">
+    Objects and Classes, Properties and Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#four-principles" class="md-nav__link">
+    Four Principles
+  </a>
+  
+    <nav class="md-nav" aria-label="Four Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    Inheritance
+  </a>
+  
+    <nav class="md-nav" aria-label="Inheritance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-inheritance" class="md-nav__link">
+    Types of Inheritance:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulation" class="md-nav__link">
+    Encapsulation
+  </a>
+  
+    <nav class="md-nav" aria-label="Encapsulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts_1" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-modifier-in-encapsulation" class="md-nav__link">
+    Access modifier in Encapsulation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polymorphism" class="md-nav__link">
+    Polymorphism
+  </a>
+  
+    <nav class="md-nav" aria-label="Polymorphism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts_2" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_2" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overloading-vs-overriding" class="md-nav__link">
+    Overloading vs. Overriding
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstraction" class="md-nav__link">
+    Abstraction
+  </a>
+  
+    <nav class="md-nav" aria-label="Abstraction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts_3" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_3" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-abstraction" class="md-nav__link">
+    Types of Abstraction:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructor-destructor" class="md-nav__link">
+    Constructor / Destructor
+  </a>
+  
+    <nav class="md-nav" aria-label="Constructor / Destructor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor" class="md-nav__link">
+    Constructor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destructor" class="md-nav__link">
+    Destructor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solid-dry" class="md-nav__link">
+    SOLID / DRY
+  </a>
+  
+    <nav class="md-nav" aria-label="SOLID / DRY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solid" class="md-nav__link">
+    SOLID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dry" class="md-nav__link">
+    DRY
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/smoothkt4951/harry-gitbook/edit/master/docs/OOP/Object-Oriented-Programing.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="object-oriented-programing">Object Oriented Programing</h1>
+<ul>
+<li><code>Four Principles</code>: <ul>
+<li><code>Inheritance</code>: Concepts, Features, Types of Inheritance, Example</li>
+<li><code>Encapsulation</code>: Concepts, Features, Access modifier, Example</li>
+<li><code>Polymorphism</code>: Concepts, Features, <code>Overloading vs. Overriding</code>, Example</li>
+<li><code>Abstraction</code> : Concepts, Features, Types of Abstraction, Example</li>
+</ul>
+</li>
+<li><code>Objects</code> and <code>Classes</code>, <code>Properties</code> and <code>Methods</code></li>
+<li><code>Constructor</code> and <code>Destructor</code> </li>
+<li><code>SOLID</code> / <code>DRY</code></li>
+</ul>
+<h2 id="objects-and-classes-properties-and-methods">Objects and Classes, Properties and Methods</h2>
+<ul>
+<li><code>Objects</code>: được hiểu như là 1 thực thể, một đối tượng. Trong OOP mọi thứ định nghĩa được qua 3 khái niệm <code>Identity</code>, <code>Attributes</code> và <code>Behaviours</code> thì đều là Objects.</li>
+</ul>
+<p><img alt="" src="../images/exampleObjects.png" /></p>
+<ul>
+<li><code>Classes</code>: Tập hợp một hoặc nhiều các objects có các đặc trương tương tự nhau. Trong OOP, một class bao gồm 3 components là: <code>Name</code>, <code>Attributes</code> và <code>Behaviours</code></li>
+</ul>
+<p><img alt="" src="../images/mooncake.png" /></p>
+<p><em>Objects vs. Classes</em></p>
+<p><code>Class là một khuôn mẫu còn object là một thể hiện cụ thể dựa trên khuôn mẫu đó.</code></p>
+<p><img alt="" src="../images/car.png" /></p>
+<ul>
+<li>
+<p>Ví dụ khi nói đến xe otô thì <code>class</code> chính khuôn mẫu của cái xe với các đặc trưng như có 4 bánh và có thiết kế tương tự như hình vẽ. Còn <code>object</code> là các chiếc xe otô được xây dựng dựa trên khuôn mẫu đó.</p>
+</li>
+<li>
+<p>Trong OOP, một object bao gồm 2 thành phần: Properties và Methods:</p>
+<ul>
+<li>
+<p><code>Properties</code>: là những thông tin, đặc điểm của object. Ví dụ: xe oto sẽ có tên, kiểu dáng, màu sắc, 2 bô hay n bô v.vv &rarr; Phản ánh tính chất của object.</p>
+</li>
+<li>
+<p><code>Methods</code>: là những thao tác, hành động mà object đó có thể thực hiện. Ví dụ: xe lamborghini thể đạt tốc độ 254km/h, có thể chạy đua với thời gian v.vvv &rarr; Phản ánh hành vi của object.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="four-principles">Four Principles</h2>
+<p><img alt="" src="../images/theFour.png" /></p>
+<h3 id="inheritance">Inheritance</h3>
+<h4 id="concepts">Concepts</h4>
+<p><code>Inheritance</code> là quá trình mà một <code>class</code> <code>kế thừa</code> các thuộc tính của một <code>class</code> khác. Các thuộc tính đó có thể là một <code>method</code> hoặc một <code>field</code> nào đó. Class được kế thừa được gọi chung là <code>parent class</code>, còn class kế thừa sẽ được gọi chung là <code>children class</code>.</p>
+<h4 id="features">Features</h4>
+<ul>
+<li>
+<p><code>Tăng khả năng tái sử dụng</code>. Khi một class kế thừa class khác, nó có thể truy cập tất cả các chức năng của class mà nó kế thừa. </p>
+</li>
+<li>
+<p>Khi code được tái sử dụng, sẽ giúp giảm chi phí phát triển và bảo trì, việc kiểm tra và gỡ lỗi sẽ thực hiện với code của parent class, chứ không cần kiểm tra từng children class.</p>
+</li>
+<li>
+<p>Hạn chế sự dư thừa code và hỗ trợ khả năng mở rộng code.</p>
+</li>
+</ul>
+<h4 id="types-of-inheritance">Types of Inheritance:</h4>
+<ul>
+<li>
+<p><code>Single Inheritance</code>: Trường hợp một class chỉ được kế thừa từ một class duy nhất, tức là một <code>children class</code> chỉ có một <code>parent class</code>.</p>
+</li>
+<li>
+<p><code>Multiple Inheritance</code>: Trường hợp một class có thể kế thừa từ nhiều hơn một class khác, đồng nghĩa với việc một <code>children class</code> có thể có nhiều hơn một <code>parent class</code>.</p>
+</li>
+<li>
+<p><code>Multi-Level Inheritance</code>: Trường hợp class A kế thừa từ class B, xong class B kế thừa class C</p>
+</li>
+<li>
+<p><code>Hierarchical Inheritance</code>: Trường hợp có nhiều <code>children class</code> được kế thừa từ một <code>parent class</code> duy nhất.</p>
+</li>
+<li>
+<p><code>Hybrid Inheritance</code>/<code>Virtual Inheritance</code>: Trường hợp kế thừa được kết hợp bởi nhiều hơn một loại kế thừa mình kể ở trên.</p>
+</li>
+</ul>
+<h4 id="example">Example</h4>
+<p><img alt="" src="../images/exampleTeacher.png" /></p>
+<p><em>A private teacher is a type of teacher. And any teacher is a type of Person.</em></p>
+<h3 id="encapsulation">Encapsulation</h3>
+<h4 id="concepts_1">Concepts</h4>
+<p><code>Encapsulation</code> là việc <code>đóng gói</code> tất cả thông tin, dữ liệu, <code>method</code> vào bên trong một <code>object</code>. Sau đó, khi một <code>object</code> được khởi tạo từ <code>class</code>, thì dữ liệu và <code>method</code> đã được đóng gói trong <code>object</code> đó. Khi sử dụng, ta chỉ cần gọi tên method chứ không cần truy cập đến dữ liệu bên trong.</p>
+<h4 id="features_1">Features</h4>
+<ul>
+<li>
+<p><code>Tính linh hoạt</code>: Code được đóng gói sẽ linh hoạt, dễ sửa đổi hơn là những đoạn code độc lập.</p>
+</li>
+<li>
+<p><code>Khả năng tái sử dụng</code>: Code đã đóng gói có thể được tái sử dụng trong một hoặc nhiều ứng dụng. </p>
+</li>
+<li>
+<p><code>Khả năng bảo tr</code>ì: Code được đóng gói trong những phần riêng biệt, như là <code>class</code>, <code>method</code>, <code>interface</code>,… Do đó, việc thay đổi, cập nhật một phần của ứng dụng không ảnh hưởng đến những phần còn lại. Điều này giúp giảm công sức và tiết kiệm thời gian cho các ông dev.</p>
+</li>
+<li>
+<p><code>Khả năng kiểm thử</code>: Testing tiết kiệm được thời gian và công sức hơn trong việc test 1 class chứa toàn bộ thông tin của class đó thay vì kiếm từng method của class để test.</p>
+</li>
+<li>
+<p><code>Che giấu dữ liệu</code>: Khi sử dụng method, dev chỉ cần biết method đó nhận parameter gì, return gì mà không cần quan tâm nhiều đến logic bên trong.</p>
+</li>
+</ul>
+<h4 id="access-modifier-in-encapsulation">Access modifier in Encapsulation</h4>
+<ul>
+<li><code>Private</code>: Chỉ truy cập được <code>method</code> trong <code>class</code> khai báo nó.</li>
+<li><code>Public</code>: Có thể truy cập tới <code>method</code> từ các <code>class</code> khác</li>
+<li><code>Protected</code>: Chỉ truy cập được  <code>method</code> khi <code>class</code> này kế thừa <code>class</code> khai báo <code>method</code> đó</li>
+</ul>
+<h4 id="example_1">Example</h4>
+<p><img alt="" src="../images/exampleCat.png" /></p>
+<p><em>You can feed the cat. But you can’t directly change how hungry the cat is.</em></p>
+<h3 id="polymorphism">Polymorphism</h3>
+<h4 id="concepts_2">Concepts</h4>
+<p><code>Polymorphism</code> là việc một biến, một hàm hoặc một phương thức có thể tồn tại ở nhiều dạng khác nhau. Tức là chúng có thể cùng một tên nhưng chức năng thực sự của chúng lại khác nhau.</p>
+<p><code>Polymorphism</code> thường được dùng trong trường hợp một children class cần dùng các method của parent class và bổ sung thêm cho một moethod khác. Hay khi một class cần có nhiều method có cùng tên nhau nhưng khác parameter.</p>
+<h4 id="features_2">Features</h4>
+<ul>
+<li>Tái sử dụng.</li>
+<li>Có thể dùng một tên duy nhất để lưu trữ biến của nhiều kiểu dữ liệu khác nhau (float, double, long, int,…).</li>
+</ul>
+<h4 id="overloading-vs-overriding">Overloading vs. Overriding</h4>
+<p><code>Polymorphism</code> gồm có hai loại: <code>Runtime Polymorphism</code> và <code>Compile Time Polymorphism</code>. Theo đó, Polymorphism cho phép một phương thức thực thi những behavior khác nhau theo hai hướng: sử dụng phương thức ghi đè (<code>method overriding</code>) hoặc phương thức nạp chồng (<code>method overloading</code>).</p>
+<ul>
+<li>
+<p><code>Overloading</code> là một kĩ thuật cho phép trong cùng một class có thể có nhiều phương thức cùng tên nhưng khác nhau về số lượng tham số hoặc kiểu dữ liệu tham số. </p>
+</li>
+<li>
+<p><code>Overriding</code> được sử dụng trong trường hợp lớp con kế thừa từ lớp cha và muốn định nghĩa lại một phương thức đã có mặt ở lớp cha. Một lớp cha thông thường có thể có nhiều lớp con kế thừa, tuy nhiên phương thức ở lớp cha có thể phù hợp với lớp con này nhưng không phù hợp với lớp con khác, do đó lớp con cần ghi đè lại phương thức đó cho phù hợp.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Overloading</th>
+<th>Overriding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thể hiện đa hình tại compile time</td>
+<td>Thể hiện đa hình tại runtime</td>
+</tr>
+<tr>
+<td>Thêm hành vi cho phương thức</td>
+<td>Thay đổi hành vi hiện tại của phương thức</td>
+</tr>
+<tr>
+<td>Có thể khác nhau về số lượng và kiểu dữ liệu của tham số   Số lượng và liểu dữ liệu của tham số phải giống nhau</td>
+<td></td>
+</tr>
+<tr>
+<td>Xảy ra trong cùng một class</td>
+<td>Xảy ra ở 2 class có quan hệ kế thừa</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="../images/exampleShape.png" /></p>
+<p><em>Triangle, Circle, and Rectangle now can be used in the same collection</em></p>
+<h3 id="abstraction">Abstraction</h3>
+<h4 id="concepts_3">Concepts</h4>
+<p><code>Abstraction</code> là việc <code>trừu tượng hóa</code> một objects bằng cách chọn ra các thuộc tính, phương thức của objects cần thiết và bỏ đi những thuộc tính, phương thức không cần thiết. </p>
+<p>Có thể xem Abstraction là một phần mở rộng của <code>Encapsulation</code>. Thông qua Abstraction, ta có thể ẩn tất cả dữ liệu hoặc quy trình không liên quan của ứng dụng. Đối với người dùng, đó chỉ là những chi tiết không cần thiết. Từ đó, ta có thể để giảm độ phức tạp và tăng hiệu quả sử dụng của phần mềm.</p>
+<h4 id="features_3">Features</h4>
+<ul>
+<li>
+<p>Xây dựng một interface đơn giản, dễ hiểu dễ sử dụng cho các objects.</p>
+</li>
+<li>
+<p>Code phức tạp bị ẩn đi.</p>
+</li>
+<li>
+<p>Nâng cao vấn đề bảo mật, bảo vệ dữ liệu không bị lộ ra ngoài.</p>
+</li>
+<li>
+<p>Việc bảo trì phần mềm dễ dàng hơn.</p>
+</li>
+</ul>
+<h4 id="types-of-abstraction">Types of Abstraction:</h4>
+<ul>
+<li>
+<p><code>Data Abstraction</code>: Khi dữ liệu của object không hiển thị ra bên ngoài, thì đó gọi là trừu tượng hóa dữ liệu. Nếu cần, ta có thể cấp quyền truy cập vào dữ liệu của object bằng nhiều cách. Thông thường sử dụng một số phương thức như <code>get</code>, <code>set</code>.</p>
+</li>
+<li>
+<p><code>Process Abstraction</code>: Khi không cần cung cấp chi tiết về tất cả các chức năng khác nhau của một object hay các logic bên trong nó, ta có thể ẩn việc triển khai này đi dùng Abstraction, gọi là trừu tượng hóa quy trình.</p>
+</li>
+</ul>
+<h4 id="example_2">Example</h4>
+<p><img alt="" src="../images/examplePhone.png" /></p>
+<p><em>Cell phones are complex. But using them is simple.</em></p>
+<h2 id="constructor-destructor">Constructor / Destructor</h2>
+<p><img alt="" src="../images/ctor-dtor.jpg" /></p>
+<h3 id="constructor">Constructor</h3>
+<ul>
+<li>
+<p>Constructor là một hàm dùng để <code>khởi tạo</code>, cấp phát bộ nhớ cho một object. Constructor thông thường sẽ có các đặc điểm như được gọi khi có một object được tạo, trùng với tên class, không có kiểu dữ liệu trả về.</p>
+</li>
+<li>
+<p>Types:</p>
+<ul>
+<li><code>Parameterized constructors</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">class</span> <span class="nc">Example</span> <span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="kd">public</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">Example</span><span class="p">();</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">Example</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>  <span class="c1">// Parameterized constructor.</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="nl">private</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="kt">int</span> <span class="n">x_</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="kt">int</span> <span class="n">y_</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="p">};</span>
+</code></pre></div>
+<ul>
+<li><code>Default constructors</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">class</span> <span class="nc">Student</span> <span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="kd">public</span><span class="p">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">Student</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>  <span class="c1">// Default constructor.</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">};</span>
+</code></pre></div>
+<ul>
+<li>
+<p><code>Copy constructors</code></p>
+</li>
+<li>
+<p><code>Conversion constructors</code></p>
+</li>
+<li>
+<p><code>Move constructors</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="destructor">Destructor</h3>
+<ul>
+<li>
+<p><code>Destructor</code> ngược lại với Constructor, nó được dùng để xoá một object. Destructor cũng có các đặc điểm như được gọi tự động khi một đối object thoát khỏi Scope của class, hay một chức năng, chương trình kết thúc Chương trình kết thúc hay gọi tới toán tử delete để xóa một object v.vv, nói chung là được gọi trước khi bộ nhớ của đối tượng được giải phóng. </p>
+</li>
+<li>
+<p>Mục đích chính của nó là giải phóng các tài nguyên, bộ nhớ mà objects có được trong thời gian tồn tại của nó và hủy việc tham chiếu từ object đó đến các object khác. </p>
+</li>
+</ul>
+<h2 id="solid-dry">SOLID / DRY</h2>
+<h3 id="solid">SOLID</h3>
+<p><img alt="" src="../images/solid.jpg" /></p>
+<p><code>SOLID</code> là viết tắt của 5 chữ cái đầu trong 5 nguyên tắc thiết kế hướng đối tượng, giúp cho developer viết ra những đoạn code dễ đọc, dễ hiểu, dễ maintain, được đưa ra bởi Bob Martin và Michael Feathers:</p>
+<ul>
+<li>
+<p><strong>S</strong>ingle responsibility priciple - <code>SRP</code>: Một class chỉ nên giữ 1 trách nhiệm duy nhất 
+(Chỉ có thể sửa đổi class với 1 lý do duy nhất)</p>
+</li>
+<li>
+<p><strong>O</strong>pen/Closed principle - <code>OCP</code>: Có thể thoải mái mở rộng 1 class, nhưng không được sửa đổi bên trong class đó (open for extension but closed for modification).</p>
+</li>
+<li>
+<p><strong>L</strong>iskov substitution principe - <code>LSP</code>: Trong một chương trình, các object của class con có thể thay thế class cha mà không làm thay đổi tính đúng đắn của chương trình.</p>
+</li>
+<li>
+<p><strong>I</strong>nterface segregation principle - <code>ISP</code>: Thay vì dùng 1 interface lớn, ta nên tách thành nhiều interface nhỏ, với nhiều mục đích cụ thể.</p>
+</li>
+<li>
+<p><strong>D</strong>ependency inversion principle - <code>DIP</code>: Có hai ý</p>
+<ol>
+<li>Các module cấp cao không nên phụ thuộc vào các modules cấp thấp. Cả 2 nên phụ thuộc vào abstraction.</li>
+<li>Interface (abstraction) không nên phụ thuộc vào chi tiết, mà ngược lại.( Các class giao tiếp với nhau thông qua interface, 
+không phải thông qua implementation.)</li>
+</ol>
+</li>
+</ul>
+<h3 id="dry">DRY</h3>
+<p><img alt="" src="../images/dry.png" /></p>
+<p><code>DRY = Don’t Repeat Yourself</code></p>
+<ul>
+<li>
+<p>Nguyên tắc này khuyên ta <code>đừng có viết lặp đi lặp lại bất kỳ một đoạn code nào</code> mà <code>hãy đóng gói nó thành phương thức riêng</code> và <code>cho phép kế thừa lại đoạn code này</code>. Đến khi cần thì chỉ cần gọi tên phương thức đó ra xài. </p>
+</li>
+<li>
+<p>Đừng lặp lại code ở đây là không lặp lại các đoạn code giống nhau, các method thực hiện chức năng như nhau, cố gắng gom chúng lại 1 cách gọn gàng và có thể dùng lại khi cần.</p>
+</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ol>
+<li>
+<p><a href="https://www.freecodecamp.org/news/object-oriented-programming-concepts-21bb035f7260/">How to explain object-oriented programming concepts to a 6-year-old</a></p>
+</li>
+<li>
+<p><a href="https://www.indeed.com/career-advice/career-development/what-is-object-oriented-programming#:~:text=Object%2Doriented%20programming%20has%20four,abstraction%2C%20inheritance%2C%20and%20polymorphism.">The four basics of object-oriented programming</a></p>
+</li>
+<li>
+<p><a href="https://www.c-sharpcorner.com/UploadFile/cda5ba/object-oriented-programming-with-real-world-scenario/">Object Oriented Programming With A Real-World Scenario</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Constructor_(object-oriented_programming)">wiki - Constructor</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Destructor_(computer_programming)">wiki - Destructor</a></p>
+</li>
+<li>
+<p><a href="https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design">SOLID: The First 5 Principles of Object Oriented Design</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">wiki - DRY</a></p>
+</li>
+<li>
+<p><a href="https://study.com/academy/lesson/oop-object-oriented-programming-objects-classes-interfaces.html">Object-Oriented Programming: Objects, Classes &amp; Methods</a></p>
+</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../Message-Brokers/Work%20Queues/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Work Queues" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Work Queues
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../ORM/Overview/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Overview
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Harry Hoang
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "navigation.top", "navigation.tabs", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+    
+  </body>
+</html>

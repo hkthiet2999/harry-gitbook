@@ -7,20 +7,22 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
+        <meta name="author" content="Harry Hoang">
       
-      <link rel="icon" href="assets/images/favicon.png">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
     
     
       
-        <title>Harry Gitbook</title>
+        <title>Transactions, ACID - Harry Gitbook</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.6e60f8b8.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
         
       
     
@@ -34,7 +36,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -61,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#transactions-acid" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -71,7 +78,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Harry Gitbook" class="md-header__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+    <a href="../.." title="Harry Gitbook" class="md-header__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -90,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Transactions, ACID
             
           </span>
         </div>
@@ -186,12 +193,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="." class="md-tabs__link md-tabs__link--active">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -206,7 +211,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="Architecture/Architecture/" class="md-tabs__link">
+      <a href="../../Architecture/Architecture/" class="md-tabs__link">
         Architecture
       </a>
     </li>
@@ -216,13 +221,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="Database/Data-types/" class="md-tabs__link">
+      <a href="../Data-types/" class="md-tabs__link md-tabs__link--active">
         Database
       </a>
     </li>
@@ -238,7 +245,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="Docker/Docker-Architecture/" class="md-tabs__link">
+      <a href="../../Docker/Docker-Architecture/" class="md-tabs__link">
         Docker
       </a>
     </li>
@@ -254,7 +261,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="Elasticsearch/Elasticsearch/" class="md-tabs__link">
+      <a href="../../Elasticsearch/Elasticsearch/" class="md-tabs__link">
         Elasticsearch
       </a>
     </li>
@@ -270,7 +277,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="Linux/commands/" class="md-tabs__link">
+      <a href="../../Linux/commands/" class="md-tabs__link">
         Linux
       </a>
     </li>
@@ -286,7 +293,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="Message-Brokers/Message-Brokers/" class="md-tabs__link">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-tabs__link">
         Message Brokers
       </a>
     </li>
@@ -302,7 +309,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="OOP/Object-Oriented-Programing/" class="md-tabs__link">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-tabs__link">
         OOP
       </a>
     </li>
@@ -318,7 +325,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="ORM/Overview/" class="md-tabs__link">
+      <a href="../../ORM/Overview/" class="md-tabs__link">
         ORM
       </a>
     </li>
@@ -334,7 +341,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="Package-Management/composer/" class="md-tabs__link">
+      <a href="../../Package-Management/composer/" class="md-tabs__link">
         Package Management
       </a>
     </li>
@@ -350,7 +357,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="Redis/Redis/" class="md-tabs__link">
+      <a href="../../Redis/Redis/" class="md-tabs__link">
         Redis
       </a>
     </li>
@@ -366,7 +373,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="Source-Version-Control/Source-Version-Control/" class="md-tabs__link">
+      <a href="../../Source-Version-Control/Source-Version-Control/" class="md-tabs__link">
         Source Version Control
       </a>
     </li>
@@ -382,7 +389,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="Testing/Tessting/" class="md-tabs__link">
+      <a href="../../Testing/Tessting/" class="md-tabs__link">
         Testing
       </a>
     </li>
@@ -398,7 +405,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="Web-Technologies/1.Web-Protocols/" class="md-tabs__link">
+      <a href="../../Web-Technologies/1.Web-Protocols/" class="md-tabs__link">
         Web Technologies
       </a>
     </li>
@@ -426,7 +433,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Harry Gitbook" class="md-nav__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+    <a href="../.." title="Harry Gitbook" class="md-nav__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -455,19 +462,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
-      
     </li>
   
 
@@ -506,7 +505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Architecture/Architecture/" class="md-nav__link">
+      <a href="../../Architecture/Architecture/" class="md-nav__link">
         Architecture
       </a>
     </li>
@@ -526,12 +525,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -554,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Database/Data-types/" class="md-nav__link">
+      <a href="../Data-types/" class="md-nav__link">
         Data types
       </a>
     </li>
@@ -568,7 +569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Database/Deadlock/" class="md-nav__link">
+      <a href="../Deadlock/" class="md-nav__link">
         Deadlock
       </a>
     </li>
@@ -582,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Database/Index-Constraints-Unique/" class="md-nav__link">
+      <a href="../Index-Constraints-Unique/" class="md-nav__link">
         Index, Constraints, Unique
       </a>
     </li>
@@ -596,7 +597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Database/Locking-Isolation/" class="md-nav__link">
+      <a href="../Locking-Isolation/" class="md-nav__link">
         Locking / Isolation Level
       </a>
     </li>
@@ -610,7 +611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Database/Queries/" class="md-nav__link">
+      <a href="../Queries/" class="md-nav__link">
         Queries
       </a>
     </li>
@@ -624,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Database/Relationship-Keys-Cascade/" class="md-nav__link">
+      <a href="../Relationship-Keys-Cascade/" class="md-nav__link">
         Relationship, Keys, Cascade
       </a>
     </li>
@@ -638,7 +639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Database/Schema/" class="md-nav__link">
+      <a href="../Schema/" class="md-nav__link">
         Database Schema
       </a>
     </li>
@@ -652,7 +653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Database/Time%20stamp/" class="md-nav__link">
+      <a href="../Time%20stamp/" class="md-nav__link">
         Time stamp
       </a>
     </li>
@@ -664,11 +665,127 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="Database/Transactions-ACID/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Transactions, ACID
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Transactions, ACID
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transactions" class="md-nav__link">
+    Transactions
+  </a>
+  
+    <nav class="md-nav" aria-label="Transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-of-dbms-transaction-processing" class="md-nav__link">
+    Definition of DBMS Transaction Processing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrency-in-transactions" class="md-nav__link">
+    Concurrency in Transactions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#states-of-transactions" class="md-nav__link">
+    States of Transactions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acid" class="md-nav__link">
+    ACID
+  </a>
+  
+    <nav class="md-nav" aria-label="ACID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#atomicity" class="md-nav__link">
+    Atomicity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consistency" class="md-nav__link">
+    Consistency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isolation" class="md-nav__link">
+    Isolation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#durability" class="md-nav__link">
+    Durability
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -714,7 +831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Docker/Docker-Architecture/" class="md-nav__link">
+      <a href="../../Docker/Docker-Architecture/" class="md-nav__link">
         Docker Architecture
       </a>
     </li>
@@ -728,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Docker/Docker-Compose/" class="md-nav__link">
+      <a href="../../Docker/Docker-Compose/" class="md-nav__link">
         Docker Compose
       </a>
     </li>
@@ -742,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Docker/Docker-Objects/" class="md-nav__link">
+      <a href="../../Docker/Docker-Objects/" class="md-nav__link">
         Docker Objects
       </a>
     </li>
@@ -756,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Docker/Environments/" class="md-nav__link">
+      <a href="../../Docker/Environments/" class="md-nav__link">
         Environments
       </a>
     </li>
@@ -770,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Docker/Network/" class="md-nav__link">
+      <a href="../../Docker/Network/" class="md-nav__link">
         Network
       </a>
     </li>
@@ -784,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Docker/Practice/" class="md-nav__link">
+      <a href="../../Docker/Practice/" class="md-nav__link">
         Practice with docker
       </a>
     </li>
@@ -798,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Docker/Volumes-PersistentData/" class="md-nav__link">
+      <a href="../../Docker/Volumes-PersistentData/" class="md-nav__link">
         Volumes, Persistent Data
       </a>
     </li>
@@ -846,7 +963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Elasticsearch/Elasticsearch/" class="md-nav__link">
+      <a href="../../Elasticsearch/Elasticsearch/" class="md-nav__link">
         Elasticsearch
       </a>
     </li>
@@ -894,7 +1011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Linux/commands/" class="md-nav__link">
+      <a href="../../Linux/commands/" class="md-nav__link">
         Linux Commands
       </a>
     </li>
@@ -942,7 +1059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Message-Brokers/Message-Brokers/" class="md-nav__link">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-nav__link">
         Message-Brokers
       </a>
     </li>
@@ -956,7 +1073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Message-Brokers/Publish-Subscribe/" class="md-nav__link">
+      <a href="../../Message-Brokers/Publish-Subscribe/" class="md-nav__link">
         Publish-Subscriber
       </a>
     </li>
@@ -970,7 +1087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Message-Brokers/RabbitMQ/" class="md-nav__link">
+      <a href="../../Message-Brokers/RabbitMQ/" class="md-nav__link">
         RabbitMQ
       </a>
     </li>
@@ -984,7 +1101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Message-Brokers/Routing/" class="md-nav__link">
+      <a href="../../Message-Brokers/Routing/" class="md-nav__link">
         Routing
       </a>
     </li>
@@ -998,7 +1115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Message-Brokers/SNS-SQS/" class="md-nav__link">
+      <a href="../../Message-Brokers/SNS-SQS/" class="md-nav__link">
         SNS/SQS
       </a>
     </li>
@@ -1012,7 +1129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Message-Brokers/Topics-Exchange-Channel/" class="md-nav__link">
+      <a href="../../Message-Brokers/Topics-Exchange-Channel/" class="md-nav__link">
         Topics, Exchange, Channel
       </a>
     </li>
@@ -1026,7 +1143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Message-Brokers/Work%20Queues/" class="md-nav__link">
+      <a href="../../Message-Brokers/Work%20Queues/" class="md-nav__link">
         Work Queues
       </a>
     </li>
@@ -1074,7 +1191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="OOP/Object-Oriented-Programing/" class="md-nav__link">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-nav__link">
         Object Oriented Programing
       </a>
     </li>
@@ -1122,7 +1239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ORM/Overview/" class="md-nav__link">
+      <a href="../../ORM/Overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -1170,7 +1287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Package-Management/composer/" class="md-nav__link">
+      <a href="../../Package-Management/composer/" class="md-nav__link">
         Composer
       </a>
     </li>
@@ -1184,7 +1301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Package-Management/npm/" class="md-nav__link">
+      <a href="../../Package-Management/npm/" class="md-nav__link">
         NPM
       </a>
     </li>
@@ -1232,7 +1349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Redis/Redis/" class="md-nav__link">
+      <a href="../../Redis/Redis/" class="md-nav__link">
         Redis
       </a>
     </li>
@@ -1280,7 +1397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Source-Version-Control/Source-Version-Control/" class="md-nav__link">
+      <a href="../../Source-Version-Control/Source-Version-Control/" class="md-nav__link">
         Source Version Control (Git)
       </a>
     </li>
@@ -1328,7 +1445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Testing/Tessting/" class="md-nav__link">
+      <a href="../../Testing/Tessting/" class="md-nav__link">
         Testing
       </a>
     </li>
@@ -1376,7 +1493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Web-Technologies/1.Web-Protocols/" class="md-nav__link">
+      <a href="../../Web-Technologies/1.Web-Protocols/" class="md-nav__link">
         Web Protocols
       </a>
     </li>
@@ -1390,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Web-Technologies/2.HTTP-Protocol/" class="md-nav__link">
+      <a href="../../Web-Technologies/2.HTTP-Protocol/" class="md-nav__link">
         HTTP Protocol
       </a>
     </li>
@@ -1404,7 +1521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Web-Technologies/3.Web-server-and-proxy/" class="md-nav__link">
+      <a href="../../Web-Technologies/3.Web-server-and-proxy/" class="md-nav__link">
         Web server and proxy
       </a>
     </li>
@@ -1418,7 +1535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Web-Technologies/4.Programming/" class="md-nav__link">
+      <a href="../../Web-Technologies/4.Programming/" class="md-nav__link">
         Programming
       </a>
     </li>
@@ -1432,7 +1549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Web-Technologies/5.Supervisor%20and%20workers%20management/" class="md-nav__link">
+      <a href="../../Web-Technologies/5.Supervisor%20and%20workers%20management/" class="md-nav__link">
         Supervisor and workers management
       </a>
     </li>
@@ -1446,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Web-Technologies/6.RESTful/" class="md-nav__link">
+      <a href="../../Web-Technologies/6.RESTful/" class="md-nav__link">
         RESTful
       </a>
     </li>
@@ -1460,7 +1577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Web-Technologies/7.Authentication/" class="md-nav__link">
+      <a href="../../Web-Technologies/7.Authentication/" class="md-nav__link">
         Authentication - Authorization
       </a>
     </li>
@@ -1481,19 +1598,276 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transactions" class="md-nav__link">
+    Transactions
+  </a>
+  
+    <nav class="md-nav" aria-label="Transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-of-dbms-transaction-processing" class="md-nav__link">
+    Definition of DBMS Transaction Processing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrency-in-transactions" class="md-nav__link">
+    Concurrency in Transactions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#states-of-transactions" class="md-nav__link">
+    States of Transactions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acid" class="md-nav__link">
+    ACID
+  </a>
+  
+    <nav class="md-nav" aria-label="ACID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#atomicity" class="md-nav__link">
+    Atomicity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consistency" class="md-nav__link">
+    Consistency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isolation" class="md-nav__link">
+    Isolation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#durability" class="md-nav__link">
+    Durability
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/smoothkt4951/harry-gitbook/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/smoothkt4951/harry-gitbook/edit/master/docs/Database/Transactions-ACID.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>Home</h1>
-
-<p>welcome.md</p>
+<h1 id="transactions-acid">Transactions, ACID</h1>
+<p><img alt="" src="../images/transaction-acid-banner.png" /></p>
+<h2 id="transactions">Transactions</h2>
+<h3 id="definition-of-dbms-transaction-processing">Definition of DBMS Transaction Processing</h3>
+<ul>
+<li>
+<p><code>DBMS Transaction Processing</code> là một <code>unit of data processing</code> của Database trong process xử lý các hoạt động truy cập tới database. Có thể hiểu <code>Transaction</code> như một phương tiện phân phối <code>quá trình xử lý thông tin</code>. </p>
+</li>
+<li>
+<p>Quá trình xử lý thông tin này là một tập hợp các <code>thao tác với dữ liệu</code> (group of <code>Database Operations</code>), chứa một hoặc nhiều <code>database actions</code> như <code>retrieve</code>, <code>insert</code>, <code>update</code>. </p>
+</li>
+</ul>
+<p><img alt="" src="../images/steps-transaction.png" /></p>
+<p><em>Note</em></p>
+<ul>
+<li><code>Transaction</code> là một tập hợp các <code>operations</code>.</li>
+<li>Một Transaction đại diện cho sự truy cập, thay đổi dữ liệu trong database.</li>
+<li>Transactions chỉ cho ra hai kết quả: hoặc là tất cả các operations được thực hiện thành công; hoặc là không một operations nào được thực hiện thành công cả - <code>All or nothing</code></li>
+<li>Transaction hoạt động với database dựa trên 3 thao tác chính : <code>Read</code>, <code>Write</code>, <code>Commit</code>.</li>
+<li>Operations được thực hiện trong <code>RAM</code> hoặc <code>CPU</code> &rarr; performance của một transaction phụ thuộc vào các process của <code>RAM</code>, <code>CPU</code>.</li>
+</ul>
+<h3 id="concurrency-in-transactions">Concurrency in Transactions</h3>
+<p>Việc truy cập tới resource của database dựa trên cơ chế <code>shared resource</code>, tức là các <code>resource</code> sẽ được sử dụng bởi nhiều người dùng và xử lý đồng thời. Ví dụ như hệ thống ngân hàng, hệ thống đặt chỗ đường sắt và đường hàng không, giám sát thị trường chứng khoán, kiểm kê siêu thị và thanh toán, v.v.</p>
+<p>Nếu không quản lý quyền <code>concurrent access</code> trong từng Transactions của database có thể tạo ra các vấn đề như:</p>
+<ul>
+<li>Lỗi phần cứng và sự cố hệ thống</li>
+<li>Thực hiện đồng thời cùng một giao dịch, <code>deadlock</code> hoặc hiệu suất chậm</li>
+</ul>
+<h3 id="states-of-transactions">States of Transactions</h3>
+<p>Để dễ hình dùng quá trình chuyển State của Transactions, ta có thể tham khảo diagram dưới đây:</p>
+<p><img alt="" src="../images/transaction-diagram.png" /></p>
+<ol>
+<li>
+<p>Khi bắt đầu một Transaction, Transaction sẽ được thực thi và nằm trong trạng thái <code>Active State</code>. Trong trạng thái này, các <code>READ or WRITE operation</code> có thể được thực hiện.</p>
+</li>
+<li>
+<p>Khi các Operation thực thi xong, transaction sẽ chuyển sang trạng thái này</p>
+</li>
+<li>
+<p>Cơ chế <code>recovery</code> hoạt động để đảm bảo lỗi hệ thống sẽ không dẫn đến việc vĩnh viễn không thể ghi lại các thay đổi trong transaction. Nếu <code>recovery</code> cho kết quả <code>success</code>, transaction sẽ được commit và chuyển sang <code>Committed State</code></p>
+</li>
+<li>
+<p>Trong trường hợp <code>recovery</code> cho kết quả <code>fail</code>, transaction thất bại và sẽ được chuyển sang <code>Failed State</code>.</p>
+</li>
+<li>
+<p>Trong trường hợp một transaction đang ở <code>Active State</code> và đang thực thi các operations, nhưng bị cancel bởi hệ thống hay bất cứ lý do gì thì sẽ được chuyển sang <code>Failed State</code> (hoặc gọi là <code>Rollback</code>).</p>
+</li>
+<li>
+<p>Transaction rời khỏi hệ thống, kết thúc một Transaction.</p>
+</li>
+</ol>
+<p><em>Tóm lại</em></p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active State</td>
+<td>Bắt đầu một Transaction, trong trạng thái này, các <code>READ or WRITE operation</code> có thể được thực hiện.</td>
+</tr>
+<tr>
+<td>Partially Committed</td>
+<td>Transaction sẽ chuyển sang trạng thái này sau khi kết thúc quá trình thực thi các Operations.</td>
+</tr>
+<tr>
+<td>Committed State</td>
+<td>Nếu các Operations được thực thi THÀNH CÔNG, transaction sẽ chuyển sang trạng thái này. Tất cả các thay đổi của Operations được ghi lại vĩnh viễn vào cơ sở dữ liệu.</td>
+</tr>
+<tr>
+<td>Failed State</td>
+<td>Nếu các Operations được thực thi THẤT BẠI, hoặc một transaction bị cancel khi đang ở Active State, transaction sẽ chuyển sang trạng thái này</td>
+</tr>
+<tr>
+<td>Terminated State</td>
+<td>Chấm dứt Transaction.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="acid">ACID</h2>
+<p><img alt="" src="../images/acid-banner.png" /></p>
+<ul>
+<li>
+<p><code>ACID</code> là 1 tập hợp các <code>thuộc tính</code> mà 1 transaction thao tác với database phải đạt được nhằm bảo đảm tính <code>toàn vẹn</code>, <code>hợp lệ</code>, <code>an toàn</code>, tính <code>bền vững</code>… của dữ liệu ở database.</p>
+</li>
+<li>
+<p>Nếu 1 transaction không thoả mản 1 trong các thuộc tính này thì sẽ không thể thao tác với database thành công, bị rollback ngay lập tức.</p>
+</li>
+<li>
+<p><code>ACID</code> là cụm từ viết tắt của 4 thuộc tính sau: <em>A</em>tomicity, <em>C</em>onsistency, <em>I</em>solation và <em>D</em>urability:</p>
+</li>
+</ul>
+<p><img alt="" src="../images/acid-summary.png" /></p>
+<h3 id="atomicity"><strong>A</strong>tomicity</h3>
+<ul>
+<li>
+<p><code>Atomicity</code> - Tính bảo toàn?😀: Dựa vào rule <code>All or nothing</code> kể trên, khi một chuỗi các operations lần lượt thao tác với database trong 1 transaction, nếu 1 operation đang trong xử lý mà xảy lỗi ở database, hay crash hệ thống, v.v… thì toàn bộ transaction sẽ bị hủy bỏ và bị rollback, dữ liệu ở database vẫn giữ như cũ trước khi có sự thay đổi. Nếu như không xảy ra lỗi hay vấn đề gì trong quá trình xử lý các operations thì transaction đó sẽ commit thành công, dữ liệu phía database cũng được cập nhật thành công luôn.</p>
+</li>
+<li>
+<p>Theo <code>State Transaction Diagram</code> ở trên, một transaction chỉ có 2 kết quả:</p>
+<ul>
+<li><code>Abort</code>: Tất cả các thay đổi của transaction sẽ không được đồng bộ xuống database.</li>
+<li><code>Commit</code>: Tất cả các thay đổi của transaction được đồng bộ xuống database.</li>
+</ul>
+</li>
+<li>
+<p>Lấy ví dụ chúng ta có một giao dịch của ngân hàng chuyển 100tr đồng từ tài khoảng X sang tài khoản Y. </p>
+<p><img alt="" src="../images/transX-toY.png" /></p>
+<p>Nếu transaction thực thi thành công tại bước T1 nhưng khi đến bước T2 thì hệ thống bị lỗi. Lúc này nếu những thay đổi này được đồng bộ xuống database thì vô tình tài khoản X bị mất 100tr đồng mà tài khoản Y lại không nhận được đồng nào. Đây là ví dụ kinh điển mà Atomicity có thể đảm bảo các hệ thống sẽ không xảy ra sai xót như trên.</p>
+</li>
+</ul>
+<h3 id="consistency">Consistency</h3>
+<ul>
+<li><code>Consistency</code> - Tính nhất quán: Một transaction phải đảm bảo tính <code>hợp lệ</code> của dữ liệu khi cập nhật vào database. Nếu dữ liệu đưa vào database mà như kiễu dữ liệu không phù hợp, không thỏa mãn constraint, rule, trigger, query nhầm table,… thì transaction đó sẽ bị rollback, dữ liệu ở database vẫn được giữ nguyên lúc chưa thay đổi. Chính vì vậy dữ liệu từ transaction phải hợp lệ, đúng đắn, nhất quán với những constraint, cấu trúc table, rule… đã được định nghĩa hay khai báo từ phía database.</li>
+</ul>
+<h3 id="isolation">Isolation</h3>
+<ul>
+<li>
+<p><code>Isolation</code> - Tính cô lập:  Mọi thao tác của 1 transaction đều phải được cô lập, tránh sự tác động, phụ thuộc hay ảnh hưởng đến các transaction khác. Một transaction A thì không thể đọc dữ liệu ở database trong khi transaction B đang update dữ liệu đó. </p>
+</li>
+<li>
+<p>Nếu có 2 transaction đang làm việc bất đồng bộ với nhau thì sẽ có cơ chế chia <code>session</code> như hình dưới, để các transaction làm việc tuần tự với database theo từng session, 1 transation này sẽ chờ cho đến khi transaction kia commit thành công thì mới bắt đầu làm nhiệm vụ của nó.</p>
+</li>
+</ul>
+<p><img alt="" src="../images/block-session.png" /></p>
+<h3 id="durability">Durability</h3>
+<ul>
+<li><code>Durability</code> - Tính bền bỉ: Khi 1 transaction update dữ liệu thành công, thì thay đổi của dữ liệu đó phải được đảm bảo lưu trữ ở trạng thái bền vững, vĩnh viễn,... Và ngay cả khi database bị crash, lỗi hay hệ thống restart thì dữ liệu ở database vẫn luôn ở trạng thái thay đổi mới nhất, chính xác.</li>
+</ul>
+<p><strong><em>Tóm lại:</em></strong></p>
+<p><img alt="" src="../images/acid-summary-2.png" /></p>
+<h2 id="reference">Reference</h2>
+<ol>
+<li>
+<p><a href="https://www.geeksforgeeks.org/acid-properties-in-dbms/">ACID Properties in DBMS - geeksforgeeks</a></p>
+</li>
+<li>
+<p><a href="https://www.guru99.com/dbms-transaction-management.html">Transaction Management in DBMS - guru99</a></p>
+</li>
+<li>
+<p><a href="https://blog.sqlauthority.com/2016/04/10/acid-properties-database-interview-question-week-066/">What is ACID Property in Database - sqlauthority</a></p>
+</li>
+<li>
+<p><a href="https://www.educba.com/dbms-transaction-processing/">DBMS Transaction Processing - educba</a></p>
+</li>
+<li>
+<p><a href="https://knowledgegrah.com/dbms-transaction-and-acid-properties/"> DBMS Transaction and ACID Properties - knowledgegrah</a></p>
+</li>
+</ol>
 
               
             </article>
@@ -1511,15 +1885,30 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
+        
+        <a href="../Time%20stamp/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Time stamp" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Time stamp
+            </div>
+          </div>
+        </a>
+      
       
         
-        <a href="Architecture/Architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: Architecture" rel="next">
+        <a href="../../Docker/Docker-Architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: Docker Architecture" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Architecture
+              Docker Architecture
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1548,10 +1937,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["search.suggest", "navigation.top", "navigation.tabs", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "navigation.top", "navigation.tabs", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
-      <script src="assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
       
     
   </body>

@@ -1,0 +1,2178 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Harry Hoang">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Composer - Harry Gitbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#composer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Harry Gitbook" class="md-header__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Harry Gitbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Composer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Architecture/Architecture/" class="md-tabs__link">
+        Architecture
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Database/Data-types/" class="md-tabs__link">
+        Database
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-tabs__link">
+        Docker
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Elasticsearch/Elasticsearch/" class="md-tabs__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Linux/commands/" class="md-tabs__link">
+        Linux
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-tabs__link">
+        Message Brokers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-tabs__link">
+        OOP
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ORM/Overview/" class="md-tabs__link">
+        ORM
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Package Management
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Redis/Redis/" class="md-tabs__link">
+        Redis
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Source-Version-Control/Source-Version-Control/" class="md-tabs__link">
+        Source Version Control
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Testing/Tessting/" class="md-tabs__link">
+        Testing
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Web-Technologies/1.Web-Protocols/" class="md-tabs__link">
+        Web Technologies
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Harry Gitbook" class="md-nav__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Harry Gitbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Architecture" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Data-types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Deadlock/" class="md-nav__link">
+        Deadlock
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Index-Constraints-Unique/" class="md-nav__link">
+        Index, Constraints, Unique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Locking-Isolation/" class="md-nav__link">
+        Locking / Isolation Level
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Queries/" class="md-nav__link">
+        Queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-nav__link">
+        Relationship, Keys, Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Schema/" class="md-nav__link">
+        Database Schema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Time%20stamp/" class="md-nav__link">
+        Time stamp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Transactions-ACID/" class="md-nav__link">
+        Transactions, ACID
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-nav__link">
+        Docker Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Compose/" class="md-nav__link">
+        Docker Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Objects/" class="md-nav__link">
+        Docker Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Environments/" class="md-nav__link">
+        Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Network/" class="md-nav__link">
+        Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Practice/" class="md-nav__link">
+        Practice with docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Volumes-PersistentData/" class="md-nav__link">
+        Volumes, Persistent Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Elasticsearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Elasticsearch" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Elasticsearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/commands/" class="md-nav__link">
+        Linux Commands
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Message Brokers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Message Brokers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Message Brokers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-nav__link">
+        Message-Brokers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Publish-Subscribe/" class="md-nav__link">
+        Publish-Subscriber
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/RabbitMQ/" class="md-nav__link">
+        RabbitMQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/SNS-SQS/" class="md-nav__link">
+        SNS/SQS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Topics-Exchange-Channel/" class="md-nav__link">
+        Topics, Exchange, Channel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Work%20Queues/" class="md-nav__link">
+        Work Queues
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          OOP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OOP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          OOP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-nav__link">
+        Object Oriented Programing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          ORM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Package Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Package Management" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Package Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Composer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Composer
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installremove-package" class="md-nav__link">
+    Install/remove package
+  </a>
+  
+    <nav class="md-nav" aria-label="Install/remove package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-a-package" class="md-nav__link">
+    Install a package
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-a-package" class="md-nav__link">
+    Remove a package
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-version-constrains-composerlock" class="md-nav__link">
+    Package version constrains &amp; composer.lock
+  </a>
+  
+    <nav class="md-nav" aria-label="Package version constrains &amp; composer.lock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-loading" class="md-nav__link">
+    Auto loading
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#psr" class="md-nav__link">
+    PSR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#psr-4-autoloader" class="md-nav__link">
+    PSR-4 Autoloader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composer-va-psr-4-autoload" class="md-nav__link">
+    Composer và PSR-4 : Autoload
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../npm/" class="md-nav__link">
+        NPM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Redis/Redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          Source Version Control
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Source Version Control" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Source Version Control
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Source-Version-Control/Source-Version-Control/" class="md-nav__link">
+        Source Version Control (Git)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Tessting/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          Web Technologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Web Technologies" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Web Technologies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/1.Web-Protocols/" class="md-nav__link">
+        Web Protocols
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/2.HTTP-Protocol/" class="md-nav__link">
+        HTTP Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/3.Web-server-and-proxy/" class="md-nav__link">
+        Web server and proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/4.Programming/" class="md-nav__link">
+        Programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/5.Supervisor%20and%20workers%20management/" class="md-nav__link">
+        Supervisor and workers management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/6.RESTful/" class="md-nav__link">
+        RESTful
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/7.Authentication/" class="md-nav__link">
+        Authentication - Authorization
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installremove-package" class="md-nav__link">
+    Install/remove package
+  </a>
+  
+    <nav class="md-nav" aria-label="Install/remove package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-a-package" class="md-nav__link">
+    Install a package
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-a-package" class="md-nav__link">
+    Remove a package
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-version-constrains-composerlock" class="md-nav__link">
+    Package version constrains &amp; composer.lock
+  </a>
+  
+    <nav class="md-nav" aria-label="Package version constrains &amp; composer.lock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-loading" class="md-nav__link">
+    Auto loading
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#psr" class="md-nav__link">
+    PSR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#psr-4-autoloader" class="md-nav__link">
+    PSR-4 Autoloader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composer-va-psr-4-autoload" class="md-nav__link">
+    Composer và PSR-4 : Autoload
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/smoothkt4951/harry-gitbook/edit/master/docs/Package-Management/composer.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="composer">Composer</h1>
+<ul>
+<li>
+<p>Install/remove package </p>
+</li>
+<li>
+<p>Package version constrains &amp; composer.lock </p>
+</li>
+<li>
+<p>Auto loading</p>
+</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<ul>
+<li>
+<p><code>Composer</code> là công cụ để quản lý package hay library của PHP. Về cơ cản, Composer sẽ không cài package ở global và gọi là <code>Dependency</code> &rarr;  Composer là công cụ quản lý các Dependency vì thế nó còn được gọi là <code>Dependency Manager</code>. </p>
+</li>
+<li>
+<p>Tương tự như <code>npm</code> hay <code>bundle</code>, <code>composer</code> ra đời để giải quyết các vấn đề khó khăn như khi dung lượng project lớn, việc cập nhật cũng như chèn các package hay library vào project rất phức tạp và phiền phức. Với <code>composer</code>, chỉ cần khai báo <code>name</code> và <code>version</code> của các package hay library, <code>composer</code> sẽ tự động tìm và tải các package hay library mà mình cần về project.</p>
+</li>
+<li>
+<p><code>Composer</code> quản lý <code>dependencies</code> dựa trên từng Project PHP riêng biệt, nó cài đặt các <code>dependencies</code> này vào một folder <code>vendor</code> trong dự án (mỗi dự án có một thư mục vendor riêng). <code>Composer</code> tự động sinh ra file<code>vendor/autoload.php</code>, từ file này giúp ta nạp các <code>dependencies</code> đã cài đặt vào project.</p>
+</li>
+<li>
+<p><code>composer.json</code>: Là nơi khai báo dependencies dùng trong project, những thông tin về name, version, licenses, source … được declare theo JSON format.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>{
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    &quot;name&quot;: &quot;wataridori/bphalcon&quot;,
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    &quot;type&quot;: &quot;project&quot;,
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    &quot;description&quot;: &quot;A small library which implement some features to phalcon&quot;,
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    &quot;license&quot;: &quot;GPL-3.0&quot;,
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    &quot;authors&quot;: [
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        {
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            &quot;name&quot;: &quot;Harry Hoang&quot;,
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            &quot;email&quot;: &quot;harry.hoang@contemi.com&quot;
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        }
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    ],
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    &quot;require&quot;: {
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        &quot;php&quot;: &quot;&gt;=5.4&quot;
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    }
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>}
+</code></pre></div>
+<ul>
+<li>
+<p><code>composer.lock</code>: Là nơi lưu trữ thông tin về dependencies đã được cài đặt. </p>
+</li>
+<li>
+<p><code>composer.json</code> vs. <code>composer.lock</code>: Ví dụ khi ta dùng lệnh install để cài đặt package thì composer sẽ đọc thông tin về dependencies ở trong file <code>composer.json</code>, sau đó cài đặt và tạo ra file composer.lock để lưu thông tin cụ thể về những dependencies đó. Giả sử ta commit cả 2 file <code>composer.json</code> và <code>composer.lock</code> vào <code>version control</code> của mình, rồi bất cứ ông dev nào tải code về thì dù có cài đặt vào thời điểm khác nhau đi chăng nữa thì vẫn sẽ nhận được những dependencies với những version giống nhau, do nó được đọc từ file <code>composer.lock</code>, chứ không phải file <code>composer.json</code>.</p>
+</li>
+</ul>
+<h2 id="installremove-package">Install/remove package</h2>
+<p>Danh sách các <a href="https://packagist.org/">package</a> của PHP</p>
+<h3 id="install-a-package">Install a package</h3>
+<ul>
+<li>
+<p><code>require</code>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>composer require &lt;package&gt;[:&lt;tag&gt;]
+</code></pre></div></p>
+<ul>
+<li>
+<p>Câu lệnh trên sẽ thêm mới một library hay package và ghi vào file <code>composer.json</code> tại current directory.</p>
+</li>
+<li>
+<p>Options: </p>
+<ul>
+<li><code>--dev</code>: Thêm packages vào <code>require-dev</code>, dùng package này để dev.</li>
+<li>xem full <a href="https://getcomposer.org/doc/03-cli.md#require">tại</a></li>
+</ul>
+</li>
+<li>
+<p>Ví dụ, install thư viện <code>monolog/monolog</code> phiên bản mới nhất (thư viện lưu log thông dụng cho php):</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>composer require monolog/monolog
+</code></pre></div>
+<p>Sau lệnh này, Composer sẽ tải tất cả các <code>dependencies</code> để dùng được thư viện <code>monolog/monolog</code> vào dự án, sau đó nó lưu tại thư mục <code>vendor</code>, đồng thời cũng có luôn file <code>vendor/autoload.php</code></p>
+<p>Mở lại file composer.json ta thấy đã có thêm đoạn code:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>{
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    &quot;require&quot;: {
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        &quot;monolog/monolog&quot;: &quot;^1.24&quot;
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    }
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>}
+</code></pre></div></p>
+</li>
+<li>
+<p><code>install</code>, <code>update</code> và <code>reinstall</code></p>
+<p>Có hai câu lệnh dùng để tải, cập nhật package dựa trên 2 file <code>package.json</code> và <code>package.lock</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>composer install
+</code></pre></div>
+<p>Tương tự như <code>require</code>, <code>install</code> dùng để tải package, nhưng khác là package đó phải được declare bằng 1 json object trong <code>composer.json</code>. Khi chạy lệnh <code>instal</code>, composer tiến hành đọc file <code>package.lock</code> và <code>composer.json</code>, tải các dependencies và lưu vào <code>vendor</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>composer update
+</code></pre></div>
+<p>Dùng để tải phiên bản mới nhất của các dependencies và cập nhật tệp <code>composer.lock</code>. Nó sẽ thêm hoặc xóa các <code>dependencies</code> dựa trên <code>composer.json</code>, ignored <code>composer.lock</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>composer reinstall
+</code></pre></div>
+<p>Cơ chế install tương tự như <code>install</code> nhưng trước tiên nó tiến hành <code>looks up installed packages by name</code> trong <code>composer.json</code>, xóa hết packages cũ rồi mới install.</p>
+</li>
+</ul>
+<h3 id="remove-a-package">Remove a package</h3>
+<ul>
+<li>
+<p>Ngược lại với require, command này thực hiện delete package dựa trên <code>composer.json</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>composer remove &lt;package&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Có options là <code>--dev</code>, chỉ remove các package được khai báo trong <code>require-dev</code></p>
+</li>
+<li>
+<p>Ngoài ra, cách 2 để remove packages, mở file <code>composer.json</code>, xóa tên thư viện đó trong phần require, sau đó chạy lệnh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>composer update
+</code></pre></div>
+<em>xem thêm các <a href="https://getcomposer.org/doc/03-cli.md">Command-line interface/Commands</a> của Composer</em></p>
+</li>
+</ul>
+<h2 id="package-version-constrains-composerlock">Package version constrains &amp; composer.lock</h2>
+<ul>
+<li>
+<p><code>Package version constrains</code> là những ràng buộc về phiên bản của packages theo đúng nghĩa đen.</p>
+</li>
+<li>
+<p><code>Composer Versions Constrains</code> tuân theo <code>Version Control System (VCS)</code>, tương tự như Git, cũng có các khái niệm như:</p>
+<ul>
+<li>Tags: <code>v1.0.1</code></li>
+<li>Branches: <code>v1.x-dev</code> </li>
+<li>Stabilities: <code>v1.1-BETA</code></li>
+<li>Version Range: sử dụng các operators <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>!=</code><ul>
+<li><code>&gt;=1.0</code></li>
+<li><code>&gt;=1.0 &lt;2.0</code></li>
+<li><code>&gt;=1.0 &lt;1.1 || &gt;=1.2</code></li>
+</ul>
+</li>
+<li>
+<p>Hyphenated Version Range (<code>-</code>): Thay vì dùng <code>&gt;=1.0.0 &lt;=2.1.0</code>, có thể thay bằng <code>1.0.0 - 2.1.0</code> cho gọn</p>
+</li>
+<li>
+<p>Wildcard Version Range (<code>.*</code>): Thay vì dùng <code>&gt;=1.0.0 &lt;1.1.0</code>, có thể thay bằng <code>1.0.*</code> cho gọn</p>
+</li>
+<li>
+<p>Tilde Version Range (<code>~</code>): <code>~1.2</code> tương đương với <code>&gt;=1.2 &lt;2.0.0</code>, hay <code>~1.2.3</code> tương đương với <code>&gt;=1.2.3 &lt;1.3.0</code></p>
+</li>
+<li>
+<p>Caret Version Range (<code>^</code>): <code>^1.2.3</code> tương đướng với <code>&gt;=1.2.3 &lt;2.0.0</code>, hay <code>^0.3</code> tương đướng với <code>&gt;=0.3.0 &lt;0.4.0</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Stability Constraints: Stability dùng trong các thay đổi lớn của version, giúp tăng tính rõ ràng, minh bạch. Nếu không xác định rõ <code>Stability</code> trong version, Composer sẽ thêm các hậu tố sau version một các <code>Internally</code>, thường mặc định thành <code>-dev</code> hoặc <code>-stable</code>. Ví dụ:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Internally</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1.2.3</code></td>
+<td><code>=1.2.3.0-stable</code></td>
+</tr>
+<tr>
+<td><code>&gt;1.2</code></td>
+<td><code>&gt;1.2.0.0-stable</code></td>
+</tr>
+<tr>
+<td><code>&gt;=1.2</code></td>
+<td><code>&gt;=1.2.0.0-dev</code></td>
+</tr>
+<tr>
+<td><code>&gt;=1.2-stable</code></td>
+<td><code>&gt;=1.2.0.0-stable</code></td>
+</tr>
+<tr>
+<td><code>&lt;1.3</code></td>
+<td><code>&lt;1.3.0.0-dev</code></td>
+</tr>
+<tr>
+<td><code>&lt;=1.3</code></td>
+<td><code>&lt;=1.3.0.0-stable</code></td>
+</tr>
+<tr>
+<td><code>1 - 2</code></td>
+<td><code>&gt;=1.0.0.0-dev &lt;3.0.0.0-dev</code></td>
+</tr>
+<tr>
+<td><code>~1.3</code></td>
+<td><code>&gt;=1.3.0.0-dev &lt;2.0.0.0-dev</code></td>
+</tr>
+<tr>
+<td><code>1.4.*</code></td>
+<td><code>&gt;=1.4.0.0-dev &lt;1.5.0.0-dev</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="summary">Summary</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nt">&quot;vendor/package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.3.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">exac</span><span class="kc">tl</span><span class="err">y</span><span class="w"> </span><span class="mf">1.3.2</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="err">&lt;</span><span class="p">,</span><span class="w"> </span><span class="err">&gt;=</span><span class="p">,</span><span class="w"> </span><span class="err">&lt;=</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">speci</span><span class="kc">f</span><span class="err">y</span><span class="w"> </span><span class="err">upper</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="err">lower</span><span class="w"> </span><span class="err">bou</span><span class="kc">n</span><span class="err">ds</span><span class="w"></span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="nt">&quot;vendor/package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=1.3.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">a</span><span class="kc">n</span><span class="err">y</span><span class="kc">t</span><span class="err">hi</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">above</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">equal</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="mf">1.3.2</span><span class="w"></span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="nt">&quot;vendor/package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;1.3.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">a</span><span class="kc">n</span><span class="err">y</span><span class="kc">t</span><span class="err">hi</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">below</span><span class="w"> </span><span class="mf">1.3.2</span><span class="w"></span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">*</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">wildcard</span><span class="w"></span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="nt">&quot;vendor/package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.3.*&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">&gt;=</span><span class="mf">1.3.0</span><span class="w"> </span><span class="err">&lt;</span><span class="mf">1.4.0</span><span class="w"></span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">~</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">allows</span><span class="w"> </span><span class="err">las</span><span class="kc">t</span><span class="w"> </span><span class="err">digi</span><span class="kc">t</span><span class="w"> </span><span class="err">speci</span><span class="kc">f</span><span class="err">ied</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="err">go</span><span class="w"> </span><span class="err">up</span><span class="w"></span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="nt">&quot;vendor/package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~1.3.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">&gt;=</span><span class="mf">1.3.2</span><span class="w"> </span><span class="err">&lt;</span><span class="mf">1.4.0</span><span class="w"></span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="nt">&quot;vendor/package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~1.3&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">&gt;=</span><span class="mf">1.3.0</span><span class="w"> </span><span class="err">&lt;</span><span class="mf">2.0.0</span><span class="w"></span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">^</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">does</span><span class="kc">n</span><span class="err">&#39;</span><span class="kc">t</span><span class="w"> </span><span class="err">allow</span><span class="w"> </span><span class="err">breaki</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">cha</span><span class="kc">n</span><span class="err">ges</span><span class="w"> </span><span class="err">(major</span><span class="w"> </span><span class="err">versio</span><span class="kc">n</span><span class="w"> </span><span class="kc">f</span><span class="err">ixed</span><span class="w"> </span><span class="mi">-</span><span class="w"> </span><span class="kc">f</span><span class="err">ollowi</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">semver)</span><span class="w"></span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">    </span><span class="nt">&quot;vendor/package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^1.3.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">&gt;=</span><span class="mf">1.3.2</span><span class="w"> </span><span class="err">&lt;</span><span class="mf">2.0.0</span><span class="w"></span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">    </span><span class="nt">&quot;vendor/package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^0.3.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">&gt;=</span><span class="mf">0.3.2</span><span class="w"> </span><span class="err">&lt;</span><span class="mf">0.4.0</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">excep</span><span class="kc">t</span><span class="w"> </span><span class="err">i</span><span class="kc">f</span><span class="w"> </span><span class="err">major</span><span class="w"> </span><span class="err">versio</span><span class="kc">n</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="auto-loading">Auto loading</h2>
+<h3 id="psr">PSR</h3>
+<ul>
+<li>
+<p><code>PSR</code> - <code>PHP Standards Recommendations</code>, nó là tiêu chuẩn được khuyến nghị áp dụng khi lập trình PHP, nó vẫn đang hoàn chỉnh, trong đó khá nhiều tiêu chuẩn con đã hoàn chỉnh và được các lập trình viên, tổ chức chấp nhận sử dụng. Sử dụng PSR để đảm bảo thống nhất về cách thức viết code, tổ chức ứng dụng ... nhằm dễ quản lý, đọc, và sử dụng lại giữa các Framework ... đồng thời đảm bảo có một giao diện lập trình chung giữa các ứng dụng,các Framework, khi nó cùng thực hiện một chức năng.</p>
+</li>
+<li>
+<p>Danh sách các PSR tại <a href="http://www.php-fig.org/psr/">php-fig.org</a>. Đến nay có 18 tiêu chuẩn từ <code>PSR-0</code> đến <code>PSR-17</code>, trong đó có các tiêu chuẩn đã được phê duyệt có các tiêu chuẩn đang soạn thảo và có tiêu chuẩn đã lỗi thời (ví dụ PSR-0 đã lỗi thời, bị thay bởi PSR-4).</p>
+</li>
+<li>
+<p>Các tiêu chuẩn PSR should know:</p>
+<ul>
+<li><code>PSR-1</code> - Basic Coding Standard: Tiêu chuẩn về viết code</li>
+<li><code>PSR-2</code>- Coding Style Guide: Tiêu chuẩn về trình bày code</li>
+<li><code>PSR-3</code> - Logger Interface: Trình bày về các thành phần cần phải có của một Logger</li>
+<li><code>PSR-4</code> - Autoloading Standard:  Trình bày về cách chỉ định ứng dụng tự động nạp (giống include, require) các file php, lớp, hàm khi nó cần dùng đến.</li>
+<li><code>PSR-6</code> -  Caching Interface: Tiêu chuẩn cần có của một bộ ứng dụng caching</li>
+<li><code>PSR-7</code> -  HTTP Message Interface: Tiêu chuẩn về interface của một ứng dụng sử HTTP Message - request và respone</li>
+</ul>
+</li>
+</ul>
+<h3 id="psr-4-autoloader">PSR-4 Autoloader</h3>
+<ul>
+<li>
+<p>Trước đây trong PHP việc nạp các file thư viện, mã dùng lại vào một file PHP khác thường dùng các lệnh include và require. Điều này gây mất thời gian, rắc rối, dài code.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="x">    </span><span class="cp">&lt;?php</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>        <span class="k">include</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/classes/MyClass.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        <span class="k">include</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/classes/Foo.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>        <span class="k">include</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/classes/Bar.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        <span class="c1">// ...</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>        <span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>        <span class="nv">$bar</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">;</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        <span class="c1">// ...</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Tiếp theo từ PHP5 có các hàm trợ giúp tự động hóa việc gọi thư viện bằng các hàm như: <code>__autoload</code>, <code>spl_autoload_register</code>, <code>spl_autoload_functions</code>, <code>spl_autoload_extensions</code> ...</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="nb">spl_autoload_register</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$classname</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>        <span class="k">include</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="o">&lt;/</span><span class="nx">classes</span><span class="o">/&lt;</span> <span class="o">.</span> <span class="nv">$classname</span> <span class="o">.</span> <span class="o">&lt;.</span><span class="nx">php</span><span class="o">&lt;</span><span class="p">;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="p">});</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="nv">$myClass</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="nv">$bar</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">;</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<ul>
+<li>
+<p>Tuy nhiên để dễ dàng chia sẻ code, dùng lại code giữa các framework, giữa các dự án ..., cộng đồng PHP thống nhất một cách thức tự động nạp thư viện theo một chuẩn  là <code>PSR-4 Autoload</code>. Ngoài tiêu chuẩn tự động load PSR-4 còn có tiêu chuẩn tự động load theo PSR-0 (tuy nhiên đã lỗi thời, các dự án mới không nên theo PSR-0 nữa). </p>
+</li>
+<li>
+<p><code>PSR-4 Autoload</code>: Phải có một có chế và cách bố trí code trong các thư mục sao cho mọi class đều có thể được tham chiếu đến bằng cách viết code như sau:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>\&lt;NamespaceName&gt;(\&lt;SubNamespaceNames&gt;)*\&lt;ClassName&gt;
+</code></pre></div></p>
+</li>
+</ul>
+<p>Có nghĩa là mỗi lớp ta phải xây dựng sao cho có thể được tham chiếu đến bởi dòng code ba thành phần: <code>Namespace</code>, các <code>SubNamespaceNames</code> con, và tên lớp <code>ClassName</code>.</p>
+<ul>
+<li>
+<p><code>NameSpace</code> : Tiền đố đầu tiên bắt buộc phải có. Tên này do ta tự đặt, sao cho không xung đột tên các thư viện khác.</p>
+</li>
+<li>
+<p><code>SubNameSpaces</code>: Các namespace con (theo sau NameSpace đầu tiên). Có một hoặc nhiều tùy dự án mình config. Nhưng bắt đầu từ <code>SubNameSpace</code> phải tương ứng với cấu trúc thư mục lưu trữ code. </p>
+</li>
+<li>
+<p><code>ClassName</code>: Bắt buộc phải có và phải có tên file PHP trùng tên <code>ClassName</code> ở thư mục tương ứng với namespace cuối cùng (vd ClassName.php), trong file đó sẽ định nghĩa nội dung của code của class mình cần load.</p>
+</li>
+</ul>
+<p>Đó là cách thống nhất viết bố trí code PHP trên các thư mục và theo các <code>namespace</code>. Khi đã viết code tuân thủ theo hướng dẫn này thì các famework khác nhau đều sử dụng một cơ chế tự động nạp tương tự nhau nên có thể dùng lại thư viện. </p>
+<h3 id="composer-va-psr-4-autoload">Composer và PSR-4 : Autoload</h3>
+<ul>
+<li>Composer cung cấp 1 module <code>autoload</code>, tuân theo chuẩn <code>PSR-4</code>. Cụ thể mỗi package trong dự án nằm theo cấu trúc <code>vendor/package-name</code>. Sau đó, để đảm bảo <code>vendor/autoload.php</code> được gọi, ta cần cập nhật <code>composer.json</code> dùng dependency <code>autoload</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>{
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    &quot;autoload&quot;: {
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>        &quot;psr-4&quot;: {
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>            &quot;MyCompany\\&quot;: &quot;src/&quot;,
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>         }
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    }
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>}
+</code></pre></div>
+<p>Khai báo composer.json như trên xong, gõ lệnh:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>composer dum-autoload
+</code></pre></div></p>
+<p><em>Example</em></p>
+<ul>
+<li>Xây dựng một lớp có tên <code>FirstClass</code>, có namespace là <code>MyCompany/Mymodule</code>. Code file lưu trong file <code>src/Mymodule/FirstClass.php</code>.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="k">namespace</span> <span class="nx">MyCompany\Mymodule</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="k">class</span> <span class="nc">FirstClass</span> <span class="p">{</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>        <span class="k">function</span> <span class="nf">helloComposer</span><span class="p">()</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>        <span class="p">{</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>        <span class="p">}</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>    <span class="p">}</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+Như trên là đã đúng chuẩn <code>PRS-4</code>, composer sẽ giúp ta tích hợp vào <code>vendor/autoload.php</code>, để có thể tự động include có trên khi cần dùng đến bằng đoạn code ví dụ:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="nv">$cls</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyCompany\Mymodule\FirstClass</span><span class="p">();</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="cp">?&gt;</span><span class="x"></span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="x">//Hoặc</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="k">use</span> <span class="nx">MyCompany\Mymodule</span><span class="p">;</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="nv">$cls</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FirstClass</span><span class="p">();</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+<h2 id="reference">Reference</h2>
+<ol>
+<li>
+<p><a href="https://ourcodeworld.com/articles/read/72/what-s-the-difference-between-composer-install-composer-update-and-composer-require">Difference between composer install , composer update and composer require</a></p>
+</li>
+<li>
+<p><a href="https://getcomposer.org/doc/articles/versions.md">Versions and constraints</a></p>
+</li>
+<li>
+<p><a href="https://getcomposer.org/doc/01-basic-usage.md">Composer - Basic usage</a></p>
+</li>
+<li>
+<p><a href="https://getcomposer.org/doc/03-cli.md">Composer - Command-line interface/Commands</a></p>
+</li>
+<li>
+<p><a href="http://framework.zend.com/manual/current/en/modules/zend.loader.standard-autoloader.html">Standard autoloader</a></p>
+</li>
+<li>
+<p><a href="https://xuanthulab.net/psr-4-autoloader-tieu-chuan-viet-tu-dong-nap-khoi-tao-php.html">PSR-4 Autoloader - Tiêu chuẩn viết tự động nạp khởi tạo PHP</a></p>
+</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../ORM/Overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Overview
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../npm/" class="md-footer__link md-footer__link--next" aria-label="Next: NPM" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              NPM
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Harry Hoang
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "navigation.top", "navigation.tabs", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+    
+  </body>
+</html>

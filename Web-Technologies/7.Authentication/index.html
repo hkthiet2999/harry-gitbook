@@ -1,0 +1,2197 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Harry Hoang">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Authentication - Authorization - Harry Gitbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#authentication-authorization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Harry Gitbook" class="md-header__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Harry Gitbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Authentication - Authorization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Architecture/Architecture/" class="md-tabs__link">
+        Architecture
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Database/Data-types/" class="md-tabs__link">
+        Database
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-tabs__link">
+        Docker
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Elasticsearch/Elasticsearch/" class="md-tabs__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Linux/commands/" class="md-tabs__link">
+        Linux
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-tabs__link">
+        Message Brokers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-tabs__link">
+        OOP
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ORM/Overview/" class="md-tabs__link">
+        ORM
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Package-Management/composer/" class="md-tabs__link">
+        Package Management
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Redis/Redis/" class="md-tabs__link">
+        Redis
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Source-Version-Control/Source-Version-Control/" class="md-tabs__link">
+        Source Version Control
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Testing/Tessting/" class="md-tabs__link">
+        Testing
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1.Web-Protocols/" class="md-tabs__link md-tabs__link--active">
+        Web Technologies
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Harry Gitbook" class="md-nav__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Harry Gitbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Architecture" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Data-types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Deadlock/" class="md-nav__link">
+        Deadlock
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Index-Constraints-Unique/" class="md-nav__link">
+        Index, Constraints, Unique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Locking-Isolation/" class="md-nav__link">
+        Locking / Isolation Level
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Queries/" class="md-nav__link">
+        Queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-nav__link">
+        Relationship, Keys, Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Schema/" class="md-nav__link">
+        Database Schema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Time%20stamp/" class="md-nav__link">
+        Time stamp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Transactions-ACID/" class="md-nav__link">
+        Transactions, ACID
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-nav__link">
+        Docker Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Compose/" class="md-nav__link">
+        Docker Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Objects/" class="md-nav__link">
+        Docker Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Environments/" class="md-nav__link">
+        Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Network/" class="md-nav__link">
+        Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Practice/" class="md-nav__link">
+        Practice with docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Volumes-PersistentData/" class="md-nav__link">
+        Volumes, Persistent Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Elasticsearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Elasticsearch" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Elasticsearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/commands/" class="md-nav__link">
+        Linux Commands
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Message Brokers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Message Brokers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Message Brokers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-nav__link">
+        Message-Brokers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Publish-Subscribe/" class="md-nav__link">
+        Publish-Subscriber
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/RabbitMQ/" class="md-nav__link">
+        RabbitMQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/SNS-SQS/" class="md-nav__link">
+        SNS/SQS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Topics-Exchange-Channel/" class="md-nav__link">
+        Topics, Exchange, Channel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Work%20Queues/" class="md-nav__link">
+        Work Queues
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          OOP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OOP" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          OOP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-nav__link">
+        Object Oriented Programing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          ORM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Package Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Package Management" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Package Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/composer/" class="md-nav__link">
+        Composer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/npm/" class="md-nav__link">
+        NPM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Redis/Redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          Source Version Control
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Source Version Control" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Source Version Control
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Source-Version-Control/Source-Version-Control/" class="md-nav__link">
+        Source Version Control (Git)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Tessting/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          Web Technologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Web Technologies" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Web Technologies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.Web-Protocols/" class="md-nav__link">
+        Web Protocols
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.HTTP-Protocol/" class="md-nav__link">
+        HTTP Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.Web-server-and-proxy/" class="md-nav__link">
+        Web server and proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.Programming/" class="md-nav__link">
+        Programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.Supervisor%20and%20workers%20management/" class="md-nav__link">
+        Supervisor and workers management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.RESTful/" class="md-nav__link">
+        RESTful
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Authentication - Authorization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Authentication - Authorization
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-authorization_1" class="md-nav__link">
+    Authentication - Authorization
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication - Authorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-vs-authorization" class="md-nav__link">
+    Authentication vs. Authorization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-most-used-rest-api-authentication-methods" class="md-nav__link">
+    4 Most Used REST API Authentication Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oauth2" class="md-nav__link">
+    Oauth2
+  </a>
+  
+    <nav class="md-nav" aria-label="Oauth2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-roles" class="md-nav__link">
+    1. Roles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-authorization-grant-types" class="md-nav__link">
+    2. Authorization Grant Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-api-gateway" class="md-nav__link">
+    3. API Gateway
+  </a>
+  
+    <nav class="md-nav" aria-label="3. API Gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-api-gateway-as-a-resource-server" class="md-nav__link">
+    a. API Gateway as a Resource Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-api-gateway-as-an-authorization-server" class="md-nav__link">
+    b. API Gateway as an Authorization Server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-oauth-20-workflow" class="md-nav__link">
+    4. OAuth 2.0 Workflow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jwt" class="md-nav__link">
+    JWT
+  </a>
+  
+    <nav class="md-nav" aria-label="JWT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-concepts" class="md-nav__link">
+    1. Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-jwt-structure" class="md-nav__link">
+    2. JWT Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway-jwt-usecase" class="md-nav__link">
+    API Gateway &amp; JWT Usecase
+  </a>
+  
+    <nav class="md-nav" aria-label="API Gateway &amp; JWT Usecase">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwt-authorization-workflow" class="md-nav__link">
+    JWT Authorization Workflow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-authorization_1" class="md-nav__link">
+    Authentication - Authorization
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication - Authorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-vs-authorization" class="md-nav__link">
+    Authentication vs. Authorization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-most-used-rest-api-authentication-methods" class="md-nav__link">
+    4 Most Used REST API Authentication Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oauth2" class="md-nav__link">
+    Oauth2
+  </a>
+  
+    <nav class="md-nav" aria-label="Oauth2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-roles" class="md-nav__link">
+    1. Roles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-authorization-grant-types" class="md-nav__link">
+    2. Authorization Grant Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-api-gateway" class="md-nav__link">
+    3. API Gateway
+  </a>
+  
+    <nav class="md-nav" aria-label="3. API Gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-api-gateway-as-a-resource-server" class="md-nav__link">
+    a. API Gateway as a Resource Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-api-gateway-as-an-authorization-server" class="md-nav__link">
+    b. API Gateway as an Authorization Server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-oauth-20-workflow" class="md-nav__link">
+    4. OAuth 2.0 Workflow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jwt" class="md-nav__link">
+    JWT
+  </a>
+  
+    <nav class="md-nav" aria-label="JWT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-concepts" class="md-nav__link">
+    1. Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-jwt-structure" class="md-nav__link">
+    2. JWT Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway-jwt-usecase" class="md-nav__link">
+    API Gateway &amp; JWT Usecase
+  </a>
+  
+    <nav class="md-nav" aria-label="API Gateway &amp; JWT Usecase">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwt-authorization-workflow" class="md-nav__link">
+    JWT Authorization Workflow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/smoothkt4951/harry-gitbook/edit/master/docs/Web-Technologies/7.Authentication.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="authentication-authorization">Authentication - Authorization</h1>
+<ul>
+<li>Authentication - Authorization</li>
+<li>Oauth2</li>
+<li>JWT</li>
+</ul>
+<h2 id="authentication-authorization_1">Authentication - Authorization</h2>
+<h3 id="concepts">Concepts</h3>
+<ul>
+<li>
+<p><code>Authentication</code> - <code>Xác thực</code>: là một quá trình kiểm tra danh tính của một tài khoản đang vào trong hệ thống hiện tại thông qua một hệ thống xác thực. Đây được xem là bước ban đầu của mọi hệ thống có yếu tố người dùng. Bản chất của Authentication chính là thực hiện xác nhận <code>HTTP request</code> được gửi đến từ client. </p>
+</li>
+<li>
+<p><code>Authorization</code> - <code>Ủy quyền</code>: là quá trình để xác định xem người dùng đã được xác thực có quyền truy cập vào các tài nguyên nào của hệ thống. Thườn là bước tiếp theo sau khi bước xác thực user thành công.</p>
+</li>
+</ul>
+<p><img alt="" src="../images/authn-authz.png" /></p>
+<ul>
+<li><code>Classification of Authentication</code>:<ul>
+<li><code>HTTP Basic Authentication</code>: Client sẽ gửi info được mã hóa dưới dạng Base64 trong header của request. 
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Authorization: Basic bG9sOnNlY3VyZQ==
+</code></pre></div></li>
+<li><code>Multi - factor Authentication (MFA)</code>: Xác thực đa nhân tố, tăng tính xác thưc + bảo mật: <code>Security token</code>, <code>Biometric verification</code>.</li>
+<li><code>Password - based Authentication</code>: xác thực dựa trên mật khẩu: strong password, hashed password, OTP, PIN</li>
+</ul>
+</li>
+</ul>
+<h3 id="authentication-vs-authorization">Authentication vs. Authorization</h3>
+<table>
+<thead>
+<tr>
+<th>Authentication</th>
+<th>Authorization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bạn là ai? &rarr; Xác nhận danh tính, cấp quyền truy cập vào hệ thống</td>
+<td>Bạn có những quyền gì? &rarr; Xác định xem bạn có được phép truy cập tài nguyên không</td>
+</tr>
+<tr>
+<td>Bước đầu tiên</td>
+<td>Diễn ra sau khi authentication thành công</td>
+</tr>
+<tr>
+<td>Trả về lỗi <code>401</code></td>
+<td>Trả về lỗi <code>403</code></td>
+</tr>
+<tr>
+<td>Dùng password, OTP, PIN, 2FA/MFA, ...</td>
+<td>Dùng tùy thuộc vào mức độ bảo mật, để xác định permissions, thường là <code>JWT</code></td>
+</tr>
+<tr>
+<td>Transmits info thông qua <code>ID Token</code></td>
+<td>Transmits info thông qua <code>Access Token</code></td>
+</tr>
+<tr>
+<td>Thường được quản trị bởi giao thức <code>OpenID Connect (OIDC)</code></td>
+<td>Thường được quản trị bởi <code>OAuth 2.0 framework</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-most-used-rest-api-authentication-methods">4 Most Used REST API Authentication Methods</h2>
+<ol>
+<li><code>HTTP Authentication Schemes (Basic &amp; Bearer)</code> </li>
+</ol>
+<p>Giao thức HTTP cung cấp các <code>Authentication Schemes</code> như: <code>Basic</code>, <code>Bearer</code>, <code>Digest</code>, <code>OAuth</code> v. v...</p>
+<ul>
+<li>
+<p><code>Basic Authentication</code>: Client sẽ gửi username, password được mã hóa dưới dạng Base64 trong header của request. 
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Authorization: Basic bG9sOnNlY3VyZQ==
+</code></pre></div></p>
+</li>
+<li>
+<p><code>Baear Authentication</code>:  "Cấp quyền truy cập cho user mang (bearer) token này". <code>Bearer token</code> sẽ cho phép truy cập đến một số tài nguyên hoặc url nhất định và thường là một chuỗi string được mã hóa, sinh ra bởi server trong lần response cái request login.
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Authorization: Bearer &lt;token&gt;
+</code></pre></div></p>
+</li>
+<li>
+<p><code>Api Keys</code></p>
+</li>
+<li>
+<p><code>API Keys</code> bổ sung các vấn đề xác thực của <code>HTTP Authentication</code>. Trong phương pháp này, một key: <code>api-key</code> duy nhất được tạo ra và assigned cho mỗi user trong lần đầu tiên access tới API. Giá trị <code>api-key</code> thường được tạo từ sự kết hợp phần cứng và dữ liệu user-agent, IP của user.</p>
+<p><img alt="" src="../images/api-key.png" /></p>
+</li>
+<li>
+<p><code>OAuth (2.0)</code></p>
+</li>
+<li>
+<p><code>OAuth2</code> kết hợp <code>Authentication</code> và <code>Authorization</code> để cho phép kiểm soát danh tính, phạm vi truy cập của người dùng hợp lệ phức tạp hơn.</p>
+</li>
+<li>
+<p>Có các phiên bản OAuth 1.0 và 1.0a, phức tạp hơn so với OAuth 2.0. Thay đổi lớn trong phiên bản 2.0 là không còn bắt buộc cái <code>hashed-key</code> trong mỗi lần request nữa, thay vào đó dùng:</p>
+<ul>
+<li>
+<p><code>access token</code>: Được gửi giống như <code>api-key</code>, cho phép ứng dụng truy cập vào dữ liệu của người dùng, <code>có thể hết hạn</code>.</p>
+</li>
+<li>
+<p><code>refresh token</code>: Để lấy một token mới, nếu <code>access token</code> hết hạn.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>OpenID Connect</code></p>
+</li>
+<li>
+<p><code>OpenID Connect</code> là một tiêu chuẩn mở và là một giao thức Authentication phân cấp, Cho phép user có thể được authen bởi  nhiều website sử dụng service của bên thứ 3 &rarr; Giảm được việc phải thiết lập riêng logic sign-up/login cho mỗi website, cho phép các user có thể login tới nhiều webstie ko hề liên quan tới nhau mà ko cần phải có những định danh và password riêng cho mỗi site.</p>
+</li>
+<li>
+<p>Cơ chế OpenID, dùng duy nhất <code>identity provider</code> từ bên thứ 3, hoặc server chuyên auth để quản lý password, và <code>provider</code> này sẽ <code>confirm identity</code> của user tới các website, ko có một website nào có thể biết được password của <code>user</code> &rarr; yếu tố bảo mật rất cao.</p>
+</li>
+<li>
+<p>Trong cơ chế <code>OpenID Connect</code>, khi provider thứ 3 hoặc authentication server xác thực user thành công, nó sẽ trả về cho client một cái <code>token</code> để client dùng cái <code>token</code> này gửi kèm với các request trong header tới server, server sẽ giải mã <code>token</code> này và biết được user đó có những permission gì, từ đó serve chuẩn. &rarr; dùng <code>JWT</code></p>
+</li>
+</ul>
+<h2 id="oauth2">Oauth2</h2>
+<ul>
+<li>OAuth là viết tắt của Open với Authentication hoặc Authorization, là sự kết hợp giữa kết hợp <code>Authentication</code> và <code>Authorization</code>.</li>
+<li>OAuth 2.0  - là một giao thức cho phép người dùng có thể cấp quyền truy cập ứng dụng hoặc trang web của bên thứ ba vào các tài nguyên được bảo vệ của của họ mà không nhất thiết phải tiết lộ thông tin đăng nhập hoặc thậm chí danh tính của họ.</li>
+</ul>
+<h3 id="1-roles">1. Roles</h3>
+<p>Trong <code>OAuth2</code> định nghĩa 4 vai trò:</p>
+<ul>
+<li>
+<p><code>Resource owner</code> (or the End User): Là những user có khả năng cấp quyền truy cập, chủ sở hữu của tài nguyên mà ứng dụng muốn lấy.</p>
+</li>
+<li>
+<p><code>Resource server</code> (or API Gateway): Nơi lưu trữ các tài nguyên, có khả năng xử lý các request truy cập đến các tài nguyên được bảo vệ.</p>
+</li>
+<li>
+<p><code>Client Application</code> (or the Client): Là những ứng dụng bên thứ 3 muốn truy cập vào phần tài nguyên được chia sẻ với tư cách của người sở hữu (resource owner) và trước khi truy cập ứng dụng cần được <code>sự ủy quyền của user</code>.</p>
+</li>
+<li>
+<p><code>Authorization server</code>: Làm nhiệm vụ xác thực, kiểm tra thông tin mà user gửi đến từ đó cấp quyền truy cập cho ứng dụng bằng việc sinh ra các <code>access token</code>. Đôi khi <code>authorization server</code> cũng chính là <code>resource server</code>.</p>
+</li>
+</ul>
+<h3 id="2-authorization-grant-types">2. Authorization Grant Types</h3>
+<ul>
+<li>
+<p>Khi <code>Client Application</code> yêu cầu ủy quyền để truy cập vào <code>Resource Server</code> thông qua <code>Resource owner</code>. Nếu <code>Resource owner</code> ủy quyền cho yêu cầu trên, Application sẽ nhận được <code>giấy ủy quyền</code> - <code>Authorization Grant</code> từ phía <code>Resource owner</code>.
+Có 4 loại <code>Authorization Grant</code>:</p>
+<ul>
+<li>
+<p><code>Authorization Code</code>: Đây là loại <code>giấy ủy quyền</code> được sử dụng như là một <code>access tokens</code> (và optional là <code>refresh token</code>). Thường được sử dụng với các server-side Application.  Tối ưu hóa cho <code>confidential clients</code>.</p>
+</li>
+<li>
+<p><code>Implicit</code>: Được sử dụng với các Mobile App (ứng dụng chạy trên thiết bị của User) hoặc Web App (có thể hiểu là Browser App, vd Chrome Extension). Tối ưu hóa cho <code>public clients</code>.</p>
+</li>
+<li>
+<p><code>Client Credentials:</code> Sử dụng với các ứng dụng truy cập thông qua API. Tối ưu hóa cho <code>client-only authentication</code></p>
+</li>
+<li>
+<p><code>Resource Owner Password Credentials</code>: Sử dụng với các Trusted Application, kiểu như những ứng dụng về Security. Khi đó <code>Resource Owner</code> có mối quan hệ tin cậy với <code>Client Application</code> và <code>Client Application</code> có khả năng lấy thông tin đăng nhập của <code>Resource Owner</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-api-gateway">3. API Gateway</h3>
+<ul>
+<li>
+<p><code>API Gateway</code> có thể coi là một cổng trung gian, cổng vào duy nhất tới hệ thống <code>microservices</code>, khi đó <code>API Gateway</code> sẽ nhận các requests từ phía client, <code>xác thực</code> và <code>điều hướng</code> chúng đến các API cụ thể trên các behavior services.</p>
+</li>
+<li>
+<p><code>API Gateway</code> có thể được sử dụng như một <code>Authorization server</code> và một <code>Resource server</code>.</p>
+</li>
+</ul>
+<h4 id="a-api-gateway-as-a-resource-server">a. API Gateway as a Resource Server</h4>
+<ul>
+<li>Khi <code>API Gateway</code> đóng vai trò là một <code>Resource server</code>, nó lưu trữ các <code>protected resources</code>, đồng thời tiếp nhận và phản hồi các yêu cầu của <code>Client Application</code> trong đó bao gồm mã <code>access token</code>. <code>Client Application</code> sẽ gửi <code>access token</code> trong Header của Request với cái field là <code>Authorization</code> sử dụng <code>Bearer authentication scheme</code>. Sau đó <code>Resource server</code> tiến hành xác thực <code>access token</code>, nếu <code>access token</code> hợp lệ thì <code>Client Application</code> có quyền truy cập <code>protected resources</code>, nếu không hợp lệ, cái request sẽ bị rejects.</li>
+</ul>
+<h4 id="b-api-gateway-as-an-authorization-server">b. API Gateway as an Authorization Server</h4>
+<ul>
+<li>Khi <code>API Gateway</code> hoạt động như một <code>Authorization Server</code>, nó sẽ nhận các yêu cầu ủy quyền từ <code>Client Application</code> và xử lý các tương tác giữa <code>Client Application</code>, <code>Resource server</code> và <code>Resource owner</code> để approve cho cái request ủy quyền đó.</li>
+<li>
+<p>Cụ thể: <code>API Gateway</code> sẽ cấp 1 <code>access token</code> cho các <code>Client Application</code> thay mặt cho <code>Resource owner</code> để sử dụng trong việc xác thực các lệnh gọi API tới <code>Resource server</code>. <code>Resource server</code> tiếp nhận <code>access token</code> từ phía <code>Client Application</code> và xét:</p>
+<ul>
+<li>
+<p>Nếu <code>Client Application</code> được phép truy cập <code>protected resources</code>, <code>Resource server</code> sẽ thực thi cái request này. Và <code>Authorization Server</code>, khi này đang là <code>API Gateway</code> sẽ giữ lại thông tin về các <code>access token</code> mà nó phát hành, bao gồm cả thông tin người dùng (<code>Resource owner</code>). Khi <code>Resource owner</code> xuất trình <code>access token</code> cho <code>Resource server</code>, <code>Resource server</code> sẽ gửi <code>access token</code> đến <code>Authorization Server</code> để đảm bảo rằng <code>access token</code> hợp lệ và cái khả năng service cho cái request này nằm trong  <code>scope</code> của <code>access token</code>. <code>Scope</code> là định nghĩa của các tài nguyên mà <code>Client Application</code> có thể truy cập thay mặt cho <code>Resource owner</code>.</p>
+</li>
+<li>
+<p>Nếu <code>Client Application</code> không có quyền truy cập tài nguyên, <code>Resource server</code> sẽ từ chối yêu cầu.</p>
+</li>
+</ul>
+<h3 id="4-oauth-20-workflow">4. OAuth 2.0 Workflow</h3>
+<p>Workflow của OAuth 2.0 thông qua 4 bước, được mô tả như sau:</p>
+</li>
+</ul>
+<p><img alt="" src="../images/oauth2-workflow.png" /></p>
+<ol>
+<li>End-user đăng nhập,<code>Client Application</code> gửi yêu cầu xác thực ( kèm <code>id token</code>) đến máy chủ ủy quyền để lấy <code>access token</code>.</li>
+<li><code>Authorization Server</code> xác thực yêu cầu và tạo <code>access token</code> cho <code>Client Application</code></li>
+<li><code>Client Application</code> sử dụng <code>access token</code> này để gửi các yêu cầu HTTP đến <code>API Gateway</code>.</li>
+<li><code>API Gateway</code> sau đó thực hiện như sau:
+    a. Xác định danh tính của <code>Client Application</code> bằng <code>clientId</code>.
+    b. Tiến hành verify cái <code>access token</code> (locally hoặc remotely)
+    c. Kiểm tra xem tài nguyên được yêu cầu trong cái request thuộc <code>scope</code> của <code>access token</code> hay không.
+    d.Kiểm tra các đối tượng đi kèm trong request.</li>
+</ol>
+<p>Nếu tất cả những điều trên được xác thực, API Gateway sẽ cung cấp quyền truy cập vào <code>protected resources</code>. Trong trường hợp <code>access token</code> hết hạn, <code>Authorization Server</code> sẽ trả về phản hồi lỗi cụ thể. Sau đó, ứng dụng khách có thể sử dụng <code>refresh token</code> để yêu cầu một <code>access token</code> mới. <code>Authorization Server</code> sẽ trả về <code>access token</code> mới để tiếp tục dùng cho việc truy cập <code>protected resources</code>.</p>
+<h2 id="jwt">JWT</h2>
+<h3 id="1-concepts">1. Concepts</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>for securely transmitting information between parties as a JSON object. This information can be verified
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm)
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>or a public/private key pair using RSA or ECDSA.
+</code></pre></div>
+<a href="https://jwt.io/introduction/">Source</a></p>
+<ul>
+<li>
+<p><code>JWT</code> - <code>JSON Web Token</code> là một tiêu chuẩn mở dựa trên <code>JSON (RFC 7519)</code>, phương tiện đại diện cho một <code>tập hợp thông tin</code> được truyền một cách <code>an toàn</code> giữa client-server dưới dạng  <code>JSON object</code>. </p>
+</li>
+<li>
+<p>Tập hợp thông tin này được đại diện bởi JWT và nó <code>được xác minh</code>, <code>bảo mật</code> và <code>đáng tin cậy</code> vì nó được <code>digitally signed</code>. </p>
+</li>
+<li>
+<p><code>digitally signed</code> bằng cách sử dụng một <code>secret-key</code> (đối với thuật toán HMAC) hoặc <code>public/private key pair</code> dùng chuẩn RSA hoặc ECDSA.</p>
+</li>
+</ul>
+<p><em>Tóm lại là:</em></p>
+<ul>
+<li>
+<p>Dùng để truyền thông tin một cách an toàn.</p>
+</li>
+<li>
+<p>Có phần chữ ký nên đảm bảo dữ liệu không bị thay đổi, chỉnh sửa trên đường đi.</p>
+</li>
+</ul>
+<h3 id="2-jwt-structure">2. JWT Structure</h3>
+<p>Một JWT sẽ có cấu trúc kiểu:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>asdfasdfasdf.aDádaSDasd.FdfSDFsdfSDF
+</code></pre></div></p>
+<ul>
+<li>
+<p><code>Header</code>: Gồm có 2 phần là: loại mã token, và thuật toán được sử dụng để sinh ra phần <code>Signature</code>. 2 phần này được define như là 1 json object và sau đó, JSON này được mã hóa Base64Url để tạo thành phần đầu tiên của JWT.</p>
+</li>
+<li>
+<p><code>Payload</code>: Chứa các <code>claims</code>. <code>Claims</code> thường chứa các thuộc tính như <code>typically</code>, <code>thông tin user</code> và các dữ liệu bổ sung. Có 3 loại claims: <code>registered</code>, <code>public</code>, và <code>private</code> claims. Danh sách đầy đủ các <code>Claims</code> xem tại <a href="https://www.iana.org/assignments/jwt/jwt.xhtml">JSON Web Token Claims</a>. Phần này cũng được định nghĩa và mã hóa tương tự <code>Header</code>.</p>
+</li>
+<li>
+<p><code>Signature</code>: Một chuỗi được mã hóa bởi <code>header</code>, <code>payload</code> cùng với thuật toán mã hóa được chỉ định trong header. <code>Signature</code> được sử dụng để xác minh data trong <code>payload</code> không bị thay đổi trong quá trình đi từ client-server và trong trường hợp token được <code>sign</code> bằng <code>private key</code>, nó cũng có thể xác minh được danh tính của người gửi <code>JWT</code>.</p>
+</li>
+</ul>
+<p><img alt="" src="../images/jwt-io.png" /></p>
+<p><a href="https://jwt.io/">Demo</a></p>
+<h3 id="api-gateway-jwt-usecase">API Gateway &amp; JWT Usecase</h3>
+<ul>
+<li>
+<p><code>API Gateway</code> sử dụng JWT dựa trên <code>RSA</code> để cung cấp khả năng bảo vệ mạnh mẽ hơn cho <code>JWT</code> khi <code>API Gateway</code> là nhà phát hành <code>token</code>. </p>
+</li>
+<li>
+<p>JWT chứa 1 hoặc nhiều <code>claims</code> nằm trong <code>Payload</code> của JWT.</p>
+</li>
+<li>
+<p><code>API Gateway</code> trích xuất các yêu cầu từ <code>JWT</code>, định danh cho application và sau đó cho phép application truy cập vào <code>protected resources</code>.</p>
+</li>
+</ul>
+<h4 id="jwt-authorization-workflow"><em>JWT Authorization Workflow</em></h4>
+<p>Workflow giữa <code>requests</code> và <code>responses</code> được ủy quyền, giữa <code>end-user</code>, <code>client-app</code>, nơi phát hành <code>JWT</code> và <code>resource server</code> như được mô tả trong hình sau:</p>
+<p><img alt="" src="../images/jwt-workflow.png" /></p>
+<ol>
+<li>
+<p><code>End-user</code> đăng nhập, <code>Client app</code> gửi yêu cầu xác thực đến API Gateway hoặc đến bất kỳ bên thứ ba nào để lấy mã <code>JWT</code>.</p>
+</li>
+<li>
+<p>Nếu thông tin đăng nhập của <code>End-user</code> được gửi từ  <code>Client app</code> hợp lệ, API Gateway sẽ tạo mã <code>JWT</code> bằng các logic, thuật toán sẽ tìm hiểu bên dưới và gửi <code>JWT</code> đã tạo đến <code>Client app</code>. Nếu thông tin xác thực của người dùng không hợp lệ, <code>API Gateway</code> trả về một phản hồi lỗi cụ thể.</p>
+</li>
+<li>
+<p><code>Client app</code> gửi <code>JWT</code> đã tạo chứa trong <code>Header</code> của <code>request</code> header dưới dạng <code>HTTP Bearer Authorization token</code> để truy cập tới <code>protected resources</code> được bảo vệ trong API Gateway.</p>
+</li>
+<li>
+<p><code>API Gateway</code> sẽ xác thực <code>client-app</code> trước, dựa trên thông tin lấy từ JWT, sau đó xác thực JWT bằng các thuật toán, logic và cung cấp quyền truy cập vào các <code>protected resources</code>. Nếu xác thực không thành công, API Gateway trả về phản hồi lỗi cụ thể.</p>
+</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<ol>
+<li><a href="https://dev.to/caffiendkitten/authentication-vs-authorization-25lc">AUTHeNtication VS AUTHoriZation - dev.to</a></li>
+<li><a href="http://www.differencebetween.net/technology/difference-between-authentication-and-authorization/">Difference between Authentication and Authorization</a></li>
+<li><a href="https://auth0.com/docs/get-started/identity-fundamentals/authentication-and-authorization">Authentication vs. Authorization - auth0.com</a></li>
+<li><a href="https://blog.restcase.com/4-most-used-rest-api-authentication-methods/">4 Most Used Authentication Methods</a></li>
+<li><a href="https://documentation.softwareag.com/webmethods/api_gateway/yai10-5/10-5_API_Gateway_webhelp/index.html#page/api-gateway-integrated-webhelp%2Fco-oauth_usecase_workflow.html%23wwconnect_header">OAuth2 Authentication Use case and Workflow</a></li>
+<li><a href="https://documentation.softwareag.com/webmethods/api_gateway/yai10-5/10-5_API_Gateway_webhelp/index.html#page/api-gateway-integrated-webhelp/co-jwt_usecase_workflow.html">JWT Authentication Use case and Workflow</a></li>
+<li><a href="https://developer.okta.com/blog/2020/12/21/beginners-guide-to-jwt">JWT Structure</a></li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../6.RESTful/" class="md-footer__link md-footer__link--prev" aria-label="Previous: RESTful" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              RESTful
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Harry Hoang
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "navigation.top", "navigation.tabs", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+    
+  </body>
+</html>
