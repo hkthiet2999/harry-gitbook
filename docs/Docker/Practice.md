@@ -3,20 +3,20 @@ author: Harry Hoang
 date: 2022-01-18
 ---
 
-# Practice with docker
+# Practice with Docker
 - Image
 - Container
 
 
 Xem Docker version:
 
-```sh
+``` powershell
 docker --version
 ```
 
 và Docker info:
 
-```sh
+``` powershell
 docker info
 ```
 
@@ -33,9 +33,9 @@ Nếu không có `tag` thì mặc định là `latest`.
 
 - Tìm kiếm một image từ Docker Hub:
 
-    ```sh
-    docker search <imagename> 
-    ```
+  ```sh
+  docker search <imagename> 
+  ```
 
 - Sau khi pull image về, xem các image đang có:
 
@@ -56,9 +56,7 @@ Nếu không có `tag` thì mặc định là `latest`.
 
 Init một NodeJS App với các config sau:
 
-- `package.json`
-
-```json
+```json title="package.json"
 {
   "name": "docker_web_app",
   "version": "1.0.0",
@@ -73,9 +71,8 @@ Init một NodeJS App với các config sau:
   }
 }
 ```
-- `server.js`
 
-```
+``` javascript title="server.js"
 'use strict';
 
 const express = require('express');
@@ -94,10 +91,7 @@ app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
 ```
 
-
-- `Dockerfile`
-
-```yml
+``` Dockerfile title="Dockerfile"
 FROM node:16
 
 # Create app directory
@@ -119,9 +113,7 @@ EXPOSE 8080
 CMD [ "node", "server.js" ]
 ```
 
-- `.dockerignore`
-
-```
+```txt title=".dockerignore"
 node_modules
 npm-debug.log
 ```
@@ -146,9 +138,9 @@ docker build . -t <your username>/node-web-app
 
 Run image mình mới build bằng câu lệnh:
 
-    ```sh
-    docker run -p 3000:8080 -d <your-username>/node-web-app
-    ```
+```sh
+docker run -p 3000:8080 -d <your-username>/node-web-app
+```
 
 + `-d` là run container trên `detached mode`, container sẽ chạy ngầm và không log output ra terminal
 

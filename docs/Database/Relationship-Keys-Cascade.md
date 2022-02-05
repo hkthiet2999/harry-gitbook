@@ -106,7 +106,7 @@ Ví dụ: Trong bảng học sinh bên trên, `ID` là `Primary key`  và trong 
 
 - `Cascade`: Là một `optional` trong việc thiết lập các Primary/Foreign keys trong table. Nếu chọn option này, với ví dụ trên, khi ta `cập nhật` - `ON UPDATE` giá trị của cột Email của _Table 1_, thì giá trị đó bên bảng _Table 2_ sẽ tự động được cập nhật theo. Trường hợp khi ta `xóa` - `ON DELETE` 1 email bên _Table 1_ thì giá trị đó bên _Table 2_ sẽ bị xóa.
 
-- Trong SQL, có 5 option cho việc sử dụng  `ON DELETE`, `ON UPDATE` trong Cascade, được gọi là `referential actions`. Gọi A là table tham chiếu đến table B, khi đó A là `referenced/parent table` , B là `referencing/children table`,ta có:
+- Trong SQL, có 5 optional cho việc sử dụng  `ON DELETE`, `ON UPDATE` trong Cascade, được gọi là `referential actions`. Gọi A là table tham chiếu đến table B, khi đó A là `referenced/parent table` , B là `referencing/children table`,ta có:
 
     - `ON DELETE CASCADE` | `ON UPDATE CASCADE`: Nếu 1 hàng trong A bị xóa hay cập nhật, thì tất cả các hàng ở bên B mà matching với cái hàng bị xóa đó sẽ bị xóa, cập nhật theo.
 

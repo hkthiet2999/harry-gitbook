@@ -77,7 +77,7 @@ Terminated State | Chấm dứt Transaction.
 ![](./images/acid-summary.png)
 
 
-### **A**tomicity
+### Atomicity
 
 - `Atomicity` - Tính bảo toàn?😀: Dựa vào rule `All or nothing` kể trên, khi một chuỗi các operations lần lượt thao tác với database trong 1 transaction, nếu 1 operation đang trong xử lý mà xảy lỗi ở database, hay crash hệ thống, v.v… thì toàn bộ transaction sẽ bị hủy bỏ và bị rollback, dữ liệu ở database vẫn giữ như cũ trước khi có sự thay đổi. Nếu như không xảy ra lỗi hay vấn đề gì trong quá trình xử lý các operations thì transaction đó sẽ commit thành công, dữ liệu phía database cũng được cập nhật thành công luôn.
 

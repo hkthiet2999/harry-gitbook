@@ -192,7 +192,7 @@ function readMultipleFile(file) {
 
 Promise.all([readMultipleFile("file1"), readFile("file2"), readFile("file3")])
   .then((content) => console.log(content))
-  .catch((content) => console.log(content));
+  .catch((err) => console.log(err));
 ```
 
 - Việc dùng `callback` hay `Promise` như trên có thể dẫn tới hiện tượng [callback hell](https://tutorialzine.com/media/2017/07/callback-hell.jpg) và `Promise chain`. Và tính năng `Async/Await` trong Javascript ra đời để giải quyết tình trạng trên, giúp chúng ta làm việc với các hàm bất đồng bộ ngắn gọn và dễ hiểu hơn. 

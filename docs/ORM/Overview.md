@@ -17,7 +17,18 @@ date: 2022-01-26
 
 - `ORM framework` tạo ra một layer nằm ở giữa ngôn ngữ lập trình và database, có thể sử dụng được bên trong các ngôn ngữ lập trình hướng đối tượng, từ đó nó có thể sử dụng chính ngôn ngữ lập trình đó để thao tác với database mà không cần viết các câu lệnh SQL dài dòng. Các object class sẽ tương ứng với các table trong database, và các object instance sẽ tương ứng với các record trong các table đó.
 
+![](./images/orm-overview.png)
+
 **Upside**
+
+Some of the main benefits of using ORM includes:
+
+It speeds up the development by eliminating repetitive usage of SQL code
+It reduces development time a lot
+It overcomes all the vendor spicific SQL differences because it knows how to convert to vendor SQL code
+It can be used with both relational databases like mysql, oracle, postgresql, maria db and nosql like mongodb
+It abstracts things like caching and indexing
+It can catch general issues like input validations
 
 - Tuân thủ nguyên tắc `DRY`, viết code theo mô hình MVC, tập trung hóa code lại một chỗ, việc chỉnh sửa, maintain, reuse code sẽ dễ dàng hơn.
 
@@ -79,7 +90,7 @@ ORM có một số mẫu kiến trúc - `architectural pattern` chủ đạo đ�
 
 - `Data Mapper` là 1 `layer mapper` đưa dữ liệu qua lại giữa object và Database mà vẫn giữ được tính độc lập giữa chúng. Tức là có layer giữ cho dữ liệu được lưu trong bộ nhớ máy và trong cơ sở dữ liệu độc lập với nhau.
 
-- Một số ORM theo Data Mapper Pattern: `Hibernate`, `SQLALchemy`, `MikroORM`, `Doctrine 2`
+- Một số ORM theo Data Mapper Pattern: `Hibernate`, `TypeORM`, `SQLALchemy`, `MikroORM`, `Doctrine 2`
 
 ## Reference
 
