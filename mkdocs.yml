@@ -20,6 +20,22 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
+        
+  icon:
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+
 
 copyright: Copyright &copy; 2022 Harry Hoang
 
@@ -67,7 +83,6 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-      
 
 extra:
   generator: false

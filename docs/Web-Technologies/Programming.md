@@ -107,11 +107,13 @@ async function someFunction() {
 
 ![](https://freetuts.net/upload/tut_post/images/2020/02/24/2186/eventloop-javascript.gif)
 
+### Synchronous vs. Asynchronous Programming
+
 - `Asynchronous programming`: Về bản chất, nó thực hiện các request đồng thời, ngay cả khi chúng ở các chức năng khác nhau. Một single thread sẽ được handle multiple-requests trong `event-loop`. Vì vậy, việc một request bị reject sẽ không ảnh hưởng đến request khác.NodeJS cho phép thực hiện lập trình bất đồng bộ. Khi bất đồng bộ thực thi tất cả dòng code cùng một lúc.
 
 - `Synchronous programming`: Tải tài nguyên một cách đơn lẻ và tuần tự, như vậy khi 1 tài nguyên trong hệ thống `có phân cấp` không tải được, thì những tài nguyên bên dưới nó sẽ không tải được luôn. Với NodeJS, ở chế độ đồng bộ thực thi từng dòng và tiến hành thực thi dòng tiếp theo khi dòng hiện tại đã thực thi xong.
 
-### Synchronous vs. Asynchronous Programming
+
 ***Synchronous***
 
 - Tải tài nguyên một cách đơn lẻ và tuần tự, khi một tài nguyên trong hệ thống có phân cấp không tải được, thì những tài nguyên bên dưới nó sẽ không response.

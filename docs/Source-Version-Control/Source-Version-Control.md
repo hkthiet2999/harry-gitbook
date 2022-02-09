@@ -41,9 +41,9 @@ date: 2022-01-10
     + `Public Key` - là một file text - nó lại lưu ở phía `Git Server SSH`, nó dùng để khi `Client` gửi `Private Key` (file lưu ở Client) lên để xác thực thì tiến hành verify giữa `Private Key` và `Public Key` này. Nếu cặp key này đúng ( key pair được gen từ `ssh-keygen`) thì kết nối giữa client - git server là an toàn.
     + `Private Key` - là một file text - dùng để xác thực sự phù hợp của `Private Key` và `Public Key`. Client muốn kết nối với `Git Server`, thay vì nhập mật khẩu thì client gửi `Private Key` qua SSH.
 
-- Tạo GIT SSH Key dùng `ssh-keygen` của `OpenSSH`
+- Tạo GIT SSH Key dùng `ssh-keygen` của `OpenSSH`:
 
-1. Mở terminate (trên Linux, macOS hoặc cmd trên Windows) rồi gõ
+**Bước 1**: Mở terminate (trên Linux, macOS hoặc cmd trên Windows) rồi gõ
 
 ```
 $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
@@ -55,7 +55,8 @@ Sau đó nó yêu cầu nhập `passphase`, có thể nhấn Enter để rỗng.
 
 ![](./images/git-ssh.png)
 
-2. Start `ssh-agent`
+
+**Bước 2**: Start `ssh-agent`
 
 Win &rarr; Services &rarr; OpenSSH Authentication Agent &rarr; Automatic (Delayed Start). Xong gõ 
 
@@ -67,11 +68,11 @@ $ start-ssh-agent
 
 [refer](https://stackoverflow.com/questions/18683092/how-to-run-ssh-add-on-windows/40720527#40720527)
 
-3. Adding new SSH key to GitHub account:
+**Bước 3**: Adding new SSH key to GitHub account:
 
 [refer](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-4. Testing SSH connection
+**Bước 4**. Testing SSH connection
 
 ```
 ssh -T git@github.com
