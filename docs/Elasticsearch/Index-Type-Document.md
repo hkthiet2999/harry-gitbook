@@ -34,13 +34,21 @@ Index được định danh bằng tên, tên này sẽ được sử dụng đ�
 
 ### Inverted index
 
-ES sử dụng cấu trúc dữ liệu được gọi là `Reverse Index` hay `Inverted Index` và được thiết kế để có thể thực hiện  full-text search một cách nhanh chóng.
+ES sử dụng cấu trúc dữ liệu được gọi là `Reverse Index` hay `Inverted Index` và được thiết kế để có thể thực hiện full-text search một cách nhanh chóng.
 
 Một Inverted index chứa danh sách từng ký tự đơn duy nhất (unique word) xuất hiện trong bất kỳ một document nào, ứng với mỗi ký tự đó sẽ là một danh sách các document mà từ này xuất hiện (thông qua cơ chế mapping). Inverted index được tạo ra từ document và được lưu trữ trong `Shard` để dùng cho searching document.
 
 Trong quá trình indexing, ES lưu trữ document và build một reverse index cho phép dữ liệu từ document có thể được tìm kiếm trong thời gian thực (near real-time). Lập chỉ mục bắt đầu với index API, sau đó có thể thêm hoặc cập nhật một JSON document trong một index cụ thể.
 
 ![](./images/index-docs.png)
+
+### ES indexing technique
+
+Nhờ có `indexing technique`, khi lưu trữ document trong ES, nó tạo ra một số `internal data structures` làm cho query perfom tốt hơn. Mỗi document gửi tới ES được lưu trữ qua một thuật toán và sau đó được gửi đến `shard`. ES sẽ cố gắng để phân tán document thông qua các shard này. Khi lưu trữ document, ES tạo ra inverted index như kể trên, map các term/key words xuất hiện trong document này tới chính document đó:
+
+![](./images/term-docs.png)
+
+Khi sử dụng `inverted index`, nó có thể tìm kiếm thông qua terms như một binary tree (sử dụng thứ tự chữ cái) làm giảm thời gian tìm kiếm.
 
 ## Document
 
@@ -63,6 +71,8 @@ Theo [Elastic glossary](https://www.elastic.co/guide/en/elastic-stack-glossary/c
    }
 }
 ```
+
+Một điều quan trọng khi lưu trữ document đó là quyết định đâu là cách tốt nhất để lưu trữ chúng, từ đó giúp nâng cao tốc độ truy vấn. Khi thiết kế các giải pháp sử dụng ElasticSearch, ta cần trả lời được câu hỏi tôi sẽ truy vấn document này như thế nào?
 
 Một document có một vài thuộc tính quan trọng như sau:
 
@@ -92,8 +102,6 @@ Quay lại ví dụ về document trên, trong document có field là `_type`, �
 Để dễ hình dung các khái niệm này trong Elasticsearch, mình reference nó từ Relation Database như sau:
 
 ![](./images//summary.png)
-
-
 
 ## Reference
 
