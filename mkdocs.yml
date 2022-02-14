@@ -56,7 +56,7 @@ nav:
     - Authentication: Web-Technologies/Authentication.md
   - SVM-Git:
     - Source Version Control: SVM-Git/Source-Version-Control.md
-  - Package management:
+  - Package Management:
     - Composer: Package-Management/composer.md
     - NPM: Package-Management/npm.md
   - Docker: 
@@ -111,9 +111,8 @@ nav:
     - Test coverage: Testing/Test-Coverage.md
   - Architecture:
     - Monolith: Architecture/Monolith.md
-    - Micro-services: Architecture/Micro-services.md
-    - Saga Pattern: Architecture/Saga-pattern.md
-    - CQRS Pattern: Architecture/CQRS-pattern.md
+    - Microservices: Architecture/Microservices.md
+    - Saga / CQRS Pattern: Architecture/Saga-CQRS-pattern.md
 
 # Extensions
 markdown_extensions:

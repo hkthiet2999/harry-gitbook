@@ -347,3 +347,5 @@ git flow hotfix finish VERSION
 5. [35+ Git Commands List Every Programmer Should Know](https://www.loginradius.com/blog/async/git-commands/)
 
 6. [git-flow cheatsheet](https://danielkummer.github.io/git-flow-cheatsheet/)
+
+7. [Semantic Versioning](https://semver.org/)
