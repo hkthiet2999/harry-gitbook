@@ -42,6 +42,78 @@ copyright: Copyright &copy; 2022 Harry Hoang
 plugins:
   - search:
       lang: vi
+# Nav
+
+nav:
+  - Home: index.md
+  - Web technologies:
+    - Web Protocols: Web-Technologies/Web-Protocols.md
+    - HTTP Protocol: Web-Technologies/HTTP-Protocol.md
+    - Web server and proxy: Web-Technologies/Web-server-and-proxy.md
+    - Programming: Web-Technologies/Programming.md
+    - Supervisord and workers management: Web-Technologies/Supervisor and workers management.md
+    - RESTful: Web-Technologies/RESTful.md
+    - Authentication: Web-Technologies/Authentication.md
+  - SVM-Git:
+    - Source Version Control: SVM-Git/Source-Version-Control.md
+  - Package management:
+    - Composer: Package-Management/composer.md
+    - NPM: Package-Management/npm.md
+  - Docker: 
+    - Architecture: Docker/Docker-Architecture.md
+    - Docker Objects: Docker/Docker-Objects.md
+    - Volumes - Persistent data: Docker/Volumes-PersistentData.md
+    - Network - Port: Docker/Network.md
+    - Environments: Docker/Environments.md
+    - Docker Compose: Docker/Docker-Compose.md
+    - Practice with Docker: Docker/Practice.md
+  - Redis:
+    - Redis: Redis/Redis.md
+  - Message Brokers:
+    - Overview: Message-Brokers/Message-Brokers.md
+    - RabbitMQ: Message-Brokers/RabbitMQ.md
+    - SNS/SQS: Message-Brokers/SNS-SQS.md
+    - Work Queues : Message-Brokers/Work-Queues.md
+    - Publish/Subscribe: Message-Brokers/Publish-Subscribe.md
+    - Routing: Message-Brokers/Routing.md
+    - Topics, Exchange, Channel: Message-Brokers/Topics-Exchange-Channel.md
+  - OOP: OOP/Object-Oriented-Programing.md
+  - Database:
+    - Relationship, Primary/Foreign keys, Cascade: Database/Relationship-Keys-Cascade.md
+    - Data types: Database/Data-types.md
+    - Index, Constraints, Unique: Database/Index-Constraints-Unique.md
+    - Queries: Database/Queries.md
+    - Transactions - ACID: Database/Transactions-ACID.md
+    - Schema: Database/Schema.md
+    - Deadlock: Database/Deadlock.md
+    - Locking / Isolation Level: Database/Locking-Isolation.md
+    - Time stamp: Database/Timestamp.md
+  - ORM:
+    - Overview: ORM/Overview.md
+    - Transactions: ORM/Transactions.md
+    - Migrations / Seeder: ORM/Migrations-Seeder.md
+    - Relations - Cascade: ORM/Relations-Cascade.md
+    - Annotation and Decorator: ORM/Decorator-Anotation.md
+    - Lazy / Eager loading: ORM/Lazy-Eager-Loading.md
+    - Doctrine ORM: ORM/DoctrineORM.md
+    - TypeORM: ORM/TypeORM.md
+  - Elasticsearch:
+    - Overview: Elasticsearch/Overview.md
+    - Index, Type, Document: Elasticsearch/Index-Type-Document.md
+    - Data types: Elasticsearch/Data-Types.md
+    - Mapping: Elasticsearch/Mapping.md
+    - Analyzer: Elasticsearch/Analyzer.md
+    - Queries / Sort: Elasticsearch/Queries-Sort.md
+    - Aggregation: Elasticsearch/Aggregation.md
+  - Testing:
+    - Unit Test: Testing/Unit-Testing.md
+    - Functional Test: Testing/Functional-Testing.md
+    - Test coverage: Testing/Test-Coverage.md
+  - Architecture:
+    - Monolith: Architecture/Monolith.md
+    - Micro-services: Architecture/Micro-services.md
+    - Saga Pattern: Architecture/Saga-pattern.md
+    - CQRS Pattern: Architecture/CQRS-pattern.md
 
 # Extensions
 markdown_extensions:

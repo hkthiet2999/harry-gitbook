@@ -86,14 +86,8 @@ Trong thực tế, `Message Brokers` giải quyết được khá nhiều vấn 
 - `Mobile applications` 
 - `Transactional systems`
 - `Controlling data feeds `
-
-## SNS/SQS
-
-## Work Queues
-
-## Topics, Exchange, Channel
-
 ## Reference
 
 1. [Message Brokers - IBM](https://www.ibm.com/cloud/learn/message-brokers)
+
 2. [message-broker - tsh Blog](https://tsh.io/blog/message-broker/)

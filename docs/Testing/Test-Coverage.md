@@ -42,8 +42,8 @@ Tóm lại:
 
 - Ngăn chặn [Defect leakage](https://www.guru99.com/defect-management-process.html) - `Defect` trong kiểm thử phần mềm là một biến thể hoặc sai lệch của phần mềm so với yêu cầu ban đầu của end-user hoặc business requirements 
 
-## Types of Test Coverage
-
+## How To Perform Test Coverage?
+### Test coverage mechanisms
 Test coverage sẽ được evaluated dựa trên các [types of testing](https://www.browserstack.com/guide/types-of-testing), tuy nhiên nó còn phụ thuộc vào các business priorities, của organization và của testing team. Ví dụ: các ứng dụng web `user-centric` - lấy user làm trung tâm thì sẽ ưu tiên các `UI/UX tests` hơn các functional tests. Ngược lại, các ứng dụng tài chính sẽ ưu tiên `system testing` và `security testing` hơn các types of testing khác. Dưới đây là một vài `test coverage mechanisms`:
 
 - `Unit Testing`
@@ -53,6 +53,7 @@ Test coverage sẽ được evaluated dựa trên các [types of testing](https:
 - `Acceptance Testing`
 
 - `Integration Testing`
+### Types of Test Coverage
 
 Kết quả của Test coverage sẽ khác nhau tùy thuộc vào level mà tests được performed ở trên. Ngoài ra thì nó cũng phụ thuộc vào  type of software dùng để kiểm thử phần mềm. Các chỉ số của Test coverage metrics về cho điện thoại di động cũng sẽ khác với các chỉ số của Test coverage metrics trên web. Dưới đây là một số loại test coverage phổ biến:
 
@@ -75,7 +76,19 @@ Các tool để test coverage đều dựa trên công thức dưới đây đ�
 - Bước 3: Lấy X chi Y nhân 100% để ra được số phần trăm coverage của Test Suite.
 
 Ví dụ tổng số dòng code trong một system component là 500 lines và số dòng code được thực thi trên tất cả các test case hiện có là 50, thì phạm test coverage là `(50 / 500) * 100 = 10%`
- 
+
+## How to Improve Test Coverage?
+### Remove Dead Code
+
+Dựa trên Test coverage metrics được tính như trên, ta có tỷ số `covered_code`/`total_code`. Ta có thể tăng mức độ coverage bằng cách giảm `total_code` và tăng `covered_code`. Điều này có thể thực hiện được bằng cách loại bỏ các `Dead Code` như `debugging code`, `logging code` không cần thiết. Bằng cách Remove Dead Code này, ta có thể tăng tổng tỷ lệ coverage của ứng mình mà không cần viết thêm bất kỳ test case mới nào.
+
+### Remove Redundant/Cloned Code
+
+Tương tự như Remove Dead Code, việc bỏ bớt các block code bị trùng lắp, cloned code trong dự án có thể tăng tỷ lệ coverage và giảm kích thước source code của dự án.
+
+### Increase device coverage
+
+Hiện nay có rất nhiều devices, OS versions, browsers, cho nên việc xác định được các ứng dụng chủ yếu dùng trên thiết bị gì, OS nào, version chính là bao nhiêu, hỗ trợ trình duyệt gì là cực kỳ quan trọng. Lấy ví dụ để tối ưu hóa việc test coverage trên mobile app, ta có thể sủ dụng công cụ `Perfecto Mobile` phân tích mức độ sử dụng của thị trường và xem xét các thiết bị trên thị trường từ nhiều góc độ khác nhau. Dựa vào đó ta xây dựng một bộ test suite tập trung vào các thiết bị này để tối ưu hóa việc test coverage cho ứng dụng.
 ## Example
 
 Một Test Coverage Metris sẽ được report kiểu:
