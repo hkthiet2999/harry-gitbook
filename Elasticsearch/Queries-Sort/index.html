@@ -1,0 +1,2189 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Harry Hoang">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Queries / Sort - Harry Gitbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#queries-sort" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Harry Gitbook" class="md-header__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Harry Gitbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Queries / Sort
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Web-Technologies/Web-Protocols/" class="md-tabs__link">
+        Web technologies
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../SVM-Git/Source-Version-Control/" class="md-tabs__link">
+        SVM-Git
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Package-Management/composer/" class="md-tabs__link">
+        Package Management
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-tabs__link">
+        Docker
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Redis/Redis/" class="md-tabs__link">
+        Redis
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-tabs__link">
+        Message Brokers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../OOP/Object-Oriented-Programing/" class="md-tabs__link">
+      OOP
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-tabs__link">
+        Database
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ORM/Overview/" class="md-tabs__link">
+        ORM
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Overview/" class="md-tabs__link md-tabs__link--active">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Testing/Unit-Testing/" class="md-tabs__link">
+        Testing
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Architecture/Monolith/" class="md-tabs__link">
+        Architecture
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Harry Gitbook" class="md-nav__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Harry Gitbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Web technologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Web technologies" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Web technologies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Web-Protocols/" class="md-nav__link">
+        Web Protocols
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/HTTP-Protocol/" class="md-nav__link">
+        HTTP Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Web-server-and-proxy/" class="md-nav__link">
+        Web server and proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Programming/" class="md-nav__link">
+        Programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Supervisor%20and%20workers%20management/" class="md-nav__link">
+        Supervisord and workers management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/RESTful/" class="md-nav__link">
+        RESTful
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          SVM-Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SVM-Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          SVM-Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SVM-Git/Source-Version-Control/" class="md-nav__link">
+        Source Version Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Package Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Package Management" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Package Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/composer/" class="md-nav__link">
+        Composer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/npm/" class="md-nav__link">
+        NPM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Objects/" class="md-nav__link">
+        Docker Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Volumes-PersistentData/" class="md-nav__link">
+        Volumes - Persistent data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Network/" class="md-nav__link">
+        Network - Port
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Environments/" class="md-nav__link">
+        Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Compose/" class="md-nav__link">
+        Docker Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Practice/" class="md-nav__link">
+        Practice with Docker
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Redis/Redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Message Brokers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Message Brokers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Message Brokers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/RabbitMQ/" class="md-nav__link">
+        RabbitMQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/SNS-SQS/" class="md-nav__link">
+        SNS/SQS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Work-Queues/" class="md-nav__link">
+        Work Queues
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Publish-Subscribe/" class="md-nav__link">
+        Publish/Subscribe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Topics-Exchange-Channel/" class="md-nav__link">
+        Topics, Exchange, Channel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-nav__link">
+        OOP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" data-md-state="indeterminate" type="checkbox" id="__nav_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-nav__link">
+        Relationship, Primary/Foreign keys, Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Data-types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Index-Constraints-Unique/" class="md-nav__link">
+        Index, Constraints, Unique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Queries/" class="md-nav__link">
+        Queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Transactions-ACID/" class="md-nav__link">
+        Transactions - ACID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Schema/" class="md-nav__link">
+        Schema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Deadlock/" class="md-nav__link">
+        Deadlock
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Locking-Isolation/" class="md-nav__link">
+        Locking / Isolation Level
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Timestamp/" class="md-nav__link">
+        Time stamp
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" data-md-state="indeterminate" type="checkbox" id="__nav_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          ORM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Transactions/" class="md-nav__link">
+        Transactions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Migrations-Seeder/" class="md-nav__link">
+        Migrations / Seeder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Relations-Cascade/" class="md-nav__link">
+        Relations - Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Decorator-Anotation/" class="md-nav__link">
+        Annotation and Decorator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Lazy-Eager-Loading/" class="md-nav__link">
+        Lazy / Eager loading
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/DoctrineORM/" class="md-nav__link">
+        Doctrine ORM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/TypeORM/" class="md-nav__link">
+        TypeORM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Elasticsearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Elasticsearch" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Elasticsearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Index-Type-Document/" class="md-nav__link">
+        Index, Type, Document
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Mapping/" class="md-nav__link">
+        Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Analyzer/" class="md-nav__link">
+        Analyzer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Queries / Sort
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Queries / Sort
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queries" class="md-nav__link">
+    Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lucene-query-syntax" class="md-nav__link">
+    Lucene Query Syntax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-query-dsl" class="md-nav__link">
+    The Query DSL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-context-and-filter-context" class="md-nav__link">
+    Query context and Filter context
+  </a>
+  
+    <nav class="md-nav" aria-label="Query context and Filter context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-context" class="md-nav__link">
+    Query context
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-context" class="md-nav__link">
+    Filter context
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-queries" class="md-nav__link">
+    Types of queries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    Sort
+  </a>
+  
+    <nav class="md-nav" aria-label="Sort">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts_1" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elasticsearch-sorting" class="md-nav__link">
+    Elasticsearch Sorting
+  </a>
+  
+    <nav class="md-nav" aria-label="Elasticsearch Sorting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sort-values" class="md-nav__link">
+    Sort Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sort-order" class="md-nav__link">
+    Sort Order
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sort-mode-option" class="md-nav__link">
+    Sort mode option
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aggregation/" class="md-nav__link">
+        Aggregation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" data-md-state="indeterminate" type="checkbox" id="__nav_12" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Unit-Testing/" class="md-nav__link">
+        Unit Test
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Functional-Testing/" class="md-nav__link">
+        Functional Test
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Test-Coverage/" class="md-nav__link">
+        Test coverage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" data-md-state="indeterminate" type="checkbox" id="__nav_13" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          Architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Architecture" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Monolith/" class="md-nav__link">
+        Monolith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Microservices/" class="md-nav__link">
+        Microservices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Saga-CQRS-pattern/" class="md-nav__link">
+        Saga / CQRS Pattern
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queries" class="md-nav__link">
+    Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lucene-query-syntax" class="md-nav__link">
+    Lucene Query Syntax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-query-dsl" class="md-nav__link">
+    The Query DSL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-context-and-filter-context" class="md-nav__link">
+    Query context and Filter context
+  </a>
+  
+    <nav class="md-nav" aria-label="Query context and Filter context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-context" class="md-nav__link">
+    Query context
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-context" class="md-nav__link">
+    Filter context
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-queries" class="md-nav__link">
+    Types of queries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    Sort
+  </a>
+  
+    <nav class="md-nav" aria-label="Sort">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts_1" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elasticsearch-sorting" class="md-nav__link">
+    Elasticsearch Sorting
+  </a>
+  
+    <nav class="md-nav" aria-label="Elasticsearch Sorting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sort-values" class="md-nav__link">
+    Sort Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sort-order" class="md-nav__link">
+    Sort Order
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sort-mode-option" class="md-nav__link">
+    Sort mode option
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/smoothkt4951/harry-gitbook/edit/master/docs/Elasticsearch/Queries-Sort.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="queries-sort">Queries / Sort<a class="headerlink" href="#queries-sort" title="Permanent link">&para;</a></h1>
+<h2 id="concepts">Concepts<a class="headerlink" href="#concepts" title="Permanent link">&para;</a></h2>
+<p>Elasticsearch có thể sắp xếp kết quả truy vấn theo <code>Relevance</code> (sự liên quan). Theo mặc định, ES sử dụng thuật toán <code>TF/IDF</code> để tính toán <code>relevance score</code> và sort các document theo cái score này để cho ra search results tốt nhất có thể. Có hai khái niệm ta sẽ tìm hiểu là:</p>
+<ul>
+<li>
+<p><code>Queries</code>: Khái niệm Queries trong <code>database query</code> là truy vấn thông tin trích xuất từ một database, dùng để thực hiện các thao tác <code>data manipulation</code>. Trong Elasticsearch, Queries 
+có cách thức hoạt động khác so với database query thông thường, dựa trên <code>Query DSL</code> do Elasticsearch cung cấp dựa trên JSON để định nghĩa các Queries, tuy nhiên mục tiêu chung của các Queries này vẫn là thao tác, truy vấn, trích xuất thông tin, dữ liệu.</p>
+</li>
+<li>
+<p><code>Sort</code>: Elasticsearch tiến hành sort các document để tiện cho việc Queries và return về search results. ES sort dựa trên các special field như <code>_score</code> để sort theo score và <code>_doc</code> để theo index.</p>
+</li>
+</ul>
+<h2 id="queries">Queries<a class="headerlink" href="#queries" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../images/ES-Queries.jpg" /></p>
+<h3 id="lucene-query-syntax">Lucene Query Syntax<a class="headerlink" href="#lucene-query-syntax" title="Permanent link">&para;</a></h3>
+<p>Khác với Queries trong <code>database query</code>, Queries trong Elasticsearch sử dụng <code>Lucene Query Syntax</code> thay vì <code>SQL Query Syntax</code> vì Elasticsearch là một phần của ELK Stack và được xây dựng dựa trên <code>Lucene</code>. Biết được syntax và operators của Lucene sẽ giúp ta build các Queries, sử dụng nó trong query string sẽ đơn giản và tiêu chuẩn, xem thêm tại <a href="https://www.elastic.co/guide/en/kibana/current/lucene-query.html">Lucene Query</a></p>
+<h3 id="the-query-dsl">The Query DSL<a class="headerlink" href="#the-query-dsl" title="Permanent link">&para;</a></h3>
+<p>Elasticsearch định nghĩa <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html">Query DSL</a> như sau:</p>
+<details class="info" open="open">
+<summary>Query DSL</summary>
+<p>Elasticsearch provides a full Query DSL (Domain Specific Language) based on JSON to define queries. Think of the Query DSL as an AST (Abstract Syntax Tree) of queries, consisting of two types of clauses:</p>
+<ul>
+<li>Leaf query clauses: Leaf query clauses look for a particular value in a particular field, such as the match, term or range queries. These queries can be used by themselves.</li>
+<li>Compound query clauses: Compound query clauses wrap other leaf or compound queries and are used to combine multiple queries in a logical fashion (such as the bool or dis_max query), or to alter their behaviour (such as the constant_score query).</li>
+</ul>
+</details>
+<p>Theo đó, Elasticsearch cung cấp một bộ <code>Query DSL</code> - <a href="https://en.wikipedia.org/wiki/Domain-specific_language">Domain Specific Language</a> dựa trên JSON để định nghĩa các queries. Có thể coi Query DSL là một <code>AST</code> - <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree</a> của các queries, nó gồm hai loại mệnh đề:</p>
+<ul>
+<li>
+<p><code>Leaf query clauses</code>: Những mệnh đề này tìm những giá trị cụ thể của từng field cụ thể. Ví dụ như các truy vấn <code>match</code>, <code>term</code> và <code>range</code>.</p>
+</li>
+<li>
+<p><code>Compound query clauses</code>: Những mệnh đề này kết hợp các <code>leaf query</code> và các <code>compound query</code> để thu được kết quả mong muốn.</p>
+</li>
+</ul>
+<h3 id="query-context-and-filter-context">Query context and Filter context<a class="headerlink" href="#query-context-and-filter-context" title="Permanent link">&para;</a></h3>
+<p>Các <code>query clauses</code> kể trên sẽ hoạt động theo các cách khác nhau, tùy thuộc vào nó được sử dụng trong <code>query context</code> hay <code>filter context</code>.</p>
+<h4 id="query-context">Query context<a class="headerlink" href="#query-context" title="Permanent link">&para;</a></h4>
+<p>Một <code>query clauses</code> được sử dụng trong <code>query context</code> sẽ trả lời câu hỏi <strong>How well does this document match this query clause?</strong>. Bên cạnh việc xác định xem document có phù hợp với truy vấn hay không thì <code>query clauses</code> sẽ tính thêm giá trị <code>_score</code> - giá trị của <code>_score</code> thể hiện mức độ phù hợp của document.</p>
+<p>Query context sẽ có hiệu lực khi <code>query clauses</code> được truyền vào tham số <code>query</code> trong <code>Search APIs</code>.</p>
+<h4 id="filter-context">Filter context<a class="headerlink" href="#filter-context" title="Permanent link">&para;</a></h4>
+<p>Trong <code>filter context</code>, một <code>query clauses</code> trả lời câu hỏi <strong>Does this document match this query clause?</strong>. Câu trả lờichỉ là <code>yes or no</code>, giá trị <code>_score</code> không được tính.</p>
+<p>Filter context sẽ có hiệu lực khi <code>query clauses</code> được truyền vào tham số <code>filter</code> hay <code>must_not</code>.</p>
+<p><em>ghé đây để xem thêm ví dụ về <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.8/query-filter-context.html">Query and Filter context</a></em></p>
+<h3 id="types-of-queries">Types of queries<a class="headerlink" href="#types-of-queries" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Query Name</th>
+<th>Descriptions</th>
+<th>Queries in this group</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compound queries</td>
+<td>Một Compound queries có thể bọc các compound queries hoặc leaf queries khác để kết hợp tất cả các kết quả và scores, có thể thay đổi behaviour của chúng hoặc để chuyển từ query context sang filter context</td>
+<td><code>bool</code> - default, <code>boosting</code>, <code>constant_score</code>, <code>dis_max</code>, <code>function_score</code></td>
+</tr>
+<tr>
+<td>Full text queries</td>
+<td>Cho phép bạn tìm kiếm các <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html">analyzed text fields</a>, chẳng hạn như nội dung của email. Việc query string sẽ được xử lý cùng một analyzer với quá trình indexing</td>
+<td><code>intervals</code>, <code>match</code>, <code>match_bool_prefix</code>, <code>match_phrase</code>, <code>match_phrase_prefix</code>, <code>multi_match</code>, <code>combined_fields</code>, <code>query_string</code>, <code>simple_query_string</code></td>
+</tr>
+<tr>
+<td>Geo queries</td>
+<td>Queries dựa trên 2 loại geo data types trong Elasticsearch: <code>geo_point</code> và <code>geo_shape</code></td>
+<td><code>geo_bounding_box</code>, <code>geo_distance</code>, <code>geo_polygon</code>, <code>geo_shape</code></td>
+</tr>
+<tr>
+<td>Shape queries</td>
+<td>Queries tương tự như <code>geo_shape</code>, dùng cho việc queries các shape objects như virtual worlds, sporting venues, theme parks, và CAD diagrams.</td>
+<td><code>shape</code></td>
+</tr>
+<tr>
+<td>Joining queries</td>
+<td>Việc thực hiện các phép join theo SQL-style trong một hệ thống phân tán như Elasticsearch rất tốn kém. Thay vào đó, Elasticsearch cung cấp hai hình thức join được thiết kế theo kiểu scale horizontally, gọi chung là</td>
+<td><code>nested</code> và <code>has_child</code>/<code>has_parent</code></td>
+</tr>
+<tr>
+<td>Match all</td>
+<td>Queries đơn giản nhất, phù hợp với tất cả các document, gán cho tất cả các document <code>_score</code> là 1,0</td>
+<td><code>match_all</code>, <code>match_none</code></td>
+</tr>
+<tr>
+<td>Span queries</td>
+<td>Là các <code>low-level positional queries</code>, thường được sử dụng để thực hiện các truy vấn cụ thể, chi tiết về các document</td>
+<td><code>span_containing</code>, <code>span_field_masking</code>, <code>span_first</code>, <code>span_multi</code>, <code>span_near</code>, <code>span_not</code>, <code>span_or</code>, <code>span_term</code>, <code>span_within</code></td>
+</tr>
+<tr>
+<td>Term-level queries</td>
+<td>Queries dùng để tìm documents dựa trên các <code>precise values</code> trong các <code>structured data</code> như date ranges, địa chỉ IP, giá, tiền tệ hay mã sản phẩm v.v. Không giống như <code>full-text queries</code>, Term-level queries không dùng analyzer. Thay vào đó, term-level queries sẽ thực hiện query theo cụm từ, và Term level queries chỉ thực hiện được trên các field có type là keyword.</td>
+<td><code>exists</code>, <code>fuzzy</code>, <code>ids</code>, <code>prefix</code>, <code>range</code>, <code>regexp</code>, <code>term</code>, <code>terms</code>, <code>terms set</code>, <code>type</code>, <code>wildcard</code></td>
+</tr>
+<tr>
+<td>Specialized queries</td>
+<td>Nhóm này chứa các queries đặc biệt, không xếp vào các groups trên</td>
+<td><code>distance_feature</code>, <code>more_like_this</code>, <code>percolate</code>, <code>rank_feature</code>, <code>script</code>, <code>script_score</code>, <code>wrapper</code>, <code>pinned</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="sort">Sort<a class="headerlink" href="#sort" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../images/ES-Sort-Banner.png" /></p>
+<h3 id="concepts_1">Concepts<a class="headerlink" href="#concepts_1" title="Permanent link">&para;</a></h3>
+<p>Elasticsearch định nghĩa <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html">Sort</a> như sau:</p>
+<details class="info" open="open">
+<summary>Sort</summary>
+<p>Allows to add one or more sort on specific fields. Each sort can be reversed as well. The sort is defined on a per field level, with a special field name for _score to sort by score, and _doc to sort by index order.</p>
+</details>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.8/search-request-sort.html">Sort</a> hay trong ES V7.0+ gọi là <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html">Sort search results</a> cho phép ta thêm một hoặc nhiều loại sort trên các field cụ thể của document. Sort được xác định trên các field level, với tên field đặc biệt cho <code>_score</code> để sắp xếp theo <code>score</code> và <code>_doc</code> để sắp xếp theo thứ tự lập index.</p>
+<h3 id="elasticsearch-sorting">Elasticsearch Sorting<a class="headerlink" href="#elasticsearch-sorting" title="Permanent link">&para;</a></h3>
+<p>Để sort theo mức độ liên quan chúng ta cần biểu thị mức độ liên quan dưới dạng một giá trị. Trong Elasticsearch, sort sẽ dựa trên <code>relevance score</code> - biểu thị bằng số floating-point được search results trả về như <code>_score</code>, mặc định ES sẽ sort <code>_score</code> này theo thứ tự giảm dần. </p>
+<p><img alt="" src="../images/sort-example.png" /></p>
+<h4 id="sort-values">Sort Values<a class="headerlink" href="#sort-values" title="Permanent link">&para;</a></h4>
+<p>Trong trường hợp có các search results có cùng <code>_score</code>, khi đó các search results này đều phù hợp với truy vấn, khi đó ES sẽ tiến hành sort dựa trên <code>IDs</code> để phân biệt chúng hoặc một hay nhiều <code>Sort Values</code> mà mình chỉ định. Ngoài ra, khi ta không muốn chỉ sort theo <code>_score</code>, ta có thể cho Elasticsearch biết cách sắp xếp results bằng cách thêm <code>sort property</code> vào request body. Giá trị của <code>sort property</code> này được định nghĩa dưới dạng JSON objects. Ví dụ:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">GET</span><span class="w"> </span><span class="err">/my</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-000001</span><span class="err">/_search</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;sort&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;post_date&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;strict_date_optional_time_nanos&quot;</span><span class="p">}}</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">&quot;term&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;user&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kimchy&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="sort-order">Sort Order<a class="headerlink" href="#sort-order" title="Permanent link">&para;</a></h4>
+<p>Ví dụ với dạng đơn giản nhất, một objects trong sort array là một objects có một property duy nhất có tên trùng với field cần sắp xếp và có giá trị là thứ tự sắp xếp, <code>asc</code> để sắp xếp tăng dần còn <code>desc</code> để sắp xếp giảm dần. Khi đó, một request <code>Tìm tất cả các phim MỚI NHẤT ra mắt từ năm 2000</code> - ES sẽ tiến hành search mọi thứ trong index <code>movie</code> và sắp xếp kết quả dựa trên thuộc tính <code>year</code> theo thứ tự giảm dần.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="err">curl</span><span class="w"> </span><span class="mi">-</span><span class="err">XPOST</span><span class="w"> </span><span class="s2">&quot;https://localhost:9200/movies/_search&quot;</span><span class="w"> </span><span class="mi">-</span><span class="err">d&#39;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w"> </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w"> </span><span class="nt">&quot;match_all&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w"> </span><span class="nt">&quot;sort&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w"> </span><span class="nt">&quot;year&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;desc&quot;</span><span class="w"></span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">       </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w"> </span><span class="p">}</span><span class="err">&#39;</span><span class="w"></span>
+</code></pre></div>
+<h4 id="sort-mode-option">Sort mode option<a class="headerlink" href="#sort-mode-option" title="Permanent link">&para;</a></h4>
+<p>ElasticSearch hỗ trợ các Sort mode option phổ biến để queries ra được special values như <code>min</code>, <code>max</code> để tìm <code>_score</code> lớn nhất/nhỏ nhất, tương tự với <code>sum</code>, <code>avg</code>, <code>median</code>. Nếu dùng sort mode options thì default là <code>min</code>.</p>
+<p>Ngoài các cách thức sort kể trên, ES còn hỗ trợ rất nhiều kiểu sort tương ứng với các data types trong Elasticserach như <code>Sorting numeric fields</code> để sort các fields có data types là numeric, tương tự với <code>Sorting within nested objects</code>, <code>Geo Distance Sorting</code>, v.vv. Xem thêm tại <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html">Sort search results</a></p>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html">Query DSL - elastic document </a></p>
+</li>
+<li>
+<p><a href="https://dzone.com/articles/23-useful-elasticsearch-example-queries">23 Useful Elasticsearch Example Queries - dzone.com</a></p>
+</li>
+<li>
+<p><a href="https://logz.io/blog/elasticsearch-queries/">Elasticsearch Queries: A Guide to Query DSL - logz.io</a></p>
+</li>
+<li>
+<p><a href="https://mindmajix.com/elasticsearch/sort-the-results-using-a-sort-property">Learn Elasticsearch Sorting - mindmajix.com</a></p>
+</li>
+<li>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html">Sort search results - Elasticsearch documents v7.17-current</a></p>
+</li>
+<li>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.8/search-request-sort.html">Sort - Elasticsearch documents v6.8</a></p>
+</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Analyzer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Analyzer" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Analyzer
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Aggregation/" class="md-footer__link md-footer__link--next" aria-label="Next: Aggregation" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Aggregation
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Harry Hoang
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "navigation.top", "navigation.tabs", "navigation.expand", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+    
+  </body>
+</html>

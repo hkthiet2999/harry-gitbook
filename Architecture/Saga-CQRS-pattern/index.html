@@ -1,0 +1,2111 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Saga / CQRS Pattern - Harry Gitbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database-patterns-for-microservice" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Harry Gitbook" class="md-header__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Harry Gitbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Saga / CQRS Pattern
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Web-Technologies/Web-Protocols/" class="md-tabs__link">
+        Web technologies
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../SVM-Git/Source-Version-Control/" class="md-tabs__link">
+        SVM-Git
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Package-Management/composer/" class="md-tabs__link">
+        Package Management
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-tabs__link">
+        Docker
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Redis/Redis/" class="md-tabs__link">
+        Redis
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-tabs__link">
+        Message Brokers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../OOP/Object-Oriented-Programing/" class="md-tabs__link">
+      OOP
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-tabs__link">
+        Database
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ORM/Overview/" class="md-tabs__link">
+        ORM
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Elasticsearch/Overview/" class="md-tabs__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Testing/Unit-Testing/" class="md-tabs__link">
+        Testing
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Monolith/" class="md-tabs__link md-tabs__link--active">
+        Architecture
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Harry Gitbook" class="md-nav__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Harry Gitbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Web technologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Web technologies" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Web technologies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Web-Protocols/" class="md-nav__link">
+        Web Protocols
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/HTTP-Protocol/" class="md-nav__link">
+        HTTP Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Web-server-and-proxy/" class="md-nav__link">
+        Web server and proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Programming/" class="md-nav__link">
+        Programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Supervisor%20and%20workers%20management/" class="md-nav__link">
+        Supervisord and workers management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/RESTful/" class="md-nav__link">
+        RESTful
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          SVM-Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SVM-Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          SVM-Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SVM-Git/Source-Version-Control/" class="md-nav__link">
+        Source Version Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Package Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Package Management" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Package Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/composer/" class="md-nav__link">
+        Composer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/npm/" class="md-nav__link">
+        NPM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Objects/" class="md-nav__link">
+        Docker Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Volumes-PersistentData/" class="md-nav__link">
+        Volumes - Persistent data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Network/" class="md-nav__link">
+        Network - Port
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Environments/" class="md-nav__link">
+        Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Compose/" class="md-nav__link">
+        Docker Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Practice/" class="md-nav__link">
+        Practice with Docker
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Redis/Redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Message Brokers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Message Brokers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Message Brokers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/RabbitMQ/" class="md-nav__link">
+        RabbitMQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/SNS-SQS/" class="md-nav__link">
+        SNS/SQS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Work-Queues/" class="md-nav__link">
+        Work Queues
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Publish-Subscribe/" class="md-nav__link">
+        Publish/Subscribe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Topics-Exchange-Channel/" class="md-nav__link">
+        Topics, Exchange, Channel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-nav__link">
+        OOP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" data-md-state="indeterminate" type="checkbox" id="__nav_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-nav__link">
+        Relationship, Primary/Foreign keys, Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Data-types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Index-Constraints-Unique/" class="md-nav__link">
+        Index, Constraints, Unique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Queries/" class="md-nav__link">
+        Queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Transactions-ACID/" class="md-nav__link">
+        Transactions - ACID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Schema/" class="md-nav__link">
+        Schema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Deadlock/" class="md-nav__link">
+        Deadlock
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Locking-Isolation/" class="md-nav__link">
+        Locking / Isolation Level
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Timestamp/" class="md-nav__link">
+        Time stamp
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" data-md-state="indeterminate" type="checkbox" id="__nav_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          ORM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Transactions/" class="md-nav__link">
+        Transactions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Migrations-Seeder/" class="md-nav__link">
+        Migrations / Seeder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Relations-Cascade/" class="md-nav__link">
+        Relations - Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Decorator-Anotation/" class="md-nav__link">
+        Annotation and Decorator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Lazy-Eager-Loading/" class="md-nav__link">
+        Lazy / Eager loading
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/DoctrineORM/" class="md-nav__link">
+        Doctrine ORM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/TypeORM/" class="md-nav__link">
+        TypeORM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" data-md-state="indeterminate" type="checkbox" id="__nav_11" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Elasticsearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Elasticsearch" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Elasticsearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Index-Type-Document/" class="md-nav__link">
+        Index, Type, Document
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Data-Types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Mapping/" class="md-nav__link">
+        Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Analyzer/" class="md-nav__link">
+        Analyzer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Queries-Sort/" class="md-nav__link">
+        Queries / Sort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Aggregation/" class="md-nav__link">
+        Aggregation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" data-md-state="indeterminate" type="checkbox" id="__nav_12" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Unit-Testing/" class="md-nav__link">
+        Unit Test
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Functional-Testing/" class="md-nav__link">
+        Functional Test
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Test-Coverage/" class="md-nav__link">
+        Test coverage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          Architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Architecture" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monolith/" class="md-nav__link">
+        Monolith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Microservices/" class="md-nav__link">
+        Microservices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Saga / CQRS Pattern
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Saga / CQRS Pattern
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#related-concepts" class="md-nav__link">
+    Related concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-in-microservice" class="md-nav__link">
+    Database in Microservice
+  </a>
+  
+    <nav class="md-nav" aria-label="Database in Microservice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-database" class="md-nav__link">
+    Shared database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-per-service" class="md-nav__link">
+    Database per service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saga-pattern" class="md-nav__link">
+    Saga Pattern
+  </a>
+  
+    <nav class="md-nav" aria-label="Saga Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-phase-commit-and-why-saga-pattern" class="md-nav__link">
+    2-phase commit and why Saga Pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-the-saga-pattern" class="md-nav__link">
+    Implement the Saga pattern
+  </a>
+  
+    <nav class="md-nav" aria-label="Implement the Saga pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eventschoreography-based-saga" class="md-nav__link">
+    Events/Choreography-based saga
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commandorchestration-based-saga" class="md-nav__link">
+    Command/Orchestration-based saga
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cqrs-pattern" class="md-nav__link">
+    CQRS Pattern
+  </a>
+  
+    <nav class="md-nav" aria-label="CQRS Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-and-write-model" class="md-nav__link">
+    READ and WRITE model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-to-use-cqrs-pattern" class="md-nav__link">
+    Why to use CQRS Pattern
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#related-concepts" class="md-nav__link">
+    Related concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-in-microservice" class="md-nav__link">
+    Database in Microservice
+  </a>
+  
+    <nav class="md-nav" aria-label="Database in Microservice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-database" class="md-nav__link">
+    Shared database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-per-service" class="md-nav__link">
+    Database per service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saga-pattern" class="md-nav__link">
+    Saga Pattern
+  </a>
+  
+    <nav class="md-nav" aria-label="Saga Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-phase-commit-and-why-saga-pattern" class="md-nav__link">
+    2-phase commit and why Saga Pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-the-saga-pattern" class="md-nav__link">
+    Implement the Saga pattern
+  </a>
+  
+    <nav class="md-nav" aria-label="Implement the Saga pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eventschoreography-based-saga" class="md-nav__link">
+    Events/Choreography-based saga
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commandorchestration-based-saga" class="md-nav__link">
+    Command/Orchestration-based saga
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cqrs-pattern" class="md-nav__link">
+    CQRS Pattern
+  </a>
+  
+    <nav class="md-nav" aria-label="CQRS Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-and-write-model" class="md-nav__link">
+    READ and WRITE model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-to-use-cqrs-pattern" class="md-nav__link">
+    Why to use CQRS Pattern
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/smoothkt4951/harry-gitbook/edit/master/docs/Architecture/Saga-CQRS-pattern.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="database-patterns-for-microservice">Database Patterns for Microservice<a class="headerlink" href="#database-patterns-for-microservice" title="Permanent link">&para;</a></h1>
+<h2 id="related-concepts">Related concepts<a class="headerlink" href="#related-concepts" title="Permanent link">&para;</a></h2>
+<p>Microservice có thể chia hệ thống thành từng services, và Database trong Microservice cũng được chia nhỏ ra thành từng <code>Database per service</code>. <code>Distributed transaction</code> là một transaction tương tự như <code>Database transaction</code>, cũng có ACID và được thực hiện trên Distributed System, vai trò là implement các transactions trong database và các transactions giữa các <code>Database per service</code> với nhau trong Microservice.</p>
+<p>Trong <code>Distributed transaction</code>, có một khái niệm là <code>Idempotent</code> là một đặc điểm của một operation cho phép có thể thực hiện operation đó nhiều lần mà không làm thay đổi kết quả. Ý tưởng này thường được dùng trong thiết kế các dịch vụ webservice hoặc event-stream. Ví dụ với Restful service, một operation request là idempotent nếu sau vô số lần gọi, nó vẫn trả về kết quả như nhau. Ví dụ request gọi tới GET là idempotent vì nó không thay đổi giá trị nhưng request gọi đến POST, DELETE, PUT, PATCH thì tùy trường hợp có thể idempotemt hoặc không.</p>
+<p><code>Compensation transaction</code> là một transaction cho việc đảo ngược lại những thao tác đã thực hiện trong <code>Distributed transaction</code>. Ví dụ một distributed transaction thực hiện một loạt các bước, nếu một bước trong số đó bị lỗi, thì không thể thực hiện rollback lại database như hệ thống monolith, mà sẽ thực hiện một compensation transaction để quay ngược lại các thay đổi mà các service đã thực hiện.</p>
+<h2 id="database-in-microservice">Database in Microservice<a class="headerlink" href="#database-in-microservice" title="Permanent link">&para;</a></h2>
+<p>Một ví dụ về một hệ thống thương mại điện tử với Microservice Architecture. Ta cần có một Database như sau:</p>
+<p><img alt="" src="../images/Saga-Example1.png" /></p>
+<ul>
+<li>
+<p>Các services cần đảm bảo tính loosing-couple để việc deploy, development và scale được độc lập.</p>
+</li>
+<li>
+<p>Một số business transactions cần truy vấn data thuộc sở hữu của các services khác nhau.</p>
+</li>
+<li>
+<p>Một số business transactions cần thực thi tính nhất quán và bất biến trên nhiều services. VD: Place Order cần xác minh rằng đơn hàng mới sẽ không vượt quá giới hạn tín dụng của khách hàng. Một số business transactions khác, phải cập nhật data thuộc sở hữu của của các services khác nhau.</p>
+</li>
+<li>
+<p>Một số queries cần join data thuộc sở hữu của các services khác nhau.</p>
+</li>
+<li>
+<p>Database đôi khi phải được nhân rộng hoặc phân chia để mở rộng quy mô.
+Các services khác nhau có yêu cầu lưu trữ dữ liệu khác nhau. Đối với một số services, SQL là sự lựa chọn tốt nhất. Các services khác có thể cần một cơ sở dữ liệu NoSQL như MongoDB.</p>
+</li>
+</ul>
+<h3 id="shared-database">Shared database<a class="headerlink" href="#shared-database" title="Permanent link">&para;</a></h3>
+<p><code>Shared database</code> là dạng một Database được chia sẻ cho nhiều services. Các services được tự do truy cập các bảng của nhau để đảm bảo ACID transaction.</p>
+<p>Lợi ích của việc dùng Shared database là trong Microservice chỉ có một single database,đơn giản hơn để hoạt động. Các developers dễ dàng sử dụng ACID transaction để thực thi tính nhất quán dữ liệu.</p>
+<p>Tuy nhiên việc dùng Shared database có những hạn chế như:</p>
+<ul>
+<li>
+<p><code>Development time coupling</code>. Ví dụ: Sự thay đổi schema của DB sẽ gây ảnh hưởng đến nhiều services do chúng truy cập trực tiếp vào các tables, và trong khi các lập trình viên cho mỗi service là khác nhau thì rõ ràng coupling này làm chậm quá trình development.</p>
+</li>
+<li>
+<p><code>Runtime coupling</code>: tất cả các services truy cập vào cùng một cơ sở dữ liệu, chúng có khả năng can thiệp lẫn nhau. Ví dụ: nếu một CustomerService transaction chạy mất nhiều thời gian và lock ORDER table thì OrderService sẽ bị chặn.
+Thực tế đối với các hệ thống lớn, một DB đơn lẻ không thể đáp ứng đủ yêu cầu về lưu trữ và truy cập dữ liệu của tất cả các services.</p>
+</li>
+</ul>
+<h3 id="database-per-service">Database per service<a class="headerlink" href="#database-per-service" title="Permanent link">&para;</a></h3>
+<p>Đây là dạng Database giành riêng cho mỗi serivce. Các services khác nếu muốn thao tác với DB này thì cần phải thông qua API của service quản lý DB đó.</p>
+<p>Với ví dụ ban đầu, ta có sơ đồ cho cấu trúc của pattern này như sau:</p>
+<p><img alt="" src="../images/Saga-2.png" /></p>
+<p>Lợi ích của việc dùng Database per service là giúp đảm bảo tính chất loose-coupleing của services. Việc thay đổi cơ sở dữ liệu của một service không làm ảnh hưởng đến bất kỳ services nào khác. Ngoài ra, mỗi services có thể sử dụng loại Database Driver phù hợp nhất với nhu cầu của nó. Ví dụ: service tìm kiếm có thể sử dụng ElasticSearch. Trong khi đó các services khác có thể sử dụng MySQL, MongoDB.</p>
+<p>Việc thực hiện các transaction trải rộng trên nhiều serivces là không hề đơn giản. Các distributed transaction nên được quản lý để đảm bảo ACID trong một transaction. 
+và việc thực hiện các queries cần join data có trong nhiều cơ sở dữ liệu rất phức tạp.</p>
+<p>Để khắc phục sự phức tạp và hạn chế của <code>Database per service</code> thì có nhiều patterns/solutions khác nhau để giải quyết bài toán query và transaction trên nhiều services:</p>
+<ul>
+<li>
+<p>Để thực hiện transaction trên nhiều services ta có thể sử dụng <code>Saga pattern</code>.</p>
+</li>
+<li>
+<p>Để thực hiện query trên nhiều serivces ta có thể sử dụng: <code>API Composition</code> hoặc <code>Command Query Responsibility Segregation (CQRS)</code></p>
+</li>
+</ul>
+<h2 id="saga-pattern">Saga Pattern<a class="headerlink" href="#saga-pattern" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../images/Saga-Banner2.jpg" /></p>
+<p>Đối với các hệ thống lựa chọn mô hình <code>Database per Service</code>, mỗi service sẽ có một Database riêng. Tuy nhiên một số transaction cần trải rộng trên nhiều serivces và cần một cơ chế để đảm báo tính thống nhất của dữ liệu trên các serivces. Vấn đề trên thực sự quan trong trong hệ thống microservices. Nếu không thì không có cách để biết được transaction đã thực hiện thành công hay chưa. Để giải quyết vấn đề trên thì người ta có hai pattern thường được sử dụng gồm: 2-phase commit và Saga Pattern</p>
+<h3 id="2-phase-commit-and-why-saga-pattern">2-phase commit and why Saga Pattern<a class="headerlink" href="#2-phase-commit-and-why-saga-pattern" title="Permanent link">&para;</a></h3>
+<p>Nói về <code>2-phase commit</code> thì 2-phase commit - 2PC thường được sử dụng trong các hệ CSDL hơn là sử dụng cho microservices. Đúng như tên gọi, 2PC bao gồm 2 phases: một <code>prepare phase</code> và một <code>commit phase</code>. Trong prepare phase, tất cả các microservices cần tham gia sẽ được yêu cầu chuẩn bị cho việc thay đổi dữ liệu. Khi tất cả các miroservices tham gia đã chuẩn bị xong thì phase commit sẽ yêu cầu các service thực hiện thay đổi.</p>
+<p>Vì 2PC là synchronous (blocking) - giao thức này cần block các đối tượng sẽ bị thay đổi trước khi transaction hoàn thành. Trong <code>Distributed transaction</code>, các transactions thường diễn ra rất nhanh, nếu là synchronous thì các microservices sử dụng RPC hoặc HTTP call có thể bị delay cao và có khả năng hai transaction thực hiện lock lẫn nhau dẫn tới deadlock.</p>
+<p>Giải pháp được đưa ra như sau: Ta sẽ coi mỗi một transaction trải rộng trên nhiều services là một <code>Saga</code>. Và mỗi một Saga là một chuỗi các transaction cục bộ trên từng serivce khác nhau. Nếu một transaction cục bộ thất bại thì Saga sẽ thực hiện một loạt các transactions để rollback lại các thay đổi đã được thực hiện trước đó.</p>
+<p><img alt="" src="../images/UseSaga.png" /></p>
+<p><code>Saga pattern</code> là một pattern được sử dụng rộng rãi trong distributed transaction. Saga pattern thực hiện các transaction kiểu <code>asynchronous</code> và <code>reactive</code>. Trong Saga, một distributed transaction thực hiện các asynchronous local transaction trên tất cả các related microservices. Các microservices giao tiếp với nhau thông qua một <code>event bus</code>.</p>
+<h3 id="implement-the-saga-pattern">Implement the <code>Saga pattern</code><a class="headerlink" href="#implement-the-saga-pattern" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../images/Saga-Banner.jpg" /></p>
+<p>Có hai cách để triển khai <code>Saga pattern</code>:</p>
+<h4 id="eventschoreography-based-saga">Events/Choreography-based saga<a class="headerlink" href="#eventschoreography-based-saga" title="Permanent link">&para;</a></h4>
+<p>Service đầu tiên thực hiện transaction và sau đó publish một event. Event này được listen bởi một hoặc nhiều services thực hiện các transactions cục bộ và publish (hoặc không) các event mới.</p>
+<p>Distributed transaction kết thúc khi service cuối cùng thực hiện local transaction  của nó và không publish bất kỳ event nào hoặc event được publish không được listen bởi bất kỳ services nào của saga.</p>
+<p>Phương pháp này là phổ biến nhất trong Saga Pattern và đảm bảo được loose-coupling giữa các services. Nếu 1 transaction chỉ có từ 2 đến 4 bước thì đây sẽ là sự lựa chọn tuyệt vời. Tuy nhiên, chúng sẽ trở nên khó khăn khi bạn muốn bổ sung, mở rộng transaction. Nó cũng gây khó khăn cho testing vì bạn phải chạy tất cả các services.</p>
+<h4 id="commandorchestration-based-saga">Command/Orchestration-based saga<a class="headerlink" href="#commandorchestration-based-saga" title="Permanent link">&para;</a></h4>
+<p>Sẽ có một service mới chịu trách nhiệm điều phối các logic của Saga. Nó chịu trách nhiệm duy nhất là nói cho mỗi service phải làm gì và khi nào. Saga service giao tiếp với từng service theo kiểu command/reply để cho chúng biết thực hiện thao tác nào.</p>
+<h2 id="cqrs-pattern">CQRS Pattern<a class="headerlink" href="#cqrs-pattern" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../images/cqrs-banner.png" /></p>
+<h3 id="concepts">Concepts<a class="headerlink" href="#concepts" title="Permanent link">&para;</a></h3>
+<p><code>CQRS</code> là viết tắt của <code>Command and Query Responsibility Segregation</code>, là một pattern hỗ trợ việc phân tách các thao tác với dữ liệu thông qua model</p>
+<h3 id="read-and-write-model">READ and WRITE model<a class="headerlink" href="#read-and-write-model" title="Permanent link">&para;</a></h3>
+<p>CQRS tiến hành phân tách các lần read và write thành các model khác nhau gọi là <code>READ and WRITE model</code>, sử dụng <code>commands</code> để cập nhật dữ liệu và các <code>query</code> để đọc dữ liệu. Các model này sẽ tách biệt nhau.</p>
+<p>Thông thường, để thực hiện ghi một model bằng cách publish một event tới <code>Evenentbus</code> mỗi khi update database, update database và publish event sẽ chỉ diễn ra trên một transaction duy nhất.</p>
+<p><img alt="" src="../images/model-cqrs.png" /></p>
+<h3 id="why-to-use-cqrs-pattern">Why to use CQRS Pattern<a class="headerlink" href="#why-to-use-cqrs-pattern" title="Permanent link">&para;</a></h3>
+<p>Triển khai CQRS giúp ứng dụng có thể tối đa performance, scalability, và security. Sự linh hoạt khi chuyển sang CQRS giúp hệ thống phát triển tốt hơn theo thời gian và ngăn sự xung đột giữa các domain level.</p>
+<p>Ngoài ra còn có các lợi ích như:</p>
+<ul>
+<li>
+<p><code>Independent scaling</code>: CQRS cho phép xử lý read và write có thể scale độc lập, hạn chế lock contentions.</p>
+</li>
+<li>
+<p><code>Optimized data schemas</code>: Read side có thể sử dụng schema tối ưu cho query, trong khi write side sử dụng schema tối ưu cho update.</p>
+</li>
+<li>
+<p><code>Separation of concerns</code>:  Phân tách read side và write side giúp cho model dễ dàng bảo trì và linh hoạt.</p>
+</li>
+<li>
+<p><code>Simpler queries</code>: Ứng dụng tránh việc thực hiện các query phức tap.</p>
+</li>
+</ul>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><a href="https://hazelcast.com/glossary/distributed-transaction/">Distributed Transaction - hazelcast.com/</a></p>
+</li>
+<li>
+<p><a href="https://enlear.academy/using-saga-pattern-in-microservices-3a638979e830">Using Saga Pattern in Microservices - enlear.academy</a></p>
+</li>
+<li>
+<p><a href="https://microservices.io/patterns/data/saga.html">Pattern: Saga - microservices.io</a></p>
+</li>
+<li>
+<p><a href="https://microservices.io/patterns/data/cqrs.html">Pattern: Command Query Responsibility Segregation (CQRS)</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/design-microservices-architecture-with-patterns/cqrs-design-pattern-in-microservices-architectures-5d41e359768c">CQRS Design Pattern in Microservices Architectures</a></p>
+</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Microservices/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Microservices" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Microservices
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Harry Hoang
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "navigation.top", "navigation.tabs", "navigation.expand", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+    
+  </body>
+</html>

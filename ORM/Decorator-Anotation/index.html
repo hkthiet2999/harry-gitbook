@@ -1,0 +1,2174 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Harry Hoang">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Annotation and Decorator - Harry Gitbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#decorator-and-annotation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Harry Gitbook" class="md-header__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Harry Gitbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Annotation and Decorator
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Web-Technologies/Web-Protocols/" class="md-tabs__link">
+        Web technologies
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../SVM-Git/Source-Version-Control/" class="md-tabs__link">
+        SVM-Git
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Package-Management/composer/" class="md-tabs__link">
+        Package Management
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-tabs__link">
+        Docker
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Redis/Redis/" class="md-tabs__link">
+        Redis
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-tabs__link">
+        Message Brokers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../OOP/Object-Oriented-Programing/" class="md-tabs__link">
+      OOP
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-tabs__link">
+        Database
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Overview/" class="md-tabs__link md-tabs__link--active">
+        ORM
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Elasticsearch/Overview/" class="md-tabs__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Testing/Unit-Testing/" class="md-tabs__link">
+        Testing
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Architecture/Monolith/" class="md-tabs__link">
+        Architecture
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Harry Gitbook" class="md-nav__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Harry Gitbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Web technologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Web technologies" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Web technologies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Web-Protocols/" class="md-nav__link">
+        Web Protocols
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/HTTP-Protocol/" class="md-nav__link">
+        HTTP Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Web-server-and-proxy/" class="md-nav__link">
+        Web server and proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Programming/" class="md-nav__link">
+        Programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Supervisor%20and%20workers%20management/" class="md-nav__link">
+        Supervisord and workers management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/RESTful/" class="md-nav__link">
+        RESTful
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          SVM-Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SVM-Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          SVM-Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SVM-Git/Source-Version-Control/" class="md-nav__link">
+        Source Version Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Package Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Package Management" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Package Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/composer/" class="md-nav__link">
+        Composer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/npm/" class="md-nav__link">
+        NPM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Objects/" class="md-nav__link">
+        Docker Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Volumes-PersistentData/" class="md-nav__link">
+        Volumes - Persistent data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Network/" class="md-nav__link">
+        Network - Port
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Environments/" class="md-nav__link">
+        Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Compose/" class="md-nav__link">
+        Docker Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Practice/" class="md-nav__link">
+        Practice with Docker
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Redis/Redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Message Brokers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Message Brokers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Message Brokers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/RabbitMQ/" class="md-nav__link">
+        RabbitMQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/SNS-SQS/" class="md-nav__link">
+        SNS/SQS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Work-Queues/" class="md-nav__link">
+        Work Queues
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Publish-Subscribe/" class="md-nav__link">
+        Publish/Subscribe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Topics-Exchange-Channel/" class="md-nav__link">
+        Topics, Exchange, Channel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-nav__link">
+        OOP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" data-md-state="indeterminate" type="checkbox" id="__nav_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-nav__link">
+        Relationship, Primary/Foreign keys, Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Data-types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Index-Constraints-Unique/" class="md-nav__link">
+        Index, Constraints, Unique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Queries/" class="md-nav__link">
+        Queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Transactions-ACID/" class="md-nav__link">
+        Transactions - ACID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Schema/" class="md-nav__link">
+        Schema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Deadlock/" class="md-nav__link">
+        Deadlock
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Locking-Isolation/" class="md-nav__link">
+        Locking / Isolation Level
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Timestamp/" class="md-nav__link">
+        Time stamp
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          ORM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Transactions/" class="md-nav__link">
+        Transactions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Migrations-Seeder/" class="md-nav__link">
+        Migrations / Seeder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Relations-Cascade/" class="md-nav__link">
+        Relations - Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Annotation and Decorator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Annotation and Decorator
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotations-reference-doctrine-orm" class="md-nav__link">
+    Annotations Reference - Doctrine ORM
+  </a>
+  
+    <nav class="md-nav" aria-label="Annotations Reference - Doctrine ORM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entity-annotations" class="md-nav__link">
+    Entity Annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-annotations" class="md-nav__link">
+    Column Annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-key-annotations" class="md-nav__link">
+    Primary key Annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationships-annotations" class="md-nav__link">
+    Relationships Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decorators-reference-typeorm" class="md-nav__link">
+    Decorators Reference - TypeORM
+  </a>
+  
+    <nav class="md-nav" aria-label="Decorators Reference - TypeORM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entity-decorators" class="md-nav__link">
+    Entity decorators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-decorators-and-primary-key" class="md-nav__link">
+    Column decorators and Primary key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscriber-and-listener-decorators" class="md-nav__link">
+    Subscriber and listener decorators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-decorators" class="md-nav__link">
+    Other decorators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lazy-Eager-Loading/" class="md-nav__link">
+        Lazy / Eager loading
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DoctrineORM/" class="md-nav__link">
+        Doctrine ORM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TypeORM/" class="md-nav__link">
+        TypeORM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" data-md-state="indeterminate" type="checkbox" id="__nav_11" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Elasticsearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Elasticsearch" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Elasticsearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Index-Type-Document/" class="md-nav__link">
+        Index, Type, Document
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Data-Types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Mapping/" class="md-nav__link">
+        Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Analyzer/" class="md-nav__link">
+        Analyzer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Queries-Sort/" class="md-nav__link">
+        Queries / Sort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Elasticsearch/Aggregation/" class="md-nav__link">
+        Aggregation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" data-md-state="indeterminate" type="checkbox" id="__nav_12" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Unit-Testing/" class="md-nav__link">
+        Unit Test
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Functional-Testing/" class="md-nav__link">
+        Functional Test
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Test-Coverage/" class="md-nav__link">
+        Test coverage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" data-md-state="indeterminate" type="checkbox" id="__nav_13" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          Architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Architecture" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Monolith/" class="md-nav__link">
+        Monolith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Microservices/" class="md-nav__link">
+        Microservices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Saga-CQRS-pattern/" class="md-nav__link">
+        Saga / CQRS Pattern
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotations-reference-doctrine-orm" class="md-nav__link">
+    Annotations Reference - Doctrine ORM
+  </a>
+  
+    <nav class="md-nav" aria-label="Annotations Reference - Doctrine ORM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entity-annotations" class="md-nav__link">
+    Entity Annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-annotations" class="md-nav__link">
+    Column Annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-key-annotations" class="md-nav__link">
+    Primary key Annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationships-annotations" class="md-nav__link">
+    Relationships Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decorators-reference-typeorm" class="md-nav__link">
+    Decorators Reference - TypeORM
+  </a>
+  
+    <nav class="md-nav" aria-label="Decorators Reference - TypeORM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entity-decorators" class="md-nav__link">
+    Entity decorators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-decorators-and-primary-key" class="md-nav__link">
+    Column decorators and Primary key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscriber-and-listener-decorators" class="md-nav__link">
+    Subscriber and listener decorators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-decorators" class="md-nav__link">
+    Other decorators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/smoothkt4951/harry-gitbook/edit/master/docs/ORM/Decorator-Anotation.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="decorator-and-annotation">Decorator and Annotation<a class="headerlink" href="#decorator-and-annotation" title="Permanent link">&para;</a></h1>
+<h2 id="concepts">Concepts<a class="headerlink" href="#concepts" title="Permanent link">&para;</a></h2>
+<p><code>Annotation</code> trong Java có 3 loại: <code>-</code><a class="magiclink magiclink-github magiclink-mention" href="https://github.com/Deprecated" title="GitHub User: Deprecated">@Deprecated</a><code>,</code>- <code>@Override</code>, <code>-</code><a class="magiclink magiclink-github magiclink-mention" href="https://github.com/SuppressWarnings" title="GitHub User: SuppressWarnings">@SuppressWarnings</a>`</p>
+<p>Còn trong Typescript, có 5 loại <code>Decorator</code>: <code>class decorator</code>, <code>method decorator</code>, <code>property decorator</code>, <code>accessor decorator</code> và <code>parameter decorator</code>. Ví dụ về <code>class decorator</code> dùng để log ra mỗi khi có 1 instance mới của class được khởi tạo.</p>
+<div class="highlight"><span class="filename">class-decorator.ts</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">-</span> <span class="sb">`@logCreate</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="sb">class Animal {</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sb">  constructor(footCount) {}</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="sb">}</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="sb">const dog = new Animal(4);</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="sb">// =&gt; Object created with args: 4</span>
+</code></pre></div>
+<p>Còn trong Angular, dùng cả hai khái niệm <code>Decorator</code> và <code>Annotation</code>. Nhìn chung thì <code>Decorator</code> và <code>Annotation</code> có thể coi như một cú pháp khai báo đặc biệt, không bao giờ đứng độc lập mà luôn được gắn kèm với một khai báo <code>class</code>, <code>method</code>, <code>property</code> hoặc <code>accessor</code>. Chúng được viết dưới cú pháp dạng <code>-</code><a class="magiclink magiclink-github magiclink-mention" href="https://github.com/expression" title="GitHub User: expression">@expression</a>`, với expression trỏ tới một function sẽ được gọi tới ở runtime, có nhiệm vụ thay đổi hoặc bổ sung cho đối tượng được decorate hay announce.</p>
+<h2 id="annotations-reference-doctrine-orm">Annotations Reference - Doctrine ORM<a class="headerlink" href="#annotations-reference-doctrine-orm" title="Permanent link">&para;</a></h2>
+<p>Trong Doctrine ORM, một Annotations gọi là <code>Docblock annotations</code>, là một công cụ để nhúng metadata vào bên trong document và xử lý chúng. <code>Doctrine 2</code> khái quát hơn về khái niệm của docblock annotations để chúng có thể được sử dụng cho bất kỳ loại metadata nào và dễ dàng xác định các docblock annotations mới, cho phép nhiều giá trị annotations liên quan hơn và giảm nguy cơ xung đột giữa các docblock annotations với nhau, cú pháp được lấy cảm hứng từ cú pháp Annotations trong Java 5 mình ví dụ ở trên.</p>
+<p>Dưới đây là một vài Doctrine 2 Annotation:</p>
+<ul>
+<li><code>@Column</code></li>
+<li><code>@Cache</code></li>
+<li><code>@Entity</code></li>
+<li><code>@HasLifecycleCallbacks</code></li>
+<li><code>@Index</code></li>
+<li><code>@Id</code></li>
+<li><code>@JoinColumn</code></li>
+<li><code>@JoinTable</code></li>
+<li><code>@ManyToOne</code></li>
+<li><code>@OneToMany</code></li>
+<li><code>@OrderBy</code></li>
+<li><code>@PreRemove</code></li>
+<li><code>@PreUpdate</code></li>
+<li><code>@Table</code></li>
+<li><code>@UniqueConstraint</code></li>
+<li><code>@Version</code></li>
+</ul>
+<p>xem full tại <a href="https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/reference/annotations-reference.html">Doctrine 2 - Annotations Reference</a></p>
+<h3 id="entity-annotations">Entity Annotations<a class="headerlink" href="#entity-annotations" title="Permanent link">&para;</a></h3>
+<p>Lấy ví dụ với Annotation <code>@Entity</code>. Đây là Annotation bắt buộc dùng để đánh dấu một class là một Entity. Doctrine sẽ dựa vào đó để quản lý sự tồn tại của tất cả các class được đánh dấu là Entity.</p>
+<div class="highlight"><span class="filename">@Entity</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="sd">/**</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="sd"> * @Entity(repositoryClass=&quot;MyProject\UserRepository&quot;)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="sd"> */</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">class</span> <span class="nc">User</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="c1">//...</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="column-annotations">Column Annotations<a class="headerlink" href="#column-annotations" title="Permanent link">&para;</a></h3>
+<p><code>@Column</code> là Annotation dùng để đánh dấu một <code>instance variable</code> là một Column trong Entity. Nó phải nằm bên trong các <code>DocBlock comment</code>, bất kỳ giá trị nào bên trong variable này sẽ được <code>lưu</code> và <code>tải</code> từ Database như một phần của entity-class. Ví dụ:</p>
+<div class="highlight"><span class="filename">@Column</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="sd">/**</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="sd"> * @Column(type=&quot;string&quot;, length=32, unique=true, nullable=false)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="sd"> */</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">protected</span> <span class="nv">$username</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="sd">/**</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="sd"> * @Column(type=&quot;string&quot;, columnDefinition=&quot;CHAR(2) NOT NULL&quot;)</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="sd"> */</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">protected</span> <span class="nv">$country</span><span class="p">;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="sd">/**</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="sd"> * @Column(type=&quot;decimal&quot;, precision=2, scale=1)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="sd"> */</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="k">protected</span> <span class="nv">$height</span><span class="p">;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="sd">/**</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="sd"> * @Column(type=&quot;string&quot;, length=2, options={&quot;fixed&quot;:true, &quot;comment&quot;:&quot;Initial letters of first and last name&quot;})</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="sd"> */</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="k">protected</span> <span class="nv">$initials</span><span class="p">;</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="sd">/**</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="sd"> * @Column(type=&quot;integer&quot;, name=&quot;login_count&quot;, nullable=false, options={&quot;unsigned&quot;:true, &quot;default&quot;:0})</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="sd"> */</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="k">protected</span> <span class="nv">$loginCount</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="primary-key-annotations">Primary key Annotations<a class="headerlink" href="#primary-key-annotations" title="Permanent link">&para;</a></h3>
+<p><code>@Id</code> sẽ được đánh dấu một <code>instance variable</code> ( tức Column trong Database) là định danh của một entity, tức là <code>primary key</code> trong cơ sở dữ liệu. Annotation này chỉ đánh dấu và không có thuộc tính bắt buộc. Dưới đây là ví dụ:</p>
+<div class="highlight"><span class="filename">@Id</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="sd">/**</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="sd"> * @Id</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="sd"> * @Column(type=&quot;integer&quot;)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="sd"> */</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">protected</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="relationships-annotations">Relationships Annotations<a class="headerlink" href="#relationships-annotations" title="Permanent link">&para;</a></h3>
+<p>Doctrine 2 có 4 Annotation Relationships tương ứng với 4 relationships trong Relational Database như sau: <code>@OneToOne</code>, <code>@OneToMany</code>, <code>@ManyToOne</code>, <code>@ManyToMany</code>. Tùy từng relationships mà mình sẽ dùng Annotation tương ứng. Lấy ví dụ với OneToMany relationships, trong Doctrine 2 dùng <code>@OneToMany</code>:</p>
+<div class="highlight"><span class="filename">@OneToMany</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="sd">/**</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="sd"> * @OneToMany(targetEntity=&quot;Phonenumber&quot;, mappedBy=&quot;user&quot;, cascade={&quot;persist&quot;, &quot;remove&quot;, &quot;merge&quot;}, orphanRemoval=true)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="sd"> */</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">public</span> <span class="nv">$phonenumbers</span><span class="p">;</span>
+</code></pre></div>
+<p>Ngoài ra còn rất nhiều Annotations Reference trong Doctrine ORM, xem đầy đủ và bao gồm Descriptions, các Optional, Required attributes của từng Annotations trong Doctrine ORM tại <a href="https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/reference/annotations-reference.html">Annotations Reference</a></p>
+<h2 id="decorators-reference-typeorm">Decorators Reference - TypeORM<a class="headerlink" href="#decorators-reference-typeorm" title="Permanent link">&para;</a></h2>
+<p>TypeORM chia các Decorators thành các nhóm sau:</p>
+<ul>
+<li>
+<p><code>Entity decorators</code>: Dùng để decorate cho các Entity</p>
+</li>
+<li>
+<p><code>Column decorators</code>:  Dùng để decorate cho các Column và các Operations liên quan đến Column đó luôn</p>
+</li>
+<li>
+<p><code>Relation decorators</code>:  Dùng để decorate cho các Relationshipts trong Database</p>
+</li>
+<li>
+<p><code>Subscriber and listener decorators</code>: các Actions như <code>@AfterLoad</code>, <code>@BeforeInsert</code>, <code>@AfterUpdate</code>, <code>@BeforeRemove</code> v.vv và <code>@EventSubscriber</code></p>
+</li>
+<li>
+<p><code>Other decorators</code>: Decorate cho các contraints trong Database như <code>@Index</code>, <code>@Unique</code>, <code>@Check</code> và cả transactions trong database như <code>@Transaction</code>, <code>@TransactionManager</code> và <code>@TransactionRepository</code>.</p>
+</li>
+</ul>
+<h3 id="entity-decorators">Entity decorators<a class="headerlink" href="#entity-decorators" title="Permanent link">&para;</a></h3>
+<p>Nhóm <code>Entity decorators</code> dùng để decorate cho các Entity, gồm có 2 loại là <code>@Entity</code> và <code>@ViewEntity</code>. Lấy ví dụ với <code>@Entity</code>, nó dùng để đánh dấu một MModel ( Model trong MVC) là một Entity. Entity khi này là một class được <code>transformed</code> thành một Table trong Database:</p>
+<div class="highlight"><span class="filename">@Entity</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">@Entity</span><span class="p">({</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;users&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nx">engine</span><span class="o">:</span> <span class="s2">&quot;MyISAM&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="nx">database</span><span class="o">:</span> <span class="s1">&#39;example_dev&#39;</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="nx">schema</span><span class="o">:</span> <span class="s1">&#39;schema_with_best_tables&#39;</span><span class="p">,</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="nx">synchronize</span>: <span class="kt">false</span><span class="p">,</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="nx">orderBy</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;ASC&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;DESC&quot;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="p">}</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">})</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="k">export</span> <span class="kd">class</span> <span class="nx">User</span> <span class="p">{</span>
+</code></pre></div>
+<h3 id="column-decorators-and-primary-key">Column decorators and Primary key<a class="headerlink" href="#column-decorators-and-primary-key" title="Permanent link">&para;</a></h3>
+<p><code>@Column</code> dùng để đánh dấu một property trong entity là một column trong table của Database. Ví dụ:</p>
+<div class="highlight"><span class="filename">@Column</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">@Entity</span><span class="p">(</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">export</span> <span class="kd">class</span> <span class="nx">User</span> <span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="kd">@Column</span><span class="p">({</span> <span class="nx">primary</span>: <span class="kt">true</span> <span class="p">})</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="nx">id</span>: <span class="kt">number</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="kd">@Column</span><span class="p">({</span> <span class="kr">type</span><span class="o">:</span> <span class="s2">&quot;varchar&quot;</span><span class="p">,</span> <span class="nx">length</span>: <span class="kt">200</span><span class="p">,</span> <span class="nx">unique</span>: <span class="kt">true</span> <span class="p">})</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="nx">firstName</span>: <span class="kt">string</span><span class="p">;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="kd">@Column</span><span class="p">({</span> <span class="nx">nullable</span>: <span class="kt">true</span> <span class="p">})</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="nx">lastName</span>: <span class="kt">string</span><span class="p">;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="kd">@Column</span><span class="p">({</span> <span class="nx">default</span>: <span class="kt">false</span> <span class="p">})</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    <span class="nx">isActive</span>: <span class="kt">boolean</span><span class="p">;</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">}</span>
+</code></pre></div>
+<p>Column decorators có rất nhiều optional dùng để chỉ định <code>type: ColumnType</code>, <code>name: string</code>, <code>length: string|number</code>, <code>onUpdate: string</code>, <code>nullable: boolean</code> v.vv đủ dùng cho việc <code>transformed</code> một property trong entity thành một Column trong Table Database. Ngoài ra còn có options <code>primary: boolean</code> để marks column này là Primary key. Ngoài cách này ra còn có thể dùng <code>@PrimaryColumn</code> như sau:</p>
+<div class="highlight"><span class="filename">@PrimaryColumn</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">@Entity</span><span class="p">()</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">export</span> <span class="kd">class</span> <span class="nx">User</span> <span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="kd">@PrimaryColumn</span><span class="p">()</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="nx">id</span>: <span class="kt">number</span><span class="p">;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="subscriber-and-listener-decorators">Subscriber and listener decorators<a class="headerlink" href="#subscriber-and-listener-decorators" title="Permanent link">&para;</a></h3>
+<p><code>Subscriber and listener decorators</code> dùng để xác định một method bên trong Entity để thực hiện các actions <code>before/after load/insert/update/remove</code> bằng <code>QueryBuilder</code> hoặc listen các event bằng <code>@EventSubscriber</code></p>
+<p>Lấy ví dụ với <code>@AfterLoad</code>:</p>
+<p><div class="highlight"><span class="filename">@Entity</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">@Entity</span><span class="p">()</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">export</span> <span class="kd">class</span> <span class="nx">Post</span> <span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="kd">@AfterLoad</span><span class="p">()</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="nx">updateCounters</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">likesCount</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>            <span class="k">this</span><span class="p">.</span><span class="nx">likesCount</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="p">}</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">}</span>
+</code></pre></div>
+<code>@AfterLoad</code> này dùng để xác định một method tên là <code>updateCounters</code> bên trong <code>Post</code> Entity và TypeORM sẽ gọi nó mỗi khi Post được load bằng <code>QueryBuilder</code> hoặc <code>repository/manager find methods</code>.</p>
+<h3 id="other-decorators">Other decorators<a class="headerlink" href="#other-decorators" title="Permanent link">&para;</a></h3>
+<p>Dùng để Decorate cho các contraints trong Database như <code>@Index</code>, <code>@Unique</code>, <code>@Check</code> và cả Transactions trong database như <code>@Transaction</code>, <code>@TransactionManager</code> và <code>@TransactionRepository</code>.</p>
+<p>Ví dụ về Transactions trong database sử dụng <code>@Transaction</code>. Nó được sử dụng trên một method và gói tất cả việc thực thi của nó vào một Transactions duy nhất. Tất cả các database queries phải được thực hiện bằng provided manager tương ứng với <code>@TransactionManager</code> hoặc với các <code>transaction repositories</code> tương ứng với <code>@TransactionRepository</code> trong TypeORM. Ví dụ:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">@Transaction</span><span class="p">()</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nx">save</span><span class="p">(</span><span class="kd">@TransactionManager</span><span class="p">()</span> <span class="nx">manager</span>: <span class="kt">EntityManager</span><span class="p">,</span> <span class="nx">user</span>: <span class="kt">User</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="k">return</span> <span class="nx">manager</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">@Transaction</span><span class="p">()</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nx">save</span><span class="p">(</span><span class="nx">user</span>: <span class="kt">User</span><span class="p">,</span> <span class="kd">@TransactionRepository</span><span class="p">(</span><span class="nx">User</span><span class="p">)</span> <span class="nx">userRepository</span>: <span class="kt">Repository</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="k">return</span> <span class="nx">userRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">@Transaction</span><span class="p">()</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nx">save</span><span class="p">(</span><span class="kd">@QueryParam</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="nx">name</span>: <span class="kt">string</span><span class="p">,</span> <span class="kd">@TransactionRepository</span><span class="p">()</span> <span class="nx">userRepository</span>: <span class="kt">UserRepository</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="k">return</span> <span class="nx">userRepository</span><span class="p">.</span><span class="nx">findByName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">}</span>
+</code></pre></div>
+<p>Lấy một ví dụ khác về các ràng buộc trong Database, cụ thể là <code>unique contraint</code> tương ứng với <code>@Unique</code> decorator:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">@Entity</span><span class="p">()</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kd">@Unique</span><span class="p">([</span><span class="s2">&quot;firstName&quot;</span><span class="p">])</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="kd">@Unique</span><span class="p">([</span><span class="s2">&quot;lastName&quot;</span><span class="p">,</span> <span class="s2">&quot;middleName&quot;</span><span class="p">])</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="kd">@Unique</span><span class="p">(</span><span class="s2">&quot;UQ_NAMES&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span> <span class="s2">&quot;lastName&quot;</span><span class="p">,</span> <span class="s2">&quot;middleName&quot;</span><span class="p">])</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="k">export</span> <span class="kd">class</span> <span class="nx">User</span> <span class="p">{</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="kd">@Column</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;first_name&#39;</span> <span class="p">})</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="nx">firstName</span>: <span class="kt">string</span><span class="p">;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    <span class="kd">@Column</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;last_name&#39;</span> <span class="p">})</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    <span class="nx">lastName</span>: <span class="kt">string</span><span class="p">;</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>    <span class="kd">@Column</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;middle_name&#39;</span> <span class="p">})</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>    <span class="nx">middleName</span>: <span class="kt">string</span><span class="p">;</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="p">}</span>
+</code></pre></div>
+<p><code>@Unique</code> này cho phép ta tạo ràng buộc trong cơ sở dữ liệu là <code>unique</code> cho một nhiều Column cụ thể. Decorator này chỉ có thể được áp dụng cho một Entity duy nhất. Ta phải chỉ định tên field của Entity (không phải tên cột cơ sở dữ liệu) làm đối số cho nó.</p>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><a href="https://www.geeksforgeeks.org/what-are-the-differences-between-an-annotation-and-a-decorator-in-angular">Differences between an Annotation and a Decorator in Angular? - geeksforgeeks</a></p>
+</li>
+<li>
+<p><a href="https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/reference/annotations-reference.html">Annotations Reference - Doctrine ORM</a></p>
+</li>
+<li>
+<p><a href="https://orkhan.gitbook.io/typeorm/docs/decorator-reference">Decorator Reference - TypeORM</a></p>
+</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Relations-Cascade/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Relations - Cascade" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Relations - Cascade
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Lazy-Eager-Loading/" class="md-footer__link md-footer__link--next" aria-label="Next: Lazy / Eager loading" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Lazy / Eager loading
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Harry Hoang
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "navigation.top", "navigation.tabs", "navigation.expand", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+    
+  </body>
+</html>

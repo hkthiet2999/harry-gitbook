@@ -1,0 +1,2106 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Harry Hoang">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Mapping - Harry Gitbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mapping" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Harry Gitbook" class="md-header__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Harry Gitbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mapping
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Web-Technologies/Web-Protocols/" class="md-tabs__link">
+        Web technologies
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../SVM-Git/Source-Version-Control/" class="md-tabs__link">
+        SVM-Git
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Package-Management/composer/" class="md-tabs__link">
+        Package Management
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-tabs__link">
+        Docker
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Redis/Redis/" class="md-tabs__link">
+        Redis
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-tabs__link">
+        Message Brokers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../OOP/Object-Oriented-Programing/" class="md-tabs__link">
+      OOP
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-tabs__link">
+        Database
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ORM/Overview/" class="md-tabs__link">
+        ORM
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Overview/" class="md-tabs__link md-tabs__link--active">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Testing/Unit-Testing/" class="md-tabs__link">
+        Testing
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Architecture/Monolith/" class="md-tabs__link">
+        Architecture
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Harry Gitbook" class="md-nav__button md-logo" aria-label="Harry Gitbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Harry Gitbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/smoothkt4951/harry-gitbook/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Web technologies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Web technologies" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Web technologies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Web-Protocols/" class="md-nav__link">
+        Web Protocols
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/HTTP-Protocol/" class="md-nav__link">
+        HTTP Protocol
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Web-server-and-proxy/" class="md-nav__link">
+        Web server and proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Programming/" class="md-nav__link">
+        Programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Supervisor%20and%20workers%20management/" class="md-nav__link">
+        Supervisord and workers management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/RESTful/" class="md-nav__link">
+        RESTful
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Web-Technologies/Authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          SVM-Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SVM-Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          SVM-Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SVM-Git/Source-Version-Control/" class="md-nav__link">
+        Source Version Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Package Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Package Management" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Package Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/composer/" class="md-nav__link">
+        Composer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Package-Management/npm/" class="md-nav__link">
+        NPM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Objects/" class="md-nav__link">
+        Docker Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Volumes-PersistentData/" class="md-nav__link">
+        Volumes - Persistent data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Network/" class="md-nav__link">
+        Network - Port
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Environments/" class="md-nav__link">
+        Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Docker-Compose/" class="md-nav__link">
+        Docker Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Practice/" class="md-nav__link">
+        Practice with Docker
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Redis/Redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Message Brokers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Message Brokers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Message Brokers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Message-Brokers/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/RabbitMQ/" class="md-nav__link">
+        RabbitMQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/SNS-SQS/" class="md-nav__link">
+        SNS/SQS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Work-Queues/" class="md-nav__link">
+        Work Queues
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Publish-Subscribe/" class="md-nav__link">
+        Publish/Subscribe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Message-Brokers/Topics-Exchange-Channel/" class="md-nav__link">
+        Topics, Exchange, Channel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Object-Oriented-Programing/" class="md-nav__link">
+        OOP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" data-md-state="indeterminate" type="checkbox" id="__nav_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Relationship-Keys-Cascade/" class="md-nav__link">
+        Relationship, Primary/Foreign keys, Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Data-types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Index-Constraints-Unique/" class="md-nav__link">
+        Index, Constraints, Unique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Queries/" class="md-nav__link">
+        Queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Transactions-ACID/" class="md-nav__link">
+        Transactions - ACID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Schema/" class="md-nav__link">
+        Schema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Deadlock/" class="md-nav__link">
+        Deadlock
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Locking-Isolation/" class="md-nav__link">
+        Locking / Isolation Level
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Timestamp/" class="md-nav__link">
+        Time stamp
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" data-md-state="indeterminate" type="checkbox" id="__nav_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          ORM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Transactions/" class="md-nav__link">
+        Transactions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Migrations-Seeder/" class="md-nav__link">
+        Migrations / Seeder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Relations-Cascade/" class="md-nav__link">
+        Relations - Cascade
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Decorator-Anotation/" class="md-nav__link">
+        Annotation and Decorator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/Lazy-Eager-Loading/" class="md-nav__link">
+        Lazy / Eager loading
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/DoctrineORM/" class="md-nav__link">
+        Doctrine ORM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ORM/TypeORM/" class="md-nav__link">
+        TypeORM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Elasticsearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Elasticsearch" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Elasticsearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Index-Type-Document/" class="md-nav__link">
+        Index, Type, Document
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Types/" class="md-nav__link">
+        Data types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Mapping
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Mapping
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-mapping" class="md-nav__link">
+    About Mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-options" class="md-nav__link">
+    Mapping Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapping Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-mapping" class="md-nav__link">
+    Dynamic mapping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicit-mapping" class="md-nav__link">
+    Explicit mapping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prevent-mapping-explosion" class="md-nav__link">
+    Prevent mapping explosion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removal-of-mapping-types" class="md-nav__link">
+    Removal of mapping types
+  </a>
+  
+    <nav class="md-nav" aria-label="Removal of mapping types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapping-types" class="md-nav__link">
+    Mapping types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternatives-to-mapping-types" class="md-nav__link">
+    Alternatives to mapping types
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Analyzer/" class="md-nav__link">
+        Analyzer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Queries-Sort/" class="md-nav__link">
+        Queries / Sort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aggregation/" class="md-nav__link">
+        Aggregation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" data-md-state="indeterminate" type="checkbox" id="__nav_12" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Unit-Testing/" class="md-nav__link">
+        Unit Test
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Functional-Testing/" class="md-nav__link">
+        Functional Test
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Testing/Test-Coverage/" class="md-nav__link">
+        Test coverage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" data-md-state="indeterminate" type="checkbox" id="__nav_13" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          Architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Architecture" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Monolith/" class="md-nav__link">
+        Monolith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Microservices/" class="md-nav__link">
+        Microservices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Architecture/Saga-CQRS-pattern/" class="md-nav__link">
+        Saga / CQRS Pattern
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-mapping" class="md-nav__link">
+    About Mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-options" class="md-nav__link">
+    Mapping Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapping Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-mapping" class="md-nav__link">
+    Dynamic mapping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicit-mapping" class="md-nav__link">
+    Explicit mapping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prevent-mapping-explosion" class="md-nav__link">
+    Prevent mapping explosion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removal-of-mapping-types" class="md-nav__link">
+    Removal of mapping types
+  </a>
+  
+    <nav class="md-nav" aria-label="Removal of mapping types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapping-types" class="md-nav__link">
+    Mapping types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternatives-to-mapping-types" class="md-nav__link">
+    Alternatives to mapping types
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/smoothkt4951/harry-gitbook/edit/master/docs/Elasticsearch/Mapping.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="mapping">Mapping<a class="headerlink" href="#mapping" title="Permanent link">&para;</a></h1>
+<p><img alt="" src="../images/mapping-banner.jpg" /></p>
+<h2 id="about-mapping">About Mapping<a class="headerlink" href="#about-mapping" title="Permanent link">&para;</a></h2>
+<details class="info" open="open">
+<summary>Mapping</summary>
+<p>Mapping is the process of defining how a document, and the fields it contains, are stored and indexed</p>
+</details>
+<p><code>Mapping</code> là quá trình xử lý cách mà các document (và các properties bên trong document đó) sẽ được index và lưu trữ như thế nào. Mapping giúp chúng ta cùng lúc khởi tạo 1 field &amp; định nghĩa cách field đó được index (thông qua cơ chế Analyzer), ví dụ:</p>
+<ul>
+<li>
+<p>Những field nào sẽ có kiểu <code>number</code>, <code>date</code> hay <code>geolocations</code></p>
+</li>
+<li>
+<p>Với string field thì những string field nào sẽ được xử lí dưới dạng <code>Full text field</code></p>
+</li>
+<li>
+<p>format của các field, ví dụ với <code>"type": "date"</code></p>
+</li>
+</ul>
+<p>Như mình đã tìm hiểu trước đó, mỗi <code>document</code> là một tập hợp các <code>fields</code>, mỗi <code>field</code> sẽ có một <code>data type</code>. Khi thực hiện <code>mapping</code> data của document, ES sẽ tạo một <code>mapping definition</code> chứa danh sách các <code>fields</code> và  <code>metadata fields</code>( như <code>_source field</code>) của document và customize cách xử lý các metadata trong <code>metadata fields</code>.</p>
+<h2 id="mapping-options">Mapping Options<a class="headerlink" href="#mapping-options" title="Permanent link">&para;</a></h2>
+<p>Use dynamic mapping and explicit mapping to define your data. Each method provides different benefits based on where you are in your data journey. For example, explicitly map fields where you don’t want to use the defaults, or to gain greater control over which fields are created. You can then allow Elasticsearch to add other fields dynamically.</p>
+<p>Có hai <code>Mapping Options</code> là <code>dynamic mapping</code> và <code>explicit mapping</code> dùng để define data. 
+Trước ES v.7.0.0, <code>mapping definition</code> bao gồm a <code>type name</code> và accept cái <code>default mapping</code> làm Mapping options mặc định. Từ ES v7.0+ không còn accept cái default mapping nữa. Xem thêm <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/removal-of-types.html">Removal of mapping types</a>.</p>
+<p>Mỗi phương pháp cung cấp các lợi ích khác nhau, ví dụ dùng <code>explicit mapping</code> trong trường hợp không muốn các fields sử dụng giá trị mặc định hoặc để có được quyền kiểm soát các fields tốt hơn, saau đó vẫn có thể cho phép Elasticsearch thêm dynamic mapping cho các fields khác.</p>
+<h3 id="dynamic-mapping">Dynamic mapping<a class="headerlink" href="#dynamic-mapping" title="Permanent link">&para;</a></h3>
+<p>Dynamic mapping cho phép ta <code>experiment</code> và <code>explore</code> data trong các bước mapping ban đầu. Khi đó Elasticsearch sẽ tự động thêm các fields mới ngay khi document được index. Với option này, ta có thể thêm các fields vào <code>top-level mapping</code> - mapping cấp cao nhất và thêm các fields làm 1 object bên trong các fields lồng nhau.</p>
+<p>Dynamic mapping có các <code>dynamic templates</code> để <code>define custom mappings</code>, được áp dụng cho các fields được thêm động dựa trên các điều kiện phù hợp, từ đó cho phép ta kiểm soát tốt hơn cách Elasticsearch mapping dữ liệu ngoài các <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-field-mapping.html">dynamic field mapping rules.</a> mặc định</p>
+<p>Ta có thể enable <code>dynamic mapping</code> bằng cách set cái <code>dynamic parameter</code> thành <code>true</code> hoặc <code>runtime</code>. Sau đó có thể dùng <code>dynamic templates</code> để define custom mappings có thể áp dụng cho các fileds dựa trên các điều kiện:</p>
+<ul>
+<li>
+<p><code>match_mapping_type</code> hoạt động trên các data types mà Elasticsearch có thể detects. Bộ detect của ES có 1 vài giới hạn nhất định: 
+chỉ 1 vài datatype có thể được detect, bao gồm <code>boolean</code>, <code>date</code>, <code>double</code>, <code>long</code>, <code>object</code>, <code>string</code>. Tùy từng <code>dynamic parameter</code> là <code>true</code> hay <code>runtime</code> mà ES detect cái data types theo cách khác nhau, xem cụ thể tại <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-templates.html#template-variables">Elasticsearch automatically detects data types</a></p>
+</li>
+<li>
+<p><code>match</code> và <code>unmatch</code> là các parameter của <code>match_pattern</code>, dùng để set <code>match</code> hoặc <code>unmatch</code> các field name, ví dụ:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&quot;match_pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;regex&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&quot;match&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^profit_\d+$&quot;</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li><code>path_match</code> và <code>path_unmatch</code> tương tự như <code>match</code> và <code>unmatch</code> nhưng hoạt động trên các <code>full dotted path</code> của field chứ không chỉ là field name, ví dụ: <code>some_object.*.some_field</code></li>
+</ul>
+<p>Template này sẽ được process theo thứ tự: Template match đầu tiên được sử dụng &rarr; Template mới được apply sẽ được append vào Template List thông qua <code>PUT Mapping</code>. Nếu template mới có tên trùng với template cũ, template cũ sẽ được thay thế bẳng template mới này.</p>
+<h3 id="explicit-mapping">Explicit mapping<a class="headerlink" href="#explicit-mapping" title="Permanent link">&para;</a></h3>
+<p><code>Explicit mapping</code> cho phép ta chọn chính xác <code>mapping definition</code> - tức là có thể định nghĩa mapping cho các fields ngay khi index được tạ, ví dụ:</p>
+<ul>
+<li>
+<p>string fields nào là <code>full text fields</code>.</p>
+</li>
+<li>
+<p>Những fields nào chứa numbers, dates, hoặc geolocations.</p>
+</li>
+<li>
+<p>format của date values.</p>
+</li>
+<li>
+<p>Tùy chỉnh thêm các quy tắc dùng để kiểm soát việc mapping cho các fields được thêm động.</p>
+</li>
+</ul>
+<p>Ngoài ra, với Explicit mapping ta có thể thêm field vào các index đã tồn tại thông qua PUT Mapping, ví dụ:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="err">PUT</span><span class="w"> </span><span class="err">my_i</span><span class="kc">n</span><span class="err">dex</span><span class="w"> </span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">&quot;doc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w">  </span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w">  </span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w"> </span><span class="p">},</span><span class="w">  </span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="nt">&quot;created&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w">   </span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">          </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;strict_date_optional_time||epoch_millis&quot;</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Explicit mapping sử dụng <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime-mapping-fields.html">runtime fields</a> để thực hiện các schema changes mà không cần reindexing. Có thể sử dụng <code>runtime fields</code> kết hợp với <code>indexed fields</code> để cân bằng giữa việc sử dụng tài nguyên và tối ưu hiệu suất - mapping mà cần nhiều resource sẽ tốn performance.</p>
+<h2 id="prevent-mapping-explosion">Prevent mapping explosion<a class="headerlink" href="#prevent-mapping-explosion" title="Permanent link">&para;</a></h2>
+<p>Việc define quá nhiều fields trong một index có thể dẫn đến trường hợp <code>mapping explosion</code>, có thể gây ra lỗi hết bộ nhớ và các tình huống khó khôi phục khác. ES hỗ trọ <code>mapping limit settings</code> để giới hạn số lượng field được mappings được tạo thủ công hoặc tự động, từ đó tránh được hiện tượng <code>mapping explosion</code></p>
+<p>Lấy ví dụ với một vài mapping limit settings:</p>
+<ul>
+<li>
+<p><code>index.mapping.total_fields.limit</code>: Set số lượng fields tối đa trong một index. Giá trị mặc định là 1000.</p>
+</li>
+<li>
+<p><code>index.mapping.depth.limit</code>: Độ depth tối đa của field, tính bằng số lượng của inner objects. Ví dụ: tất cả các field được xác định là <code>root object level</code>, thì depth là 1. Nếu có một object mapping tới các filed này thì depth của nó là 2, v.v. Mặc định là 20.</p>
+</li>
+</ul>
+<p>Ngoài ra còn có các mapping limit settings khác như <code>index.mapping.nested_fields.limit</code> và <code>index.mapping.nested_objects.limit</code> để setting cho các nested fields, nested objects hay <code>index.mapping.field_name_length.limit</code>, <code>index.mapping.dimension_fields.limit</code>. Xem đầy đủ tại <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-settings-limit.html">Mapping limit settings</a></p>
+<h2 id="removal-of-mapping-types">Removal of mapping types<a class="headerlink" href="#removal-of-mapping-types" title="Permanent link">&para;</a></h2>
+<h3 id="mapping-types">Mapping types<a class="headerlink" href="#mapping-types" title="Permanent link">&para;</a></h3>
+<p>Elasticsearch được tổ chức thành các index, bên trong index là các type (hay còn được gọi là <code>mapping type</code>). Các index tương đương với database trong một Database Driver, còn type tương đương với table. </p>
+<p>Ví dụ với table trong mysql, với 2 table khác nhau có tên filed giống nhau thì kiểu dữ liệu vẫn có thể khác nhau:
+- table <code>shop</code> và table <code>session</code> đều có <code>id</code> filed 
+- table <code>shop</code> thì <code>id</code> filed có kiểu <code>int</code>
+- table <code>session</code> thì <code>id</code> filed có kiểu <code>string</code></p>
+<p>2 table này không liên quan đến nhau thì sẽ không có vấn đề gì. Tuy nhiên trong Elasticsearch thì không thế. Bởi vì <code>data types</code> sẽ đi theo index =&gt; kể cả các type khác nhau thì data type của filed đó cũng sẽ không được thay đổi. Ví dụ cùng trong  1 index <code>ecommerce</code>:
+- Type <code>shop</code> có <code>id</code> filed là kiểu <code>numberic</code> (long)
+- Type <code>session</code> có <code>id</code> filed là kiểu <code>string</code>
+Khi <code>session</code> insert vào mapping sẽ bị lỗi do data types không tương thích. Vì data types được đánh theo index, không phải theo từng type.</p>
+<p>&rarr; Điều này dẫn tới nhiều user hiểu nhầm &rarr; dùng sai &rarr; ES quyết định bỏ dần từ ES v5.6, đến ES v7.0+ là chính thức bỏ hẳn khái niệm Mapping type, thay vào đó là cơ chế Mapping khác dùng tiện hơn</p>
+<h3 id="alternatives-to-mapping-types">Alternatives to mapping types<a class="headerlink" href="#alternatives-to-mapping-types" title="Permanent link">&para;</a></h3>
+<p>ES hỗ trợ 2 cách thay thế cho mapping types:</p>
+<ul>
+<li>
+<p><code>Index per document type</code>: Lập index cho từng document luôn, tức là index là table để tiện cho việc define data types. Khi nào cần thì điều chỉnh số <code>primary_shard</code> của từng index cho phù hợp với bài toán lưu trữ cụ thể, tránh dư thừa.</p>
+</li>
+<li>
+<p><code>Custom type field</code>: Sử dụng 1 field để lưu data types. Ví dụ bình thường lưu 2 type cho <code>shop</code>, <code>session</code> thì bây giờ trong mỗi index, thêm 1 field là type, có value là string, number gì đó, khi search thì kèm thêm cái type này vào query là ok.</p>
+</li>
+</ul>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Tạo một index với predefined mapping:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="err">PUT</span><span class="w"> </span><span class="err">/my_i</span><span class="kc">n</span><span class="err">dex?pre</span><span class="kc">tt</span><span class="err">y</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">&quot;number_of_shards&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">      </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">      </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w"></span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>Sau đó mapping cái index này:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="err">PUT</span><span class="w"> </span><span class="err">/my_i</span><span class="kc">n</span><span class="err">dex/_mappi</span><span class="kc">n</span><span class="err">g?pre</span><span class="kc">tt</span><span class="err">y</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;keyword&quot;</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>ES sẽ tiến hàng mapping cái index trên, có thể view bằng </p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="err">GET</span><span class="w"> </span><span class="err">my_i</span><span class="kc">n</span><span class="err">dex/_mappi</span><span class="kc">n</span><span class="err">g?pre</span><span class="kc">tt</span><span class="err">y</span><span class="w"></span>
+</code></pre></div>
+hoặc </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="err">GET</span><span class="w"> </span><span class="err">/my_i</span><span class="kc">n</span><span class="err">dex/_mappi</span><span class="kc">n</span><span class="err">g/</span><span class="kc">f</span><span class="err">ield/</span><span class="kc">na</span><span class="err">me?pre</span><span class="kc">tt</span><span class="err">y</span><span class="w"></span>
+</code></pre></div>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><a href="https://logz.io/blog/elasticsearch-mapping/">Elasticsearch Mapping: The Basics, Updates &amp; Examples - logz.io</a></p>
+</li>
+<li>
+<p><a href="https://opster.com/guides/elasticsearch/glossary/elasticsearch-mapping/">Elasticsearch Mapping - opster.com</a></p>
+</li>
+<li>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html">Mapping - elastic document - current version</a></p>
+</li>
+<li>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-settings-limit.html">Mapping limit settings - elastic document</a></p>
+</li>
+<li>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.8/removal-of-types.html">Removal of mapping types</a></p>
+</li>
+<li>
+<p><a href="https://www.tutorialspoint.com/elasticsearch/elasticsearch_mapping.htm">Elasticsearch Mapping - tutorialspoint.com</a></p>
+</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Data-Types/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data types" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Data types
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Analyzer/" class="md-footer__link md-footer__link--next" aria-label="Next: Analyzer" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Analyzer
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Harry Hoang
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "navigation.top", "navigation.tabs", "navigation.expand", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+    
+  </body>
+</html>
