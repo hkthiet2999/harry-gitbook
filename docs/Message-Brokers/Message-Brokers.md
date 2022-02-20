@@ -4,10 +4,8 @@ date: 2022-01-19
 ---
 
 # Message-Brokers
-- Overview
-- Advantages and Disadvantages of using Message broker
-- Use case
 
+![](./images/msg-broker-banner.jpg)
 ## Overview
 
 - `Message broker` - còn gọi là `integration broker` hoặc `interface engine`: Là một mô hình kiến trúc `(architentural pattern`), đóng vai trò là trung gian giữa các ứng dụng với nhau, làm nhiệm vụ kiểm tra, trung chuyển và điều hướng message từ bên gửi đến bên nhận, tối giản hóa giao tiếp giữa các ứng dụng.
@@ -28,7 +26,7 @@ Message broker cung cấp hai kiểu mô hình phân phối message cơ bản:
 
 ![](./images/msgb-queue.png)
 
-- `Point-to-point messaging`: Đây là dạng mô hình phân phối message sử dụng trong hàng đợi `queue`, có mối quan hệ `1-1` giữa người gửi và người nhận. Mỗi message trong `queue` chỉ được gửi đến `một người nhận` và chỉ được `sử dụng một lần`. Dùng trong các trường hợp `giao dịch tài chính`, cả người gửi và người nhận đều cần đảm bảo mỗi giao dịch chỉ được gửi một lần duy nhất.
+- `Point-to-point messaging`: Đây là dạng mô hình phân phối message sử dụng trong hàng đợi `queue`, có mối quan hệ `1-1` giữa người gửi và người nhận. Mỗi message trong `queue` chỉ được gửi đến `một người nhận` và chỉ được `sử dụng một lần`. Ví dụ như dùng trong các trường hợp `giao dịch tài chính`, cả người gửi và người nhận đều cần đảm bảo mỗi giao dịch chỉ được gửi một lần duy nhất.
 
 ![](./images/pubsub.png)
 
@@ -44,7 +42,7 @@ Message broker cung cấp hai kiểu mô hình phân phối message cơ bản:
 
     + `Messages` - Có thể là content trong headers hay metadata. hoặc message body content như binary, JSON, XML, plain text v.vvvv
 
-## Advantages and Disadvantages of using Message broker
+## Advantages/Disadvantages
 
 ### Advantages
 

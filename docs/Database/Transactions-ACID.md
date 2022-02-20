@@ -11,9 +11,11 @@ date: 2022-01-25
 
 ### Definition of DBMS Transaction Processing
 
-- `DBMS Transaction Processing` là một `unit of data processing` của Database trong process xử lý các hoạt động truy cập tới database. Có thể hiểu `Transaction` như một phương tiện phân phối `quá trình xử lý thông tin`. 
+`DBMS Transaction Processing` là một `unit of data processing` của Database trong process xử lý các hoạt động truy cập tới database. Có thể hiểu `Transaction` như một phương tiện phân phối `quá trình xử lý thông tin`. 
 
-- Quá trình xử lý thông tin này là một tập hợp các `thao tác với dữ liệu` (group of `Database Operations`), chứa một hoặc nhiều `database actions` như `retrieve`, `insert`, `update`. 
+`Transaction` là cái chữ cái T ở trong thuật ngữ OLTP (`Online transaction processing`). Hầu hết các mô hình Database hiện nay đều phục vụ cho mục đích OLTP: từ thanh toán mua sắm, đặt hàng, giao hàng cho tới đăng bài viết, cập nhật profile trên mạng xã hội… còn 1 loại khác là OLAP thì dùng cho mục đích thống kê, không cần liên tục cập nhật realtime, xấp xỉ là đủ.
+
+Quá trình xử lý thông tin này là một tập hợp các `thao tác với dữ liệu` (group of `Database Operations`), chứa một hoặc nhiều `database actions` như `retrieve`, `insert`, `update`. 
 
 ![](./images/steps-transaction.png)
 
@@ -72,21 +74,26 @@ Terminated State | Chấm dứt Transaction.
 
 - Nếu 1 transaction không thoả mản 1 trong các thuộc tính này thì sẽ không thể thao tác với database thành công, bị rollback ngay lập tức.
 
-- `ACID` là cụm từ viết tắt của 4 thuộc tính sau: *A*tomicity, *C*onsistency, *I*solation và *D*urability:
+- `ACID` là cụm từ viết tắt của 4 thuộc tính sau: *Atomicity*, *Consistency*, *Isolation* và *Durability*:
 
 ![](./images/acid-summary.png)
 
 
 ### Atomicity
 
-- `Atomicity` - Tính bảo toàn?😀: Dựa vào rule `All or nothing` kể trên, khi một chuỗi các operations lần lượt thao tác với database trong 1 transaction, nếu 1 operation đang trong xử lý mà xảy lỗi ở database, hay crash hệ thống, v.v… thì toàn bộ transaction sẽ bị hủy bỏ và bị rollback, dữ liệu ở database vẫn giữ như cũ trước khi có sự thay đổi. Nếu như không xảy ra lỗi hay vấn đề gì trong quá trình xử lý các operations thì transaction đó sẽ commit thành công, dữ liệu phía database cũng được cập nhật thành công luôn.
+Từ Atom trong tiếng Anh có nghĩa là nguyên tử, tượng trưng cho 1 thứ mà không thể chia nhỏ hơn được nữa. Đứng từ góc độ người sử dụng Database, ta chỉ có thể quan sát được trạng thái trước khi Transaction diễn ra hoặc sau khi Transaction đã hoàn thành. Nếu bị thất bại hoặc từ chối, các trạng thái tạm thời cần phải được trả lại nguyên vẹn như khi chưa hề diễn ra Transaction.
 
-- Theo `State Transaction Diagram` ở trên, một transaction chỉ có 2 kết quả:
+Atomicity giúp cho người sử dụng có thể dễ dàng retry lại khi gặp lỗi, không phải lo nghĩ về việc bị duplicate hoặc dữ liệu không chính xác. Một số người đề xuất từ Abortability thì hợp lý hơn, vì từ Atomicity dễ gây nhầm lẫn với chữ I (Isolation).
 
-    + `Abort`: Tất cả các thay đổi của transaction sẽ không được đồng bộ xuống database.
-    + `Commit`: Tất cả các thay đổi của transaction được đồng bộ xuống database.
+Dựa vào rule `All or nothing` kể trên, khi một chuỗi các operations lần lượt thao tác với database trong 1 transaction, nếu 1 operation đang trong xử lý mà xảy lỗi ở database, hay crash hệ thống, v.v… thì toàn bộ transaction sẽ bị hủy bỏ và bị rollback, dữ liệu ở database vẫn giữ như cũ trước khi có sự thay đổi. Nếu như không xảy ra lỗi hay vấn đề gì trong quá trình xử lý các operations thì transaction đó sẽ commit thành công, dữ liệu phía database cũng được cập nhật thành công luôn.
 
-- Lấy ví dụ chúng ta có một giao dịch của ngân hàng chuyển 100tr đồng từ tài khoảng X sang tài khoản Y. 
+Theo `State Transaction Diagram` ở trên, một transaction chỉ có 2 kết quả:
+
+- `Abort`: Tất cả các thay đổi của transaction sẽ không được đồng bộ xuống database.
+
+- `Commit`: Tất cả các thay đổi của transaction được đồng bộ xuống database.
+
+Lấy ví dụ chúng ta có một giao dịch của ngân hàng chuyển 100tr đồng từ tài khoảng X sang tài khoản Y. 
 
     ![](./images/transX-toY.png)
 
@@ -94,18 +101,27 @@ Terminated State | Chấm dứt Transaction.
 
 ### Consistency
 
-- `Consistency` - Tính nhất quán: Một transaction phải đảm bảo tính `hợp lệ` của dữ liệu khi cập nhật vào database. Nếu dữ liệu đưa vào database mà như kiễu dữ liệu không phù hợp, không thỏa mãn constraint, rule, trigger, query nhầm table,… thì transaction đó sẽ bị rollback, dữ liệu ở database vẫn được giữ nguyên lúc chưa thay đổi. Chính vì vậy dữ liệu từ transaction phải hợp lệ, đúng đắn, nhất quán với những constraint, cấu trúc table, rule… đã được định nghĩa hay khai báo từ phía database.
+Consistency là tính nhất quán: dữ liệu cần phải nhất quán với những rule đã đặt ra, chẳng hạn như:
+
+- username A đã tồn tại trong unique index nên transaction cần phải abort, nếu thành công (tức chưa tồn tại) thì phải lập tức bổ sung A vào index username.
+
+- họ và tên không dài quá 100 ký tự
+
+Tuy nhiên, đa phần database sẽ không thể thay ta validate được hết tất cả các rule, nên cái việc Consistent hay không còn phụ thuộc vào code, ví dụ như validation form từ phía người dùng.
+
+Tóm lại, một transaction phải đảm bảo tính `hợp lệ` của dữ liệu khi cập nhật vào database. Nếu dữ liệu đưa vào database mà như kiễu dữ liệu không phù hợp, không thỏa mãn constraint, rule, trigger, query nhầm table,… thì transaction đó sẽ bị rollback, dữ liệu ở database vẫn được giữ nguyên lúc chưa thay đổi. Chính vì vậy dữ liệu từ transaction buộc phải hợp lệ, đúng đắn, nhất quán với những constraint, cấu trúc table, rule… đã được định nghĩa hay khai báo từ phía database.
 
 ### Isolation
-- `Isolation` - Tính cô lập:  Mọi thao tác của 1 transaction đều phải được cô lập, tránh sự tác động, phụ thuộc hay ảnh hưởng đến các transaction khác. Một transaction A thì không thể đọc dữ liệu ở database trong khi transaction B đang update dữ liệu đó. 
 
-- Nếu có 2 transaction đang làm việc bất đồng bộ với nhau thì sẽ có cơ chế chia `session` như hình dưới, để các transaction làm việc tuần tự với database theo từng session, 1 transation này sẽ chờ cho đến khi transaction kia commit thành công thì mới bắt đầu làm nhiệm vụ của nó.
+Mọi thao tác của 1 transaction đều phải được cô lập, tránh sự tác động, phụ thuộc hay ảnh hưởng đến các transaction khác. Một transaction A thì không thể đọc dữ liệu ở database trong khi transaction B đang update dữ liệu đó. 
+
+Nếu có 2 transaction đang làm việc bất đồng bộ với nhau thì sẽ có cơ chế chia `session` như hình dưới, để các transaction làm việc tuần tự với database theo từng session, 1 transation này sẽ chờ cho đến khi transaction kia commit thành công thì mới bắt đầu làm nhiệm vụ của nó.
 
 ![](./images/block-session.png)
 
 ### Durability
 
-- `Durability` - Tính bền bỉ: Khi 1 transaction update dữ liệu thành công, thì thay đổi của dữ liệu đó phải được đảm bảo lưu trữ ở trạng thái bền vững, vĩnh viễn,... Và ngay cả khi database bị crash, lỗi hay hệ thống restart thì dữ liệu ở database vẫn luôn ở trạng thái thay đổi mới nhất, chính xác.
+Khi transaction đã commit thành công rồi thì kể cả có sự cố về điện hay lỗi phần cứng gì thì cũng phải đảm bảo dữ liệu không bị mất mát. Ví dụ khi 1 transaction update dữ liệu thành công, thì thay đổi của dữ liệu đó phải được đảm bảo lưu trữ ở trạng thái bền vững, vĩnh viễn,... Và ngay cả khi database bị crash, lỗi hay hệ thống restart thì dữ liệu ở database vẫn luôn ở trạng thái thay đổi mới nhất, chính xác.
 
 
 ___Tóm lại:___

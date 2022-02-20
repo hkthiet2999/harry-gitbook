@@ -36,7 +36,7 @@ date: 2022-01-19
 
 - `Many Client`: Vì `Producer` giao tiếp với `Consumer` trung gian qua `Message broker` nên dù `Producer` và `Consumer` có khác biệt nhau về ngôn ngữ thì giao tiếp này vẫn ok. Hiện nay `RabbitMQ` đã hỗ trợ rất nhiều ngôn ngữ khác nhau.
 
-- `Asynchronous`: `Producer` không thể biết khi nào `message` đến được `Consumer` hay khi nào `message` được `Consumer` xử lý xong. Đối với `Producer`, việc push `message` đến `Message broker `là xong việc của nó. `Consumer` sẽ lấy `message` về khi nó muốn. Đặc điểm này có thể được tận dụng để xây dựng các hệ thống lưu trữ và xử lý log.
+- `Asynchronous`: `Producer` không cần biết khi nào `message` đến được `Consumer` hay khi nào `message` được `Consumer` xử lý xong. Đối với `Producer`, việc push `message` đến `Message broker `là xong việc của nó. `Consumer` sẽ pull cái `message` về khi nó cần hoặc được RabbitMQ gửi cho nó tại một thời điểm cụ thể nào đó, gọi là `time acknowledgment`. Đặc điểm này có thể được tận dụng để xây dựng các hệ thống lưu trữ và xử lý log.
 
 - `Flexible Routing`: `message` được routing thông qua `Exchange` trước khi đến `Queue`. `RabbitMQ` cung cấp một số loại `Exchange` thường dùng và ta cũng có thể định nghĩa riêng Exhange để phù hợp với hệ thống của mình.
 
@@ -58,7 +58,7 @@ date: 2022-01-19
 
 - `Tools support`: Hoạt động với các công cụ CI/CD và có thể triển khai với BOSH, Chef, Docker và Puppet.
 
-## Concepts
+## Related concepts
 Ngoài các khái niệm đã đề cập như `AMQP`, `Producer`, `Consumer`, `Queue`, `Message`, ta còn có một số khái niệm cần biết trước khi tìm hiểu qua cơ chế hoạt động của RabbitMQ:
 
 - `Connection`: Một kết nối TCP giữa ứng dụng và RabbitMQ broker.

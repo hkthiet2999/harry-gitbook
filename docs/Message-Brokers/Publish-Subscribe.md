@@ -5,10 +5,40 @@ date: 2022-01-19
 
 # Publish-Subscriber
 
+![](./images/pubsub-banner.png)
+
 Một `message` được gửi tới nhiều `consumer` khác nhau được RabbitMQ phân phối dựa trên `Publish/Subscribe`.
 
-- `Publish/subscribe messaging`: Mô hình phân phối message này tương tự Pub/Sub trong Redis, `publisher` sẽ xuất bản các message theo dạng `topic` và `subscriber` sẽ đăng ký các message họ cần nhận dựa trên các `topic` này.
+- `Publish/subscribe messaging`: Mô hình phân phối message này tương tự Pub/Sub trong Redis, `Publisher`- `who is the source of data` sẽ xuất bản các message theo dạng `topic` và `Subscriber` - `who is the receiver of data` sẽ đăng ký các message họ cần nhận dựa trên các `topic` này.
 
+## Publishers/Subscribes Relationship
+
+![](./images/pubsub-relational.png)
+
+- `One-to-one` hoặc `unicast`: Có thể là mối quan hệ một chiều hoặc hai chiều, ví dụ One-One chat hoặc private chat.
+
+- `One-to-many` hoặc `broadcast`/`fan-out`: Ví dụ Live poll, Radio, v.vv
+
+- `Many-to-many` hoặc `multicast`: Ví dụ như group chat
+
+- `Many-to-one` hoặc `consolidation`/`fan-in`: Ví dụ như Sensor data live poll, audience participation.
+
+## Pub/Sub Message Flow
+
+![](./images/pubsub-msgflow.png)
+
+1. `Publisher` tiến hành tạo một `Topic` tại `Pub/Sub Model` sau đó gửi `messages` tới topic này.
+
+2. Sau đó,  `Message Storage Queue` đảm bảo rằng `published messages` được lưu lại và `depend on` tới `subscribers`, khi nào có `time acknowledgment` thì sẽ tiến hành giải phóng message này khỏi `Message Storage Queue` để `Pub/Sub` gửi đến `Subscriber`.
+3. Khi có `time acknowledgment` của một message thì Pub/Sub tiến hành `forwards messages` từ topic đến tất cả subscriptions của message đó.
+
+4. When a subscriber receives a message either by push operation done by Pub/Sub or Subscriber pulling from the service.
+
+4. Message được gửi tới subscriber theo 2 kiểu: Pub/Sub push cái message tới subscriber hoặc subscriber tự pull cái message đó về.
+
+5. Nhận được message rồi thì subscriber gửi một flags `acknowledgment` đến Pub/Sub để Pub/Sub biết rằng message đã được nhận. Khi đó nó sẽ remove cái `acknowledged message` khỏi Message Storage Queue.
+
+## Example
 
 Trong ví dụ về Publish-Subscriber này, ta sẽ xây dựng một hệ thống log đơn giản gồm có 2 thành phần:
 

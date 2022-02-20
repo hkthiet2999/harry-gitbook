@@ -4,14 +4,16 @@ date: 2022-01-19
 ---
 
 # Work Queues
-- Concepts
-- Example
+
+![](./images/WorkQueueLogo2.png)
 
 ## Concepts
 
-- Ý tưởng chính của `Work Queues` (hay `Task Queues`) là tránh việc thực hiện ngay lập tức một work/task tốn nhiều tài nguyên và phải chờ nó hoàn thành. Thay vào đó chúng ta sẽ lên lịch (`schedule`) và các work/task này sẽ được thực hiện dựa trên schedule mà mình lập ra.
+Ý tưởng chính của `Work Queues` (hay `Task Queues`) là tránh việc thực hiện ngay lập tức một work/task tốn nhiều tài nguyên và phải chờ nó hoàn thành. Thay vào đó chúng ta sẽ lên lịch (`schedule`) và các work/task này sẽ được thực hiện dựa trên schedule mà mình lập ra.
 
-- `Work Queues` sẽ gói gọn (encapsulate) một task dưới dạng `Message` và gửi nó đến Queue. Sau đó có một `worker` chạy background một process để lấy các task từ Queue ra thực thi chúng. Có thể tạo nhiều worker để thực hiện các task và các task này đều được chia sẻ giữa các worker với nhau.
+`Work Queues` sẽ gói gọn (encapsulate) một task dưới dạng `Message` và gửi nó đến Queue. Sau đó có một `worker` chạy background một process để lấy các task từ Queue ra thực thi chúng. Có thể tạo nhiều worker để thực hiện các task và các task này đều được chia sẻ giữa các worker với nhau.
+
+![](./images/wkQ-example.png)
 
 ## Example
 
